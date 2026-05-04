@@ -1,0 +1,21 @@
+[project]
+name = "susdpegcockpit-pipeline"
+version = "0.1.0"
+description = "Data collectors for the sUSDPegCockpit dashboard. Pulls from public APIs (DefiLlama, DexScreener, Curve, Etherscan, Blockscout, public RPCs) and writes snapshot JSON files consumed by the React client."
+requires-python = ">=3.11"
+dependencies = [
+    "httpx==0.28.1",
+    "pydantic==2.10.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["collectors*", "schemas*", "lib*", "scripts*"]

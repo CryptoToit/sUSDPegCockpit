@@ -1,0 +1,14 @@
+# Stage 1: build the SPA
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY execution/client/package.json execution/client/package-lock.json* ./
+RUN npm install
+COPY execution/client/ ./
+RUN npm run build
+
+# Stage 2: serve via nginx
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+RUN printf 'server {\n  listen 3012;\n  root /usr/share/nginx/html;\n  index index.html;\n  gzip on;\n  gzip_types text/plain text/css application/javascript application/json image/svg+xml;\n  location / {\n    try_files $uri $uri/ /index.html;\n  }\n  location /data/ {\n    add_header Cache-Control "no-cache";\n  }\n}\n' > /etc/nginx/conf.d/default.conf
+EXPOSE 3012
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,16 @@
+name: susdpeg
+
+services:
+  cockpit:
+    container_name: susdpeg
+    build:
+      context: .
+      dockerfile: Dockerfile.landing
+    restart: unless-stopped
+    ports:
+      - "3012:3012"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

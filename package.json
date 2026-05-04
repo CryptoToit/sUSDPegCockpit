@@ -1,0 +1,19 @@
+{
+  "name": "susdpegcockpit",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "execution/client",
+    "execution/server",
+    "execution/shared"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"npm run dev -w execution/server\" \"npm run dev -w execution/client\"",
+    "dev:server": "npm run dev -w execution/server",
+    "dev:client": "npm run dev -w execution/client",
+    "build": "npm run build -w execution/server && npm run build -w execution/client"
+  },
+  "devDependencies": {
+    "concurrently": "9.1.0"
+  }
+}

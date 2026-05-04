@@ -1,0 +1,60 @@
+{
+  "as_of": "2026-05-04T11:48:25Z",
+  "kpis": [
+    {
+      "id": "treasury_reserves",
+      "label": "420 Pool aux-recipient (Mainnet)",
+      "actual": 5640017,
+      "target": null,
+      "unit": "USD",
+      "status": "verified",
+      "note": "sUSD held at 0xFa1DF09… on Mainnet — the Treasury Market `aux_recipient` for the 420 Pool / Simple sUSD Staking Rewards program. Live balanceOf. This is one of two Treasury wallets holding the program's locked sUSD; see the 420 Pool bucket in the Capital Flow Map for the chain-wide total."
+    },
+    {
+      "id": "snx_in_420_pool",
+      "label": "SNX migrated to 420 Pool",
+      "actual": "not measured",
+      "target": null,
+      "unit": "text",
+      "status": "context",
+      "note": "Not measured — Mainnet uses legacy v2x architecture for the 420 Pool (SNX is not registered as a v3 collateral on Mainnet, verified 2026-05-04 via getCollateralConfiguration). Reading the figure would require a separate v2x integration. Out of scope for the peg-recovery dashboard: sUSD supply is fully captured by the 420 Pool bucket in the Capital Flow Map; SNX collateral mechanics are parallel to the peg story. Earlier 0.62 stub was an unsourced guess and has been removed."
+    },
+    {
+      "id": "jubilee_burned",
+      "label": "Jubilee debt forgiven",
+      "actual": 0,
+      "target": 60000000,
+      "unit": "USD",
+      "status": "verified",
+      "note": "Live cumulative sum of TreasuryBurned events on TreasuryMarketProxy 0x7b952507306E7D983bcFe6942Ac9F2f75C1332D8 over the last 200k Mainnet blocks (~28 days, covers the entire post-2026-04-19 unlock period). Currently $0. Synthetix team confirmed (2026-05-04): the jubilee IS active but gated on each staker maintaining ≥20% of their original debt in sUSD. If the staker drops below 20%, burning pauses until they top up. Burns linear over 12 months for eligible accounts. $0 cumulative reflects most stakers being below the 20% threshold; the figure will rise as accounts top up to 20%+. Earlier $41.2M / $60M target stub was speculative."
+    },
+    {
+      "id": "jubilee_phase",
+      "label": "Current jubilee phase",
+      "actual": "Phase 2 — sUSD staking past $10M (live $18.5M)",
+      "target": null,
+      "unit": "text",
+      "status": "context",
+      "note": "Synthetix team clarified (2026-05-04): the only on-record 'phase' framework is Phase 1 (Debt Migration complete) → Phase 2 (sUSD staking progress toward $10M target). NOT a numeric percentage — the 'Rebuilding sUSD' blog's 50%+10% biweekly schedule was either marketing simplification or referring to a different schedule. We're past the $10M staking target (verified $18.5M locked across the 2 Treasury wallets), so Phase 2's stated goal is satisfied. Phase 3 not on record."
+    },
+    {
+      "id": "slp_fill",
+      "label": "SLP sUSD deposits",
+      "actual": 0,
+      "target": 15000000,
+      "unit": "USD",
+      "deadline": "2026-06-30",
+      "status": "closed",
+      "note": "Synthetix team confirmed (2026-05-04) the SLP Vault is in private/internal mode with no published TVL. Public launch planned Q2 2026, official target $15M sUSD by 2026-06-30. Earlier $1.45M placeholder dropped — unsourced."
+    },
+    {
+      "id": "days_since_unlock",
+      "label": "Days since unlock event",
+      "actual": "15 days",
+      "target": null,
+      "unit": "text",
+      "status": "context",
+      "note": "Post-unlock window opened 2026-04-19 — see Sell-Pressure Radar."
+    }
+  ]
+}

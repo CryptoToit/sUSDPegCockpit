@@ -1,0 +1,116 @@
+name: Refresh data snapshots
+
+# Scheduled trigger DISABLED. GitHub Actions' free-tier scheduler proved
+# unreliable in practice — observed 30+ min gaps between successful ticks,
+# pushing freshness budgets red. Production cron is fired externally via a
+# scheduler-as-a-service that hits this workflow's `workflow_dispatch` API
+# every 14 min. Manual runs are also available via the Actions UI.
+on:
+  # schedule disabled — see comment above
+  # - cron: '*/14 * * * *'
+  workflow_dispatch:
+
+# Required to push commits back to main.
+permissions:
+  contents: write
+
+# Single run at a time — if a previous tick is still running, queue (don't kill).
+concurrency:
+  group: refresh-snapshots
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          # Required so the bot's commit-push works against the branch.
+          persist-credentials: true
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: execution/pipeline/pyproject.toml
+
+      - name: Install pipeline
+        working-directory: execution/pipeline
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Run collectors
+        working-directory: execution/pipeline
+        env:
+          THEGRAPH_API_KEY: ${{ secrets.THEGRAPH_API_KEY }}
+        run: python -m scripts.run_all
+
+      - name: Commit refreshed snapshots back to this repo
+        id: commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add execution/client/public/data/
+
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+
+          changed=$(git diff --staged --name-only execution/client/public/data/ | sed 's|execution/client/public/data/||;s|/latest\.json||' | paste -sd ',' -)
+          git commit -m "auto: refresh snapshots [${changed}] [skip ci]"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "changed_summary=${changed}" >> "$GITHUB_OUTPUT"
+
+      - name: Mirror snapshots to public data repo (CryptoToit/susdpeg-data)
+        # Only push when something actually changed — same gate as the local
+        # commit step. Uses a deploy key (DATA_REPO_DEPLOY_KEY secret) with
+        # write access only to the data repo, never to this code repo.
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          DEPLOY_KEY: ${{ secrets.DATA_REPO_DEPLOY_KEY }}
+          CHANGED: ${{ steps.commit.outputs.changed_summary }}
+        run: |
+          set -e
+
+          # Set up SSH with the data-repo deploy key.
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/data_repo_key
+          chmod 600 ~/.ssh/data_repo_key
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/data_repo_key -o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+
+          # Clone, copy fresh JSONs, commit, push.
+          rm -rf /tmp/data-mirror
+          git clone --depth 1 git@github.com:CryptoToit/susdpeg-data.git /tmp/data-mirror
+          rm -rf /tmp/data-mirror/data
+          mkdir -p /tmp/data-mirror/data
+          cp -r execution/client/public/data/. /tmp/data-mirror/data/
+
+          cd /tmp/data-mirror
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/
+          if git diff --staged --quiet; then
+            echo "Mirror already in sync (unexpected — code repo had changes)."
+            exit 0
+          fi
+          git commit -m "auto: refresh snapshots [${CHANGED}]"
+          git push
+
+      - name: Purge jsdelivr CDN cache (data mirror)
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -e
+          for snap in peg supply scorecard pool_420 radar flow trade_flow yield recovery_score; do
+            curl -s -o /dev/null -w "  purge ${snap}: HTTP %{http_code}\n" \
+              "https://purge.jsdelivr.net/gh/CryptoToit/susdpeg-data@main/data/${snap}/latest.json"
+          done
