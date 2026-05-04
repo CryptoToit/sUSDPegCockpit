@@ -46,9 +46,9 @@ export default function App() {
       <nav className="border-b border-border bg-surface-2/95 sticky top-0 z-10 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 overflow-x-auto scrollbar-hide">
           <div className="flex gap-4 sm:gap-5 text-xs font-mono uppercase tracking-wider whitespace-nowrap">
+            <a href="#peg" className="text-text-muted hover:text-accent transition py-1">Peg</a>
             <a href="#recovery-score" className="text-text-muted hover:text-accent transition py-1">Score</a>
             <a href="#supply" className="text-text-muted hover:text-accent transition py-1">Supply</a>
-            <a href="#peg" className="text-text-muted hover:text-accent transition py-1">Peg</a>
             <a href="#radar" className="text-text-muted hover:text-accent transition py-1">Radar</a>
             <a href="#scorecard" className="text-text-muted hover:text-accent transition py-1">Scorecard</a>
             <a href="#flow" className="text-text-muted hover:text-accent transition py-1">Flow</a>
@@ -61,9 +61,9 @@ export default function App() {
       </nav>
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-4 sm:space-y-6">
+        <PegTracker />
         <RecoveryScore />
         <Supply />
-        <PegTracker />
         <SellPressureRadar />
         <Scorecard />
         <CapitalFlow />
