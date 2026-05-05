@@ -86,33 +86,46 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DATA_REPO_DEPLOY_KEY }}
           CHANGED: ${{ steps.commit.outputs.changed_summary }}
         run: |
-          set -e
+          # `-e` aborts on error; `-x` echos each command; `-o pipefail` makes
+          # piped failures propagate. We want full visibility on this step
+          # because past failures here have surfaced as silent exit-1.
+          set -exo pipefail
 
           # Set up SSH with the data-repo deploy key.
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/data_repo_key
           chmod 600 ~/.ssh/data_repo_key
-          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          # Don't silence ssh-keyscan stderr — if DNS or scan fails we want to see it.
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
 
-          export GIT_SSH_COMMAND="ssh -i ~/.ssh/data_repo_key -o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+          # Sanity-check the key landed and looks right (just print fingerprint, not key body).
+          ssh-keygen -lf ~/.ssh/data_repo_key
 
-          # Clone, copy fresh JSONs, commit, push.
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/data_repo_key -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -v"
+
+          # Clone, copy fresh JSONs, commit, push. Merge stderr into stdout so
+          # any git messages appear in the workflow log.
           rm -rf /tmp/data-mirror
-          git clone --depth 1 git@github.com:CryptoToit/susdpeg-data.git /tmp/data-mirror
+          git clone --depth 1 git@github.com:CryptoToit/susdpeg-data.git /tmp/data-mirror 2>&1
           rm -rf /tmp/data-mirror/data
           mkdir -p /tmp/data-mirror/data
           cp -r execution/client/public/data/. /tmp/data-mirror/data/
 
           cd /tmp/data-mirror
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Identity for the push commit. The data repo's commit history shows
+          # everything as `susdpeg-cron` — the deploy key is associated with
+          # that pseudonymous account, so committing under that name keeps the
+          # history consistent. (`github-actions[bot]` would still work but
+          # would mix in alongside the historical pseudonymous commits.)
+          git config user.name 'susdpeg-cron'
+          git config user.email 'susdpeg-cron@noreply.local'
           git add data/
           if git diff --staged --quiet; then
             echo "Mirror already in sync (unexpected — code repo had changes)."
             exit 0
           fi
           git commit -m "auto: refresh snapshots [${CHANGED}]"
-          git push
+          git push 2>&1
 
       - name: Purge jsdelivr CDN cache (data mirror)
         if: steps.commit.outputs.changed == 'true'
