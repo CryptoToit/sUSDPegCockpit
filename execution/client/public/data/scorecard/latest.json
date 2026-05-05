@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-05T20:00:37Z",
+  "as_of": "2026-05-05T20:23:06Z",
   "kpis": [
     {
       "id": "treasury_reserves",
@@ -55,6 +55,15 @@
       "unit": "text",
       "status": "context",
       "note": "Post-unlock window opened 2026-04-19 — see Sell-Pressure Radar."
+    },
+    {
+      "id": "days_remaining_release",
+      "label": "Days remaining in release window",
+      "actual": "~75 days",
+      "target": null,
+      "unit": "text",
+      "status": "context",
+      "note": "5M SNX rewards distribute linearly Apr 19 → ~Jul 19, 2026 (3-month window). Stakers in the program have a financial incentive to delay exit until close; expect inflow to the council's unstake queue to accelerate as the window approaches its end. After ~2026-07-19, this KPI flips to 'ended' and the Sell-Pressure Radar phase qualifier should transition out of 'interim'."
     }
   ]
 }
