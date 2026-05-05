@@ -7,6 +7,7 @@ import type {
   ScorecardSnapshot,
   YieldSnapshot,
   RadarSnapshot,
+  NftQueueSnapshot,
   RecoveryScoreSnapshot,
   EventItem,
 } from '../types'
@@ -83,5 +84,6 @@ export const snapshots = {
   scorecard: () => fetchJson<ScorecardSnapshot>('/data/scorecard/latest.json'),
   yields: () => fetchJson<YieldSnapshot>('/data/yield/latest.json'),
   radar: () => fetchJson<RadarSnapshot>('/data/radar/latest.json'),
+  nftQueue: () => fetchJson<NftQueueSnapshot>('/data/nft_queue/latest.json'),
   events: () => fetchJson<{ events: EventItem[] }>('/data/events.json'),
 }

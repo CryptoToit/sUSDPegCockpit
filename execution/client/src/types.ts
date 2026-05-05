@@ -147,6 +147,34 @@ export type RadarSnapshot = {
   alert_level: 'green' | 'amber' | 'red'
 }
 
+export type NftQueueChainWindow = {
+  nfts_in_24h: number
+  nfts_in_7d: number
+  nfts_in_30d: number
+  unique_addrs_24h: number
+  unique_addrs_7d: number
+  unique_addrs_30d: number
+}
+
+export type NftQueueInboundEvent = {
+  chain: string
+  block_number: number
+  tx_hash: string
+  from_address: string
+  token_id: string
+}
+
+export type NftQueueSnapshot = {
+  as_of: string
+  council_wallet: string
+  sacct_address: string
+  chains: Record<string, NftQueueChainWindow>
+  total_nfts_in_24h: number
+  total_nfts_in_7d: number
+  total_nfts_in_30d: number
+  recent_inbound: NftQueueInboundEvent[]
+}
+
 export type EventItem = {
   date: string
   label: string

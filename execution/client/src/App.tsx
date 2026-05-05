@@ -11,6 +11,7 @@ import Maintainer from './panels/Maintainer'
 import Scorecard from './panels/Scorecard'
 import YieldCompare from './panels/YieldCompare'
 import SellPressureRadar from './panels/SellPressureRadar'
+import UnstakeQueue from './panels/UnstakeQueue'
 import { snapshots } from './lib/snapshots'
 import type { Manifest } from './types'
 
@@ -50,6 +51,7 @@ export default function App() {
             <a href="#recovery-score" className="text-text-muted hover:text-accent transition py-1">Score</a>
             <a href="#supply" className="text-text-muted hover:text-accent transition py-1">Supply</a>
             <a href="#radar" className="text-text-muted hover:text-accent transition py-1">Radar</a>
+            <a href="#queue" className="text-text-muted hover:text-accent transition py-1">Queue</a>
             <a href="#scorecard" className="text-text-muted hover:text-accent transition py-1">Scorecard</a>
             <a href="#flow" className="text-text-muted hover:text-accent transition py-1">Flow</a>
             <a href="#venues" className="text-text-muted hover:text-accent transition py-1">Venues</a>
@@ -65,6 +67,7 @@ export default function App() {
         <RecoveryScore />
         <Supply />
         <SellPressureRadar />
+        <UnstakeQueue />
         <Scorecard />
         <CapitalFlow />
         <TradingVenues />

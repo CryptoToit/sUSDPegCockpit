@@ -13,7 +13,7 @@ import sys
 import traceback
 from typing import Callable
 
-from collectors import flow, peg, pool_420, radar, recovery_score, scorecard, supply, trade_flow, yield_compare
+from collectors import flow, nft_queue, peg, pool_420, radar, recovery_score, scorecard, supply, trade_flow, yield_compare
 
 
 # Order matters:
@@ -21,13 +21,15 @@ from collectors import flow, peg, pool_420, radar, recovery_score, scorecard, su
 #   - flow reads peg + supply + scorecard + pool_420
 #   - trade_flow reads peg
 #   - recovery_score reads peg + scorecard + radar + trade_flow
-# So peg → supply → scorecard → pool_420 → radar → flow → trade_flow → yield → recovery_score.
+#   - nft_queue is independent — pure RPC scan, runs after radar
+# So peg → supply → scorecard → pool_420 → radar → nft_queue → flow → trade_flow → yield → recovery_score.
 COLLECTORS: list[tuple[str, Callable[[], int]]] = [
     ("peg", peg.main),
     ("supply", supply.main),
     ("scorecard", scorecard.main),
     ("pool_420", pool_420.main),
     ("radar", radar.main),
+    ("nft_queue", nft_queue.main),
     ("flow", flow.main),
     ("trade_flow", trade_flow.main),
     ("yield", yield_compare.main),
