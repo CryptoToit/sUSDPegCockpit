@@ -1,11 +1,10 @@
 name: Refresh data snapshots
 
-# Scheduled trigger DISABLED. This is the staging copy of the workflow on
-# the private LoopDevBoss/sUSDPegCockpit repo. Production cron lives on the
-# public CryptoToit/sUSDPegCockpit repo (fired by cron-job.org → workflow_
-# dispatch every 14 min). VPS systemd timer at /opt/susdpeg-cron/ also runs
-# the same pipeline as a parallel fallback through ~2026-05-11. This staging
-# workflow remains available for manual fallback via the Actions UI.
+# Scheduled trigger DISABLED. GitHub Actions' free-tier scheduler proved
+# unreliable in practice — observed 30+ min gaps between successful ticks,
+# pushing freshness budgets red. Production cron is fired externally via a
+# scheduler-as-a-service that hits this workflow's `workflow_dispatch` API
+# every 14 min. Manual runs are also available via the Actions UI.
 on:
   # schedule disabled — see comment above
   # - cron: '*/14 * * * *'
