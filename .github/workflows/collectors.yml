@@ -1,20 +1,19 @@
 name: Refresh data snapshots
 
-# Scheduled trigger DISABLED. GitHub Actions' free-tier scheduler proved
-# unreliable in practice — observed 30+ min gaps between successful ticks,
-# pushing freshness budgets red. Production cron is fired externally via a
-# scheduler-as-a-service that hits this workflow's `workflow_dispatch` API
-# every 14 min. Manual runs are also available via the Actions UI.
+# Scheduled trigger DISABLED. This is the staging copy of the workflow on
+# the private LoopDevBoss/sUSDPegCockpit repo. Production cron lives on the
+# public CryptoToit/sUSDPegCockpit repo (fired by cron-job.org → workflow_
+# dispatch every 14 min). VPS systemd timer at /opt/susdpeg-cron/ also runs
+# the same pipeline as a parallel fallback through ~2026-05-11. This staging
+# workflow remains available for manual fallback via the Actions UI.
 on:
   # schedule disabled — see comment above
   # - cron: '*/14 * * * *'
   workflow_dispatch:
 
-# This workflow does NOT push to its own repo. Snapshots flow only to the
-# public data repo (CryptoToit/susdpeg-data) via the deploy key — keeps
-# this repo's history clean (no 96 auto-commits/day).
+# Required to push commits back to main.
 permissions:
-  contents: read
+  contents: write
 
 # Single run at a time — if a previous tick is still running, queue (don't kill).
 concurrency:
@@ -29,6 +28,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          # Required so the bot's commit-push works against the branch.
+          persist-credentials: true
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v6
@@ -47,12 +49,43 @@ jobs:
         working-directory: execution/pipeline
         env:
           THEGRAPH_API_KEY: ${{ secrets.THEGRAPH_API_KEY }}
+          # Etherscan V2 multichain key (Mainnet free tier; OP uses Blockscout
+          # without auth). Powers the nft_queue collector's disbursement
+          # valuation (Phase 2), processing-lag pairing (Phase 3), and
+          # post-release sell-through (Phase 4). Without it, those subscans
+          # fail through try/except and the Unstake Queue panel degrades to
+          # custody + inflow only — Recovery Score flow subscore would then
+          # read 100 (no observed stress) which is misleadingly optimistic.
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
         run: python -m scripts.run_all
 
-      - name: Push refreshed snapshots to public data repo
-        id: mirror
+      - name: Commit refreshed snapshots to this (private) repo
+        id: commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add execution/client/public/data/
+
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+
+          changed=$(git diff --staged --name-only execution/client/public/data/ | sed 's|execution/client/public/data/||;s|/latest\.json||' | paste -sd ',' -)
+          git commit -m "auto: refresh snapshots [${changed}] [skip ci]"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "changed_summary=${changed}" >> "$GITHUB_OUTPUT"
+
+      - name: Mirror snapshots to public data repo (CryptoToit/susdpeg-data)
+        # Only push when something actually changed — same gate as the local
+        # commit step. Uses a deploy key (DATA_REPO_DEPLOY_KEY secret) with
+        # write access only to the data repo, never to this code repo.
+        if: steps.commit.outputs.changed == 'true'
         env:
           DEPLOY_KEY: ${{ secrets.DATA_REPO_DEPLOY_KEY }}
+          CHANGED: ${{ steps.commit.outputs.changed_summary }}
         run: |
           set -e
 
@@ -72,26 +105,21 @@ jobs:
           cp -r execution/client/public/data/. /tmp/data-mirror/data/
 
           cd /tmp/data-mirror
-          git config user.name 'susdpeg-cron'
-          git config user.email 'susdpeg-cron@noreply.local'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/
-
           if git diff --staged --quiet; then
-            echo "No snapshot changes — nothing to push."
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            echo "Mirror already in sync (unexpected — code repo had changes)."
             exit 0
           fi
-
-          changed=$(git diff --staged --name-only | sed 's|^data/||;s|/latest\.json||' | paste -sd ',' -)
-          git commit -m "auto: refresh snapshots [${changed}]"
+          git commit -m "auto: refresh snapshots [${CHANGED}]"
           git push
-          echo "pushed=true" >> "$GITHUB_OUTPUT"
 
       - name: Purge jsdelivr CDN cache (data mirror)
-        if: steps.mirror.outputs.pushed == 'true'
+        if: steps.commit.outputs.changed == 'true'
         run: |
           set -e
-          for snap in peg supply scorecard pool_420 radar flow trade_flow yield recovery_score; do
+          for snap in peg supply scorecard yield recovery_score flow trade_flow radar; do
             curl -s -o /dev/null -w "  purge ${snap}: HTTP %{http_code}\n" \
               "https://purge.jsdelivr.net/gh/CryptoToit/susdpeg-data@main/data/${snap}/latest.json"
           done
