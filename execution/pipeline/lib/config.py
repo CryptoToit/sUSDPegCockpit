@@ -87,3 +87,8 @@ def require(name: str) -> str:
 def thegraph_api_key() -> str:
     """The Graph gateway API key. Raises if unset. See `.env.example`."""
     return require("THEGRAPH_API_KEY")
+
+
+def etherscan_api_key() -> str:
+    """Etherscan API key (V2 multichain). Raises if unset. See `.env.example`."""
+    return require("ETHERSCAN_API_KEY")

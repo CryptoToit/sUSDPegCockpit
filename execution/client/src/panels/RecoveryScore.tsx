@@ -166,6 +166,16 @@ export default function RecoveryScore() {
         <span className="text-ok">65–85 on pace</span> ·{' '}
         <span className="text-ok">85+ near recovery</span>. Score is a heuristic, not a guarantee — it
         helps frame the program's overall state, not predict outcomes.
+        <br />
+        <strong className="text-text-muted font-mono uppercase tracking-wider mt-2 inline-block">
+          Known gap:
+        </strong>{' '}
+        the <em>flow</em> subscore currently reads only the Sell-Pressure Radar's <em>completed</em>{' '}
+        Treasury outflow signal — it can't yet see <em>intent</em> to exit (NFTs queued at the
+        council awaiting manual processing). When the Unstake Queue panel below shows accumulating
+        custody with stalled outflow, the flow subscore is mechanically optimistic. v2 redesign in
+        progress: a value-weighted exit-pressure index incorporating queue inflow, processing lag,
+        and post-release sell share will replace the traffic-light reading.
       </div>
     </section>
   )
