@@ -36,11 +36,21 @@ export default function App() {
               own published KPIs.
             </p>
           </div>
-          {manifest && (
-            <div className="text-text-dim text-[11px] sm:text-xs font-mono">
-              ETL last run: {new Date(manifest.generated_at).toUTCString()}
-            </div>
-          )}
+          <div className="flex items-center gap-3 flex-wrap">
+            {manifest && (
+              <div className="text-text-dim text-[11px] sm:text-xs font-mono">
+                ETL last run: {new Date(manifest.generated_at).toUTCString()}
+              </div>
+            )}
+            <a
+              href="#maintainer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-accent/50 bg-accent/10 text-accent text-xs font-mono uppercase tracking-wider hover:bg-accent/20 hover:border-accent hover:scale-105 transition"
+              title="Tip the maintainer (jumps to the Maintainer section)"
+            >
+              <span aria-hidden>♥</span>
+              <span>Tip the maintainer</span>
+            </a>
+          </div>
         </div>
       </header>
 
