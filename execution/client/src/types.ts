@@ -141,6 +141,8 @@ export type YieldSnapshot = {
   venues: YieldVenue[]
 }
 
+export type RadarPhase = 'interim' | 'active' | 'post_program'
+
 export type RadarSnapshot = {
   as_of: string
   days_since_unlock: number
@@ -150,6 +152,7 @@ export type RadarSnapshot = {
   unlocked_susd_left_protective_venues: number
   exit_ratio_pct: number
   alert_level: 'green' | 'amber' | 'red'
+  phase: RadarPhase
 }
 
 export type NftQueueChainWindow = {

@@ -36,9 +36,9 @@ export default function Maintainer() {
       <header className="mb-5">
         <h2 className="text-lg font-semibold">Maintainer</h2>
         <p className="text-text-dim text-sm">
-          If this dashboard helped you make or avoid a trade, find a yield, or just make sense
-          of what is going on - a few dollars will help cover maintenance and server time.
-          Anonymous tipping welcome, never required.
+          If this dashboard helped you make or avoid a trade, find a yield, or just been
+          informative to help make sense of what is going on - a few dollars will help cover
+          maintenance and server time. Anonymous tipping welcome, never required.
         </p>
       </header>
 

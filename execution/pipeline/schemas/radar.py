@@ -5,6 +5,11 @@ from pydantic import BaseModel, Field
 
 AlertLevel = Literal["green", "amber", "red"]
 
+# Program phase qualifier alongside the alert level. Disambiguates a "GREEN"
+# reading that's GREEN because mechanisms haven't fired yet (interim) from a
+# GREEN that's GREEN because flow is genuinely contained (active).
+RadarPhase = Literal["interim", "active", "post_program"]
+
 
 class RadarSnapshot(BaseModel):
     as_of: str = Field(..., description="UTC ISO-8601 timestamp")
@@ -15,3 +20,4 @@ class RadarSnapshot(BaseModel):
     unlocked_susd_left_protective_venues: int
     exit_ratio_pct: float
     alert_level: AlertLevel
+    phase: RadarPhase = "interim"

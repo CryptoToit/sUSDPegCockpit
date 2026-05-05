@@ -121,12 +121,45 @@ def _load_pool_420_total() -> int:
     return int(json.loads(path.read_text())["susd_total"])
 
 
+def _load_jubilee_burned() -> float:
+    """Read cumulative jubilee_burned from the scorecard snapshot."""
+    path = CLIENT_DATA_DIR / "scorecard" / "latest.json"
+    if not path.exists():
+        return 0.0
+    raw = json.loads(path.read_text())
+    for kpi in raw.get("kpis", []):
+        if kpi.get("id") == "jubilee_burned":
+            return float(kpi.get("actual") or 0)
+    return 0.0
+
+
 def _classify_alert(exit_ratio_pct: float) -> str:
     if exit_ratio_pct < 0.5:
         return "green"
     if exit_ratio_pct < 2.0:
         return "amber"
     return "red"
+
+
+def _classify_phase(jubilee_burned: float, exit_ratio_pct: float) -> str:
+    """
+    Determine program phase based on observable mechanism activity.
+
+      - interim: cumulative jubilee burning is $0 AND no meaningful exit-ratio
+                 outflow yet. Reflects the pre-activation state where alerts
+                 are GREEN by default because the mechanisms gating sUSD release
+                 haven't fired (100% original-debt threshold for jubilee burn,
+                 SLP Vault not yet live, manual NFT processing not at scale).
+      - active:  jubilee burning has started OR exit ratio is materially
+                 non-zero. Alert level becomes meaningful as a real-time signal.
+      - post_program: TBD — placeholder for after the 5M-SNX release window
+                 closes (~2026-07-19) and the program winds down.
+
+    For now we don't auto-detect post_program; that's a future enhancement.
+    """
+    if jubilee_burned <= 0 and exit_ratio_pct < 0.1:
+        return "interim"
+    return "active"
 
 
 def collect() -> RadarSnapshot:
@@ -149,6 +182,10 @@ def collect() -> RadarSnapshot:
     exit_ratio_pct = round((total_outflow_7d / locked_total * 100.0), 2) if locked_total > 0 else 0.0
     alert_level = _classify_alert(exit_ratio_pct)
 
+    jubilee_burned = _load_jubilee_burned()
+    phase = _classify_phase(jubilee_burned, exit_ratio_pct)
+    print(f"[radar] phase: {phase} (jubilee burned: ${jubilee_burned:,.0f}, exit ratio: {exit_ratio_pct}%)")
+
     return RadarSnapshot(
         as_of=now_iso(),
         days_since_unlock=days_since_unlock,
@@ -159,6 +196,7 @@ def collect() -> RadarSnapshot:
         unlocked_susd_left_protective_venues=left_protective,
         exit_ratio_pct=exit_ratio_pct,
         alert_level=alert_level,
+        phase=phase,
     )
 
 

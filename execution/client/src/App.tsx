@@ -78,16 +78,28 @@ export default function App() {
 
       <footer className="border-t border-border bg-surface px-4 sm:px-6 py-5 sm:py-6 mt-6 sm:mt-8">
         <div className="max-w-7xl mx-auto text-text-dim text-[11px] sm:text-xs leading-relaxed">
-          <p>Read-only public-good dashboard. Not a price oracle. Not financial advice.</p>
+          <p className="font-bold text-text">
+            Read-only public-good dashboard. Not a price oracle. Not financial advice.
+          </p>
           <p className="mt-1">
-            Sources: DefiLlama, DexScreener, Curve API, public RPCs (Ethereum + Optimism),
-            Etherscan, Ethplorer, Synthetix open data. Most panels are driven by a live Python
-            collector pipeline; Trade Flow swap attribution remains interim pending DEX-subgraph
-            integration. Several KPIs (jubilee progress, SLP fill, Infinex AUM) are stubbed
-            pending Synthetix team confirmation — see panel notes for which. Data is served
-            via a CDN pinned to the latest commit hash on each page load — refresh to pull
-            fresh values; freshness badges show the snapshot's own timestamp, not the moment
-            your browser fetched it.
+            Sources: DefiLlama (sUSD/SNX prices, stablecoin TVL by chain, yield-pools APY),
+            DexScreener (DEX pool depth, price, volume), Curve API (Curve OP pool volume),
+            public RPCs (Ethereum + Optimism — direct contract reads via{' '}
+            <code className="text-text-muted">eth_call</code> /{' '}
+            <code className="text-text-muted">eth_getLogs</code>), Etherscan V2 multichain
+            (Mainnet token-transfer history for the Unstake Queue's valuation, processing-lag,
+            and sell-through scans), explorer.optimism.io (Blockscout — OP token-transfer
+            history; Etherscan V2 free tier doesn't cover OP), Synthetix on-chain contracts
+            (Treasury wallets, SACCT NFT, TreasuryMarketProxy).
+          </p>
+          <p className="mt-2">
+            Most panels are driven by a live Python collector pipeline running every 14 minutes
+            via GitHub Actions cron; data is served through a CDN pinned to the latest commit
+            hash on each page load — refresh to pull fresh values. Freshness badges show the
+            snapshot's own timestamp, not when your browser fetched. Trade Flow swap
+            attribution remains interim pending DEX-subgraph integration. Two values are
+            currently stubbed pending team confirmation: Infinex APR (awaiting Infinex team
+            response) and SLP Vault APR (not announced — contract opens ~end of Q2 2026).
           </p>
         </div>
       </footer>
