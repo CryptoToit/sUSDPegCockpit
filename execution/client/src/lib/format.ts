@@ -1,7 +1,26 @@
-export function formatUSD(n: number, opts: { compact?: boolean; decimals?: number } = {}): string {
-  const { compact = false, decimals = 0 } = opts
+/**
+ * USD formatter.
+ *
+ *   `compact: true` → Intl compact notation (e.g. "$1.5K", "$2.3M").
+ *     `compactDigits` controls fraction digits; default 1 (e.g. "$14.1K"). Use
+ *     2 (e.g. "$14.08K") when displaying multiple values that should visibly
+ *     sum to a precise total — at 1 decimal each, rounded values drift and
+ *     readers see (e.g.) "14.1K + 4.0K + 9.8K + 2.5K + 2.0K = 32.4K" against
+ *     a "32.3K" headline.
+ *
+ *   `compact: false` (default) → fixed-decimal formatted with thousands
+ *     separators (e.g. "$14,082").
+ */
+export function formatUSD(
+  n: number,
+  opts: { compact?: boolean; decimals?: number; compactDigits?: number } = {},
+): string {
+  const { compact = false, decimals = 0, compactDigits = 1 } = opts
   if (compact) {
-    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(n)
+    return new Intl.NumberFormat('en-US', {
+      notation: 'compact',
+      maximumFractionDigits: compactDigits,
+    }).format(n)
   }
   return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
 }

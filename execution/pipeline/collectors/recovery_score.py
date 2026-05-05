@@ -127,12 +127,33 @@ def jubilee_subscore(scorecard: dict, pool_420: dict) -> tuple[int, str]:
 
 
 def buy_comp_subscore(trade_flow: dict) -> tuple[int, str]:
-    """Buy composition health = organic share × 100 from Trade Flow's 24h window."""
+    """
+    Organic buy support strength = (organic_buy / sells) × 100, capped at 100.
+
+    Reads Trade Flow's 24h window. Captures both composition AND magnitude:
+      - High score: organic market buying is outpacing selling pressure
+        (peg-supportive market behavior)
+      - Low score: market is selling more than organically buying back
+        (peg-bearish, regardless of how 'pure' the buying composition is)
+
+    The previous formula ((1 - programmatic_share) × 100) over-credited the
+    case where programmatic = $0 by reporting 100/100 even when total volume
+    was small and net negative. After Phase 2.5's measured programmatic data
+    shipped, that path consistently returned 100 because real programmatic
+    is currently $0 across all venues — which doesn't mean recovery is on
+    pace, just that no buyback is happening. The ratio formulation is
+    sensitive to the actual question: 'is the market bidding faster than
+    sellers can sell?' If yes → score climbs; if no → score reflects the gap.
+    """
     w24 = trade_flow.get("windows", {}).get("24h", {})
-    prog_share = float(w24.get("buy_split", {}).get("programmatic_share", 0))
-    organic_share = 1 - prog_share
-    score = max(0, min(100, int(round(organic_share * 100))))
-    return score, f"{score}% organic (24h)"
+    organic_buy = float(w24.get("buy_split", {}).get("organic_susd", 0))
+    sells = float(w24.get("total", {}).get("sell_susd", 0))
+    if sells <= 0:
+        # No selling pressure — degenerate case. Treat as fully supportive.
+        return 100, "no observable sells (24h)"
+    ratio = organic_buy / sells
+    score = max(0, min(100, int(round(ratio * 100))))
+    return score, f"organic buys ${int(organic_buy):,} vs sells ${int(sells):,} ({ratio:.2f}x)"
 
 
 def flow_subscore(radar: dict) -> tuple[int, str]:
@@ -254,11 +275,11 @@ def collect() -> RecoveryScoreSnapshot:
         ),
         RecoveryScoreSubscore(
             id="buy_comp",
-            label="Buy composition health",
+            label="Organic buy support",
             score=buy_comp_score,
             weight=0.15,
             value_text=buy_comp_value,
-            method="organic share × 100 — market belief signal",
+            method="organic buy ÷ sells (24h, capped 1.0×) — captures whether organic market bids are outpacing sell pressure, not just composition purity",
         ),
         RecoveryScoreSubscore(
             id="flow",

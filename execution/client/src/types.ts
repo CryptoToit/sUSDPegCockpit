@@ -28,6 +28,8 @@ export type SupplySnapshot = {
   supply_by_chain: Record<string, number>
 }
 
+export type TradeFlowAttributionSource = 'measured' | 'illustrative'
+
 export type TradeFlowVenue = {
   id: string
   dex: string
@@ -35,6 +37,11 @@ export type TradeFlowVenue = {
   chain: string
   sell_susd: number
   buy_susd: number
+  attribution_source?: TradeFlowAttributionSource
+  /** Populated only when attribution_source === 'measured' */
+  swap_count?: number
+  programmatic_susd?: number
+  organic_susd?: number
 }
 
 export type TradeFlowWindow = {

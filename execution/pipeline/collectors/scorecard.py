@@ -87,10 +87,19 @@ def collect() -> ScorecardSnapshot:
     jubilee_burned_total = _scan_jubilee_burned()
     print(f"[scorecard]   jubilee burned (cumulative, last 200k blocks): ${jubilee_burned_total:,}")
 
-    # ── live: days since unlock ─────────────────────────────────────────────────
+    # ── live: time-anchor KPIs ──────────────────────────────────────────────────
+    # Lockup ended 2026-04-19 (UNLOCK_DATE). 5M SNX rewards distribute linearly
+    # over 3 months → release window ends ~2026-07-19. Past that, unmeasured
+    # period begins; today's "days_remaining" goes negative which we clamp to 0
+    # and the panel can interpret accordingly.
     today = date.today()
     days_since_unlock = (today - UNLOCK_DATE).days
-    print(f"[scorecard]   days since unlock ({UNLOCK_DATE.isoformat()}): {days_since_unlock}")
+    release_end_date = date(2026, 7, 19)
+    days_remaining = max(0, (release_end_date - today).days)
+    print(
+        f"[scorecard]   days since unlock ({UNLOCK_DATE.isoformat()}): {days_since_unlock}  ·  "
+        f"days remaining in 5M-SNX release window: {days_remaining}"
+    )
 
     kpis = [
         KpiItem(
@@ -189,6 +198,21 @@ def collect() -> ScorecardSnapshot:
             unit="text",
             status="context",
             note=f"Post-unlock window opened {UNLOCK_DATE.isoformat()} — see Sell-Pressure Radar.",
+        ),
+        KpiItem(
+            id="days_remaining_release",
+            label="Days remaining in release window",
+            actual=f"~{days_remaining} days" if days_remaining > 0 else "ended",
+            target=None,
+            unit="text",
+            status="context",
+            note=(
+                f"5M SNX rewards distribute linearly Apr 19 → ~Jul 19, 2026 (3-month window). "
+                "Stakers in the program have a financial incentive to delay exit until close; "
+                "expect inflow to the council's unstake queue to accelerate as the window "
+                "approaches its end. After ~2026-07-19, this KPI flips to 'ended' and the "
+                "Sell-Pressure Radar phase qualifier should transition out of 'interim'."
+            ),
         ),
     ]
 

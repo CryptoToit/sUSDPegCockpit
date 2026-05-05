@@ -117,14 +117,29 @@ export default function CapitalFlow() {
           const topLevel = new Set(
             data.edges.filter((e) => e.from === 'supply').map((e) => e.to),
           )
+          // Buckets without an on-chain source — value is a hardcoded best-
+          // effort estimate. Visually annotate with "approx" so viewers don't
+          // read it as live-measured.
+          const APPROX_BUCKET_IDS = new Set(['infinex'])
           return data.nodes
             .filter((n) => topLevel.has(n.id))
             .map((n) => {
               const delta = data.delta_24h[n.id] || 0
+              const isApprox = APPROX_BUCKET_IDS.has(n.id)
               return (
                 <div key={n.id} className="border border-border/50 rounded p-2 bg-surface-2">
-                  <div className="text-text-dim font-mono text-[10px] uppercase tracking-wider truncate">
-                    {n.label}
+                  <div className="flex items-baseline justify-between gap-1">
+                    <div className="text-text-dim font-mono text-[10px] uppercase tracking-wider truncate">
+                      {n.label}
+                    </div>
+                    {isApprox && (
+                      <span
+                        className="shrink-0 text-[9px] font-mono uppercase tracking-wider px-1 py-0.5 rounded border border-warn/40 bg-warn/10 text-warn"
+                        title="Hardcoded best-effort estimate — no live source. Variance is absorbed by the Free-floating EOAs residual."
+                      >
+                        Approx
+                      </span>
+                    )}
                   </div>
                   <div className="num font-semibold mt-1">
                     ${formatUSD(n.value, { compact: true })}

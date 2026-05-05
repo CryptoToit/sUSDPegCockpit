@@ -57,6 +57,15 @@ TREASURIES = [
     "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
 ]
 
+# Internal addresses to exclude when classifying outflows. A `Transfer` from
+# one Treasury to another (or to the liquidator) is NOT a real outflow into
+# circulating supply — it's just internal-balance shuffling. Filter these out
+# so the radar only counts true releases. Currently no such activity is
+# observed but this keeps the metric clean if the Treasury starts shuffling.
+TREASURY_INTERNAL = {addr.lower() for addr in TREASURIES} | {
+    "0x9daffb42b60bb14d8ee80b503aafc312dcbaf552",  # treasury liquidator
+}
+
 # Approximate block times — used to convert "X seconds ago" → block range to scan.
 # Mainnet ~12s, OP ~2s (post-Bedrock).
 BLOCK_TIME_S = {"ethereum": 12, "optimism": 2}
@@ -91,6 +100,7 @@ def _scan_outflows(chain: str, rpc: str, susd_token: str) -> tuple[float, float]
     n_24h = 0
     n_7d = 0
 
+    skipped_internal = 0
     for treasury in TREASURIES:
         from_topic = _topic_from_addr(treasury)
         logs = eth_get_logs(
@@ -101,6 +111,12 @@ def _scan_outflows(chain: str, rpc: str, susd_token: str) -> tuple[float, float]
             to_block=head,
         )
         for log in logs:
+            # Exclude internal Treasury-to-Treasury / Treasury-to-liquidator
+            # moves — those aren't real outflows into circulating supply.
+            to_addr = "0x" + log["topics"][2][26:].lower()
+            if to_addr in TREASURY_INTERNAL:
+                skipped_internal += 1
+                continue
             value = int(log["data"], 16) / 1e18
             block_num = int(log["blockNumber"], 16)
             total_7d += value
@@ -108,6 +124,8 @@ def _scan_outflows(chain: str, rpc: str, susd_token: str) -> tuple[float, float]
             if block_num >= threshold_24h:
                 total_24h += value
                 n_24h += 1
+    if skipped_internal:
+        print(f"[radar]   {chain:8} skipped {skipped_internal} internal Treasury moves")
 
     print(f"[radar]   {chain:8} outflows: 24h ${total_24h:>12,.2f} ({n_24h} txs)  "
           f"·  7d ${total_7d:>12,.2f} ({n_7d} txs)")
