@@ -90,20 +90,26 @@ JUBILEE_PHASE_2_TARGET_USD = 10_000_000
 
 def jubilee_subscore(scorecard: dict, pool_420: dict) -> tuple[int, str]:
     """
-    Composite of two on-chain signals, weighted 80% structural / 20% burning.
+    Composite of two on-chain signals, weighted 30% structural / 70% burning.
 
-      (a) Structural (80%): total sUSD staked vs Phase 2 $10M target (capped 100).
-          Reflects whether participants have entered the program at the targeted scale.
-      (b) Burning (20%): cumulative jubilee_burned vs $60M target.
-          Reflects whether debt-forgiveness has actually fired.
+      (a) Structural (30%): total sUSD staked vs Phase 2 $10M target (capped 100).
+          Precondition — reflects whether participants have entered the program.
+      (b) Burning (70%): cumulative jubilee_burned vs $60M target.
+          Outcome — reflects whether the debt-forgiveness mechanism has fired.
+          This is what actually reduces the sUSD debt overhang and contributes
+          to peg recovery; structural deposits are a prerequisite, not the
+          recovery itself.
 
-    Why 80/20 (revised 2026-05-05): Synthetix contributor confirmed that burning
-    requires a staker to be at 100% of original debt collateralized in sUSD —
-    most stakers are nowhere near that threshold, so $0 cumulative burn is
-    mechanically expected, NOT a recovery failure. Equal-weighting burning
-    against structural progress was producing a misleadingly-pessimistic score.
-    The 20% residual still rewards burn activity once the cohort progresses,
-    without dominating when the threshold isn't being met.
+    Weighting history:
+      - v1 (50/50): treated $0 burning as recovery failure, when really it's
+        gated on stakers reaching 100% of original debt (per Synthetix
+        contributor 2026-05-05). Misleadingly pessimistic.
+      - v2 (80/20): over-corrected — credited "people showed up" at 80%
+        when that's a precondition, not recovery. Score implied "on pace"
+        even though the actual debt-forgiveness mechanism hadn't fired.
+      - v3 (30/70, current): outcome-weighted. Structural still rewards the
+        Phase 2 target being hit, but burning dominates because it's what
+        actually drives peg recovery.
     """
     susd_staked = float(pool_420.get("susd_total", 0))
     structural_score = max(0, min(100, int(round(susd_staked / JUBILEE_PHASE_2_TARGET_USD * 100))))
@@ -116,7 +122,7 @@ def jubilee_subscore(scorecard: dict, pool_420: dict) -> tuple[int, str]:
     else:
         burning_score = 0
 
-    composite = int(round(0.8 * structural_score + 0.2 * burning_score))
+    composite = int(round(0.3 * structural_score + 0.7 * burning_score))
     return composite, f"{structural_score}% structural · {burning_score}% burning"
 
 
@@ -244,7 +250,7 @@ def collect() -> RecoveryScoreSnapshot:
             score=jubilee_score,
             weight=0.15,
             value_text=jubilee_value,
-            method="80% structural ($10M Phase 2 target) + 20% burning ($60M target) — burn weight reduced because the 100% original-debt threshold gates most stakers",
+            method="30% structural (Phase 2 $10M precondition) + 70% burning ($60M outcome) — burning is the actual recovery driver; structural deposits are a precondition, not the recovery itself",
         ),
         RecoveryScoreSubscore(
             id="buy_comp",

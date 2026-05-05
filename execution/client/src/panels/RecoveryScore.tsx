@@ -77,12 +77,14 @@ export default function RecoveryScore() {
                 the Unstake Queue panel for the underlying signals.
               </p>
               <p className="mt-2">
-                <strong className="text-text-muted">Jubilee subscore:</strong> 80% structural
-                ($10M Phase 2 staking target) + 20% burning ($60M debt-forgiveness target).
-                Burning weight intentionally low because the burn mechanic is gated on stakers
-                being at 100% of their original debt collateralized in sUSD — most stakers are
-                nowhere near, so $0 cumulative burn is mechanically expected, not a recovery
-                failure.
+                <strong className="text-text-muted">Jubilee subscore:</strong> 30% structural
+                ($10M Phase 2 precondition) + 70% burning ($60M outcome). Burning is the
+                actual driver of peg recovery — debt forgiveness reduces the sUSD overhang.
+                Structural deposits are a precondition, not the recovery itself. The burn
+                mechanic is gated on stakers being at 100% of their original debt
+                collateralized in sUSD; most are nowhere near, so $0 cumulative burn is
+                structurally expected — but it also means the recovery contribution from
+                jubilee is essentially zero today.
               </p>
               <p className="mt-2">
                 <strong className="text-text-muted">Upcoming inflection points:</strong> the

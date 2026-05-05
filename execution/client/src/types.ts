@@ -126,9 +126,14 @@ export type YieldVenue = {
   apr_pct?: number
   apr_pct_implied?: number
   lock: string
+  /** Short one-liner shown inline. Falls back to risk_note if missing. */
+  summary?: string
+  /** Long-form methodology + caveats. Shown in an (i) popover. */
   risk_note: string
   status?: YieldStatus
   audience?: string
+  /** True when displayed APR is a placeholder pending verification. */
+  apr_unverified?: boolean
 }
 
 export type YieldSnapshot = {
