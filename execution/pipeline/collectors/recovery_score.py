@@ -2,8 +2,8 @@
 Recovery Score collector.
 
 Derives a composite 0-100 score from 5 weighted subscores. Reads upstream
-snapshots from disk (peg, scorecard, radar, trade_flow) — must run AFTER those
-collectors so it sees fresh values.
+snapshots from disk (peg, scorecard, pool_420, trade_flow, nft_queue, radar)
+— must run AFTER those collectors so it sees fresh values.
 
 Weights and tier boundaries match the methodology footer on the panel UI:
   peg                   weight 0.35
@@ -11,6 +11,13 @@ Weights and tier boundaries match the methodology footer on the panel UI:
   jubilee               weight 0.15
   buy_comp              weight 0.15
   flow                  weight 0.15
+
+Phase 5 (2026-05-05): flow subscore redesigned. Was a thin wrapper around the
+radar's green/amber/red traffic light (which only saw COMPLETED Treasury
+outflows — a lagging indicator that's blind to building queue pressure).
+Now reads the Unstake Queue's full exit funnel: queue inflow growth +
+processing-backlog share + observed post-disbursement sell-through. Falls
+back to the legacy radar read if the nft_queue snapshot is unavailable.
 
 Tier boundaries (composite):
   < 35           critical          (EARLY STAGE)
@@ -83,15 +90,20 @@ JUBILEE_PHASE_2_TARGET_USD = 10_000_000
 
 def jubilee_subscore(scorecard: dict, pool_420: dict) -> tuple[int, str]:
     """
-    Composite of two real on-chain signals (50/50):
-      (a) Structural progress: total sUSD staked vs Phase 2 $10M target (capped 100).
-          Reflects whether participants have entered the program at the targeted scale.
-      (b) Active burning: cumulative jubilee_burned vs $60M target.
-          Reflects whether the debt-forgiveness mechanism has actually fired.
+    Composite of two on-chain signals, weighted 80% structural / 20% burning.
 
-    Replaces the prior `phase %` parser, which broke when the scorecard's
-    `jubilee_phase` field was reframed from a fabricated "70%" stub to descriptive
-    text after the team confirmed there's no canonical numeric phase percentage.
+      (a) Structural (80%): total sUSD staked vs Phase 2 $10M target (capped 100).
+          Reflects whether participants have entered the program at the targeted scale.
+      (b) Burning (20%): cumulative jubilee_burned vs $60M target.
+          Reflects whether debt-forgiveness has actually fired.
+
+    Why 80/20 (revised 2026-05-05): Synthetix contributor confirmed that burning
+    requires a staker to be at 100% of original debt collateralized in sUSD —
+    most stakers are nowhere near that threshold, so $0 cumulative burn is
+    mechanically expected, NOT a recovery failure. Equal-weighting burning
+    against structural progress was producing a misleadingly-pessimistic score.
+    The 20% residual still rewards burn activity once the cohort progresses,
+    without dominating when the threshold isn't being met.
     """
     susd_staked = float(pool_420.get("susd_total", 0))
     structural_score = max(0, min(100, int(round(susd_staked / JUBILEE_PHASE_2_TARGET_USD * 100))))
@@ -104,7 +116,7 @@ def jubilee_subscore(scorecard: dict, pool_420: dict) -> tuple[int, str]:
     else:
         burning_score = 0
 
-    composite = (structural_score + burning_score) // 2
+    composite = int(round(0.8 * structural_score + 0.2 * burning_score))
     return composite, f"{structural_score}% structural · {burning_score}% burning"
 
 
@@ -118,12 +130,63 @@ def buy_comp_subscore(trade_flow: dict) -> tuple[int, str]:
 
 
 def flow_subscore(radar: dict) -> tuple[int, str]:
-    """Net flow trend tier: green=90 / amber=50 / red=20."""
+    """
+    Legacy v1 flow subscore — radar traffic light only.
+
+    Retained as a fallback path. The active subscore is `flow_subscore_v2`
+    below, which incorporates the Unstake Queue's full exit-pressure picture
+    (queue inflow growth, backlog share, observed sell-through).
+    """
     alert = (radar.get("alert_level") or "").lower()
     mapping = {"green": (90, "Green"), "amber": (50, "Amber"), "red": (20, "Red")}
     score, label_word = mapping.get(alert, (50, "Unknown"))
     exit_pct = radar.get("exit_ratio_pct", 0)
     return score, f"{label_word}: post-unlock outflow at {exit_pct}% exit ratio"
+
+
+def flow_subscore_v2(nft_queue: dict) -> tuple[int, str]:
+    """
+    Phase-5 redesigned flow subscore: a value-weighted blend of three signals
+    from the Unstake Queue panel that together capture the full exit funnel.
+
+    Components (all 0–1 stress contributions, higher = more pressure):
+      • growth_stress  (35%): 7d inflow rate / 30d baseline rate. 1.0× = 0,
+        2.0× = 1.0 (clamped). Detects acceleration in unstake intent.
+      • backlog_stress (30%): pending share among observed inbound+outbound
+        pairs. 70% backlog = 0 (a normal-ish steady state for a manual-
+        processing queue), 100% = 1.0. Detects processing bottlenecks.
+      • sell_stress    (35%): observed sell-through to known sell routes —
+        directly capped to [0, 1]. This is a LOWER BOUND on actual selling
+        (we can't see private mempool / OTC / smaller venues), so the score
+        may understate true exit pressure.
+
+    composite_pressure = 0.35*growth + 0.30*backlog + 0.35*sell
+    flow_subscore      = 100 * (1 − composite_pressure)
+    """
+    in_7d = float(nft_queue.get("total_nfts_in_7d") or 0)
+    in_30d = float(nft_queue.get("total_nfts_in_30d") or 0)
+    rate_7d = in_7d / 7 if in_7d else 0.0
+    rate_30d = in_30d / 30 if in_30d else 0.0
+    growth_ratio = (rate_7d / rate_30d) if rate_30d > 0 else 1.0
+    growth_stress = max(0.0, min(1.0, (growth_ratio - 1.0) / 1.0))
+
+    pending = float(nft_queue.get("total_lag_pending_count") or 0)
+    completed = float(nft_queue.get("total_lag_sample_n") or 0)
+    observed_total = pending + completed
+    backlog_share = (pending / observed_total) if observed_total > 0 else 0.0
+    backlog_stress = max(0.0, min(1.0, (backlog_share - 0.7) / 0.3))
+
+    sell_share = float(nft_queue.get("total_sell_share") or 0.0)
+    sell_stress = max(0.0, min(1.0, sell_share))
+
+    pressure = 0.35 * growth_stress + 0.30 * backlog_stress + 0.35 * sell_stress
+    score = max(0, min(100, int(round((1.0 - pressure) * 100))))
+
+    value_text = (
+        f"growth {growth_ratio:.2f}× · backlog {backlog_share * 100:.0f}% · "
+        f"sell {sell_share * 100:.2f}%"
+    )
+    return score, value_text
 
 
 def collect() -> RecoveryScoreSnapshot:
@@ -138,7 +201,25 @@ def collect() -> RecoveryScoreSnapshot:
     slp_score, slp_value = slp_subscore(scorecard)
     jubilee_score, jubilee_value = jubilee_subscore(scorecard, pool_420)
     buy_comp_score, buy_comp_value = buy_comp_subscore(trade_flow)
-    flow_score, flow_value = flow_subscore(radar)
+
+    # Phase 5: flow subscore now reads the Unstake Queue's full exit-pressure
+    # picture (growth + backlog + sell-through). Falls back to the legacy
+    # radar-traffic-light read if the nft_queue snapshot is missing for any
+    # reason — keeps the composite score producible during partial outages.
+    flow_method = (
+        "exit-pressure index: growth (35%) + backlog (30%) + sell-through (35%) "
+        "— from Unstake Queue panel"
+    )
+    try:
+        nft_queue = load_snapshot("nft_queue")
+        flow_score, flow_value = flow_subscore_v2(nft_queue)
+    except RuntimeError as exc:
+        print(f"[recovery_score] WARN nft_queue missing — falling back to v1: {exc}")
+        flow_score, flow_value = flow_subscore(radar)
+        flow_method = (
+            "fallback v1: radar alert level → green=90 / amber=50 / red=20 "
+            "(nft_queue snapshot unavailable)"
+        )
 
     subscores = [
         RecoveryScoreSubscore(
@@ -163,7 +244,7 @@ def collect() -> RecoveryScoreSnapshot:
             score=jubilee_score,
             weight=0.15,
             value_text=jubilee_value,
-            method="50% structural ($10M Phase 2 target) + 50% burning ($60M target) — average",
+            method="80% structural ($10M Phase 2 target) + 20% burning ($60M target) — burn weight reduced because the 100% original-debt threshold gates most stakers",
         ),
         RecoveryScoreSubscore(
             id="buy_comp",
@@ -175,11 +256,11 @@ def collect() -> RecoveryScoreSnapshot:
         ),
         RecoveryScoreSubscore(
             id="flow",
-            label="Net flow trend",
+            label="Exit-pressure index",
             score=flow_score,
             weight=0.15,
             value_text=flow_value,
-            method="Sell-Pressure Radar alert level → green=90 / amber=50 / red=20",
+            method=flow_method,
         ),
     ]
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { RecoveryScoreSnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 
 const TIER_STYLES: Record<
   RecoveryScoreSnapshot['tier'],
@@ -56,10 +57,45 @@ export default function RecoveryScore() {
     <section id="recovery-score" className={`border ${tier.border} rounded-lg ${tier.bg} p-4 sm:p-6`}>
       <header className="flex items-baseline justify-between mb-5 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Recovery Score</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Recovery Score
+            <InfoPopover label="Recovery Score methodology">
+              <p>
+                Composite = Σ (subscore × weight). Each subscore is 0–100; composite is also
+                0–100. Tiers:{' '}
+                <span className="text-danger">&lt; 35 early stage</span>,{' '}
+                <span className="text-warn">35–65 building momentum</span>,{' '}
+                <span className="text-ok">65–85 on pace</span>,{' '}
+                <span className="text-ok">85+ near recovery</span>. Heuristic, not a guarantee —
+                helps frame the program's overall state, not predict outcomes.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Flow subscore (v2):</strong> reads the Unstake
+                Queue's full exit funnel — queue inflow growth (35%) + processing backlog share
+                (30%) + observed sell-through (35%). Replaces the prior radar traffic-light read,
+                which was blind to building queue pressure. Sell-through is a lower bound — see
+                the Unstake Queue panel for the underlying signals.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Jubilee subscore:</strong> 80% structural
+                ($10M Phase 2 staking target) + 20% burning ($60M debt-forgiveness target).
+                Burning weight intentionally low because the burn mechanic is gated on stakers
+                being at 100% of their original debt collateralized in sUSD — most stakers are
+                nowhere near, so $0 cumulative burn is mechanically expected, not a recovery
+                failure.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Upcoming inflection points:</strong> the
+                score may shift materially around (a) the SLP Vault launch (~end of Q2 2026 —
+                a major sUSD sink) and (b) the 5M-SNX linear release window end (~2026-07-19 —
+                stakers' financial incentive to delay exit ends). Movements around these dates
+                are structurally driven and don't necessarily indicate program success or
+                failure.
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
-            Composite grade synthesizing peg restoration, SLP fill, jubilee progress, market buy
-            composition, and post-unlock flow trend. Methodology disclosed below.
+            Weighted composite of peg, SLP fill, jubilee, buy composition, and exit-pressure.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={60} />
@@ -157,26 +193,6 @@ export default function RecoveryScore() {
         </div>
       </div>
 
-      {/* Methodology footnote */}
-      <div className="mt-4 pt-3 border-t border-border text-[11px] text-text-dim leading-relaxed">
-        <strong className="text-text-muted font-mono uppercase tracking-wider">Methodology:</strong>{' '}
-        Composite = sum of (subscore × weight). Each subscore is 0–100. Tiers:{' '}
-        <span className="text-danger">&lt; 35 early stage</span> ·{' '}
-        <span className="text-warn">35–65 building momentum</span> ·{' '}
-        <span className="text-ok">65–85 on pace</span> ·{' '}
-        <span className="text-ok">85+ near recovery</span>. Score is a heuristic, not a guarantee — it
-        helps frame the program's overall state, not predict outcomes.
-        <br />
-        <strong className="text-text-muted font-mono uppercase tracking-wider mt-2 inline-block">
-          Known gap:
-        </strong>{' '}
-        the <em>flow</em> subscore currently reads only the Sell-Pressure Radar's <em>completed</em>{' '}
-        Treasury outflow signal — it can't yet see <em>intent</em> to exit (NFTs queued at the
-        council awaiting manual processing). When the Unstake Queue panel below shows accumulating
-        custody with stalled outflow, the flow subscore is mechanically optimistic. v2 redesign in
-        progress: a value-weighted exit-pressure index incorporating queue inflow, processing lag,
-        and post-release sell share will replace the traffic-light reading.
-      </div>
     </section>
   )
 }

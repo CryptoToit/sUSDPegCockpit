@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { YieldSnapshot, YieldStatus, YieldVenue } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 
 const STATUS_STYLES: Record<
   YieldStatus,
@@ -76,14 +77,28 @@ export default function YieldCompare() {
     <section id="yield" className="border border-border rounded-lg bg-surface p-4 sm:p-6">
       <header className="flex items-start justify-between mb-5 gap-4 flex-wrap">
         <div className="flex-1 min-w-0">
-          <h2 className="text-lg font-semibold">Stakeholder Yield Compare</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Stakeholder Yield Compare
+            <InfoPopover label="Yield Compare methodology">
+              <p>
+                Where sUSD holders can park, earn, or otherwise benefit — sorted by program
+                status (active first).
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Implied yields</strong> (e.g. buy &amp; hold
+                to peg, debt-burn) are model outputs, not realized returns.
+              </p>
+              <p className="mt-2">
+                Status legend: <span className="text-ok">LIVE</span> taking deposits ·{' '}
+                <span className="text-accent">IMPLIED</span> theoretical model ·{' '}
+                <span className="text-warn">CLOSED</span> not taking new deposits ·{' '}
+                <span className="text-text-dim">VESTING</span> ended with rewards still
+                unlocking · <span className="text-text-dim">ENDED</span> program complete.
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
-            Where sUSD holders can park, earn, or otherwise benefit — sorted by program status
-            (active first). Implied yields (e.g. buy &amp; hold to peg, debt-burn) are model
-            outputs, not realized returns. <span className="text-warn">CLOSED</span> programs aren't
-            taking new deposits;{' '}
-            <span className="text-text-dim">VESTING</span> programs have ended with rewards still
-            unlocking.
+            Where sUSD holders can park, earn, or benefit — sorted by status.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={60} />
@@ -92,7 +107,8 @@ export default function YieldCompare() {
       <div className="space-y-3">
         {sorted.map((v) => {
           const apr = venueApr(v)
-          const pct = max > 0 ? (apr / max) * 100 : 0
+          const aprAvailable = v.apr_pct !== undefined || v.apr_pct_implied !== undefined
+          const pct = max > 0 && aprAvailable ? (apr / max) * 100 : 0
           const isImplied = v.apr_pct_implied !== undefined
           const status = v.status ?? 'active'
           const styles = STATUS_STYLES[status]
@@ -121,10 +137,18 @@ export default function YieldCompare() {
                     style={{ width: `${pct}%` }}
                   />
                   <div className="absolute inset-0 flex items-center px-3 text-xs">
-                    <span className="num font-semibold">{apr.toFixed(1)}%</span>
-                    {isImplied && (
-                      <span className="ml-2 text-[10px] uppercase tracking-wider text-text-muted font-mono">
-                        implied
+                    {aprAvailable ? (
+                      <>
+                        <span className="num font-semibold">{apr.toFixed(1)}%</span>
+                        {isImplied && (
+                          <span className="ml-2 text-[10px] uppercase tracking-wider text-text-muted font-mono">
+                            implied
+                          </span>
+                        )}
+                      </>
+                    ) : (
+                      <span className="text-text-muted text-[10px] uppercase tracking-wider font-mono">
+                        APR not announced
                       </span>
                     )}
                   </div>

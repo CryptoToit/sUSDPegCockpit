@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { PegSnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 import { formatPrice, formatBp } from '../lib/format'
 
 export default function PegTracker() {
@@ -17,11 +18,30 @@ export default function PegTracker() {
     <section id="peg" className="border border-border rounded-lg bg-surface p-4 sm:p-6">
       <header className="flex items-baseline justify-between mb-5 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Peg Tracker</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Peg Tracker
+            <InfoPopover label="Peg Tracker methodology">
+              <p>
+                Where sUSD trades against $1.00 right now.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Reference price:</strong> cross-venue
+                aggregator (DefiLlama). The Chainlink sUSD/USD Mainnet aggregator was
+                decommissioned and there's no Chainlink sUSD feed on Optimism, so DefiLlama is
+                the most reliable single source.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Weighted avg:</strong> depth-weighted across
+                tracked DEX pools (see Trading Venues panel for the constituent set).
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Recovery threshold:</strong> $0.98 — the
+                price level at which the sUSD-staking ratchet halts per SIP-420.
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
-            Where sUSD trades against $1.00 right now. Reference: cross-venue aggregator
-            (DefiLlama) — the Chainlink sUSD/USD Mainnet aggregator was decommissioned and no
-            Chainlink sUSD feed exists on Optimism.
+            Where sUSD trades against $1.00 right now.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={30} />

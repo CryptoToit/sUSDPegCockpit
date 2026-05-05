@@ -136,24 +136,39 @@ def collect() -> YieldSnapshot:
             label="Burn sUSD to repay SNX debt",
             apr_pct_implied=implied,
             lock="n/a",
-            risk_note=f"one-shot — pays $1 of debt forgiveness per ${susd_price:.4f} of sUSD",
+            risk_note=(
+                f"one-shot — $1 of debt forgiveness per ${susd_price:.4f} of sUSD. "
+                "Gated: requires the staker to be at 100% of original debt collateralized "
+                "in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are "
+                "below this threshold, so this yield is not currently accessible to most "
+                "of the cohort."
+            ),
             status="theoretical",
-            audience="SNX stakers only",
+            audience="SNX stakers at 100% original-debt threshold only",
         ),
         YieldVenue(
             id="slp_vault",
             label="SLP Vault",
-            apr_pct=45.0,
-            lock="between seasons — closed for new deposits",
-            risk_note="pre-deposit Season 2 closed; public Q2 2026 launch pending (recon §4 #3)",
-            status="closed",
+            # APR not announced; remove the unsubstantiated 45% placeholder.
+            lock="opens Q2 2026 (~end of June)",
+            risk_note=(
+                "New contract, sUSD-only deposits, locks the sUSD (no new minting). "
+                "Synthetix contributor (2026-05-05) confirmed intent to absorb most "
+                "of the legacy sUSD supply. APR not announced. Audit status not "
+                "disclosed."
+            ),
+            status="theoretical",
         ),
         YieldVenue(
             id="susd_rewards",
             label="sUSD Staking Rewards (5M SNX)",
             apr_pct=0,
-            lock="principal unlocked Apr 19; SNX rewards vest 3mo linear",
-            risk_note="program ended 2026-04-19 — no new yield",
+            lock="principal unlocked Apr 19; SNX rewards vest 3mo linear (~Apr 19 → Jul 19, 2026)",
+            risk_note=(
+                "In linear release window — SNX rewards distribute from 2026-04-19 to ~2026-07-19. "
+                "Stakers have a financial incentive to delay exit until window close. No new "
+                "deposits accepted; yield realised is the unvested portion of the 5M SNX pool."
+            ),
             status="vesting_only",
         ),
     ]

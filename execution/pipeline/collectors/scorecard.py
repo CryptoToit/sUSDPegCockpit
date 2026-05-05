@@ -135,13 +135,15 @@ def collect() -> ScorecardSnapshot:
                 "Live cumulative sum of TreasuryBurned events on TreasuryMarketProxy "
                 "0x7b952507306E7D983bcFe6942Ac9F2f75C1332D8 over the last 200k Mainnet "
                 "blocks (~28 days, covers the entire post-2026-04-19 unlock period). "
-                "Currently $0. Synthetix team confirmed (2026-05-04): the jubilee IS "
-                "active but gated on each staker maintaining ≥20% of their original "
-                "debt in sUSD. If the staker drops below 20%, burning pauses until "
-                "they top up. Burns linear over 12 months for eligible accounts. "
-                "$0 cumulative reflects most stakers being below the 20% threshold; "
-                "the figure will rise as accounts top up to 20%+. Earlier $41.2M / "
-                "$60M target stub was speculative."
+                "Currently $0 — and structurally expected. Synthetix contributor "
+                "confirmed 2026-05-05 that burning requires a staker to be at 100% "
+                "of their original debt collateralized in sUSD; most stakers are "
+                "nowhere near that threshold, so $0 cumulative is mechanically "
+                "expected, not a recovery failure. The earlier-reported '20% aux "
+                "ratio' from the support bot was wrong (or conflated with the deposit "
+                "minimum); the burn gate is 100%. Burns then linear over 12 months "
+                "for eligible accounts. The figure will rise if/when (a) the cohort "
+                "tops up to 100% of original debt or (b) the threshold is relaxed."
             ),
         ),
         KpiItem(
@@ -168,11 +170,15 @@ def collect() -> ScorecardSnapshot:
             target=15000000,
             deadline="2026-06-30",
             unit="USD",
-            status="closed",
+            status="stub",
             note=(
-                "Synthetix team confirmed (2026-05-04) the SLP Vault is in private/internal "
-                "mode with no published TVL. Public launch planned Q2 2026, official target "
-                "$15M sUSD by 2026-06-30. Earlier $1.45M placeholder dropped — unsourced."
+                "Synthetix contributor confirmed 2026-05-05 that the SLP Vault opens this "
+                "quarter (~end of Q2 2026), accepts sUSD only, locks the deposits (no new "
+                "minting), and the team's intent is for 'most of the sUSD supply to go here'. "
+                "New contract — not a v3 vault. Currently $0 because the contract isn't live "
+                "yet. Status will switch to 'verified' once the contract address is "
+                "announced and we wire the live read. Target $15M by 2026-06-30 is the "
+                "published roadmap goal; actual ambition appears materially higher."
             ),
         ),
         KpiItem(

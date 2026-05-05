@@ -164,6 +164,45 @@ export type NftQueueInboundEvent = {
   token_id: string
 }
 
+export type NftQueueDisbursementStats = {
+  count: number
+  unique_recipients: number
+  total: number
+  mean: number
+  median: number
+  p25: number
+  p75: number
+}
+
+export type NftQueueChainValuation = {
+  estimated_usd: number
+  estimated_snx_value_usd: number
+  estimated_susd_value_usd: number
+  sample_n: number
+  snx_price_usd: number
+}
+
+export type NftQueueLagStats = {
+  sample_n: number
+  pending_count: number
+  median_hours: number
+  p25_hours: number
+  p75_hours: number
+}
+
+export type NftQueuePostReleaseStats = {
+  recipients_scanned: number
+  snx_received: number
+  snx_to_dex: number
+  snx_sell_share: number
+  susd_received: number
+  susd_to_dex: number
+  susd_sell_share: number
+  usd_received: number
+  usd_to_dex: number
+  usd_sell_share: number
+}
+
 export type NftQueueSnapshot = {
   as_of: string
   council_wallet: string
@@ -174,6 +213,18 @@ export type NftQueueSnapshot = {
   total_nfts_in_30d: number
   custody_count: Record<string, number>
   total_custody_count: number
+  disbursements: Record<string, Record<string, NftQueueDisbursementStats>>
+  valuation: Record<string, NftQueueChainValuation>
+  total_estimated_usd: number
+  snx_price_usd: number
+  lag: Record<string, NftQueueLagStats>
+  total_lag_sample_n: number
+  total_lag_pending_count: number
+  weighted_median_lag_hours: number
+  post_release: Record<string, NftQueuePostReleaseStats>
+  total_usd_received: number
+  total_usd_to_dex: number
+  total_sell_share: number
   recent_inbound: NftQueueInboundEvent[]
 }
 

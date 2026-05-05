@@ -1,5 +1,6 @@
 import type { KpiItem, KpiStatus } from '../types'
 import { formatUSD } from '../lib/format'
+import InfoPopover from './InfoPopover'
 
 const VELOCITY_STYLES: Record<
   NonNullable<KpiItem['velocity']>['tier'],
@@ -39,8 +40,13 @@ export default function KpiCard({ kpi }: { kpi: KpiItem }) {
   return (
     <div className="border border-border rounded p-4 bg-surface-2">
       <div className="flex items-start justify-between gap-2 mb-1">
-        <div className="text-text-dim text-[10px] uppercase font-mono tracking-wider flex-1 min-w-0">
-          {kpi.label}
+        <div className="text-text-dim text-[10px] uppercase font-mono tracking-wider flex-1 min-w-0 flex items-center">
+          <span className="truncate">{kpi.label}</span>
+          {kpi.note && (
+            <InfoPopover label={`${kpi.label} — methodology`} align="right" size="sm">
+              {kpi.note}
+            </InfoPopover>
+          )}
         </div>
         {sStyles && (
           <span
@@ -96,11 +102,6 @@ export default function KpiCard({ kpi }: { kpi: KpiItem }) {
               </span>
             </div>
           </div>
-        </div>
-      )}
-      {kpi.note && (
-        <div className="mt-2 pt-2 border-t border-border/40 text-[10px] text-text-dim italic leading-snug">
-          {kpi.note}
         </div>
       )}
     </div>

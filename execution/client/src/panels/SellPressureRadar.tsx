@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { RadarSnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 import { formatUSD } from '../lib/format'
 
 const ALERT = {
@@ -27,17 +28,32 @@ export default function SellPressureRadar() {
     <section id="radar" className={`border ${alert.border} rounded-lg ${alert.bg} p-4 sm:p-6`}>
       <header className="flex items-baseline justify-between mb-4 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Sell-Pressure Radar</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Sell-Pressure Radar
+            <InfoPopover label="Sell-Pressure Radar methodology">
+              <p>
+                Tracks completed sUSD outflows from the Synthetix exit-processing wallets —
+                locked sUSD becoming circulating supply. Scans ERC-20{' '}
+                <code className="text-text-muted">Transfer</code> events from the council/
+                Treasury wallet (<code className="text-text-muted">0xebAC8…d</code>, which
+                handles all Synthetix exits — both 420 Pool jubilee and general v2x SNX
+                unstaking) and the omnibus aux-recipient{' '}
+                <code className="text-text-muted">0xFa1DF09…</code>, across both chains, in
+                24h and 7d windows.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Exit ratio</strong> = 7d outflow ÷ locked
+                total. Alert: <span className="text-ok">GREEN</span> &lt; 0.5%,{' '}
+                <span className="text-warn">AMBER</span> &lt; 2%,{' '}
+                <span className="text-danger">RED</span> ≥ 2%. This is a <em>lagging</em>{' '}
+                indicator — it sees what's been processed, not what's queued. For the leading-
+                edge view of intent and queue depth, see the Unstake Queue panel below.
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
-            Live sUSD outflows from the 420 Pool program since the post-unlock window opened on{' '}
-            <span className="num">2026-04-19</span> ({data.days_since_unlock} days). Methodology:
-            scan ERC-20 <code className="text-text-muted">Transfer</code> events from the two
-            Synthetix Treasury wallets (<code className="text-text-muted">0xebAC8…d</code>{' '}
-            NFT-custody + <code className="text-text-muted">0xFa1DF09…</code> aux-recipient), both
-            chains, 24h + 7d windows. Outflows = locked sUSD becoming circulating supply. Exit
-            ratio = 7d outflow ÷ locked total — alert{' '}
-            <span className="text-ok">GREEN</span> &lt;0.5%, <span className="text-warn">AMBER</span>{' '}
-            &lt;2%, <span className="text-danger">RED</span> ≥2%.
+            Exit-processing wallet outflows since unlock (
+            <span className="num">2026-04-19</span> · {data.days_since_unlock} days).
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={45} />

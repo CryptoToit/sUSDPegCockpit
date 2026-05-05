@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { SupplySnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 import { ChainIcon } from '../components/Icons'
 import { formatUSD } from '../lib/format'
 
@@ -25,14 +26,22 @@ export default function Supply() {
     <section id="supply" className="border border-border rounded-lg bg-surface p-4 sm:p-6">
       <header className="flex items-baseline justify-between mb-5 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Issued Supply</h2>
-          <p className="text-text-dim text-sm">
-            Legacy Synthetix sUSD circulating across Ethereum + Optimism. ERC-20{' '}
-            <code className="text-text-muted">totalSupply()</code> reads. (Synthetix v3's native
-            stable on Base / Arbitrum is a different token —{' '}
-            <span className="text-text-muted">snxUSD / USDx</span> — and is not part of the peg
-            recovery story.)
-          </p>
+          <h2 className="text-lg font-semibold flex items-center">
+            Issued Supply
+            <InfoPopover label="Issued Supply methodology">
+              <p>
+                ERC-20 <code className="text-text-muted">totalSupply()</code> reads on the legacy
+                Synthetix sUSD token, both Ethereum and Optimism deployments.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Scope note:</strong> Synthetix v3's native
+                stable on Base / Arbitrum is a different token —{' '}
+                <span className="text-text-muted">snxUSD / USDx</span> — and is NOT part of the
+                peg recovery story tracked here.
+              </p>
+            </InfoPopover>
+          </h2>
+          <p className="text-text-dim text-sm">Legacy sUSD circulating across Ethereum + Optimism.</p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={60} />
       </header>

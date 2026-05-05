@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-05-04T12:02:22Z",
-  "composite_score": 40,
+  "as_of": "2026-05-05T14:47:45Z",
+  "composite_score": 44,
   "tier": "behind_pace",
-  "headline": "Recovery actively underway. Jubilee scoring 50/100 and market signal is supportive (76% organic buying), with peg restoration and SLP fill as the primary near-term milestones.",
+  "headline": "Recovery actively underway. Jubilee scoring 80/100 and market signal is supportive (76% organic buying), with peg restoration and SLP fill as the primary near-term milestones.",
   "subscores": [
     {
       "id": "peg",
@@ -23,10 +23,10 @@
     {
       "id": "jubilee",
       "label": "Jubilee progress",
-      "score": 50,
+      "score": 80,
       "weight": 0.15,
       "value_text": "100% structural · 0% burning",
-      "method": "50% structural ($10M Phase 2 target) + 50% burning ($60M target) — average"
+      "method": "80% structural ($10M Phase 2 target) + 20% burning ($60M target) — burn weight reduced because the 100% original-debt threshold gates most stakers"
     },
     {
       "id": "buy_comp",
@@ -38,11 +38,11 @@
     },
     {
       "id": "flow",
-      "label": "Net flow trend",
-      "score": 90,
+      "label": "Exit-pressure index",
+      "score": 84,
       "weight": 0.15,
-      "value_text": "Green: post-unlock outflow at 0.01% exit ratio",
-      "method": "Sell-Pressure Radar alert level → green=90 / amber=50 / red=20"
+      "value_text": "growth 1.19× · backlog 80% · sell 0.00%",
+      "method": "exit-pressure index: growth (35%) + backlog (30%) + sell-through (35%) — from Unstake Queue panel"
     }
   ]
 }

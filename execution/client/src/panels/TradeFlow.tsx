@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { TradeFlowSnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 import { ChainIcon, VenueGlyph } from '../components/Icons'
 import { formatUSD } from '../lib/format'
 
@@ -113,16 +114,28 @@ export default function TradeFlow() {
     <section id="tradeflow" className="border border-border rounded-lg bg-surface p-4 sm:p-6">
       <header className="flex items-baseline justify-between mb-5 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Trade Flow</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Trade Flow
+            <InfoPopover label="Trade Flow methodology">
+              <p>
+                Bidirectional sUSD swap volume across the top 5 trading venues by depth (Curve
+                sUSD/sUSDe dominates ~70% of activity).
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Programmatic buybacks</strong> = transactions
+                originating from the Synthetix Treasury (
+                <code className="text-text-muted">0xFa1DF09…</code>); everything else is organic.
+              </p>
+              <p className="mt-2">
+                <strong className="text-warn">Caveat:</strong> per-venue 24h volume totals are
+                real (DexScreener), but the sell/buy split, counter-asset attribution, and
+                programmatic/organic ratios are illustrative — true direction and Treasury-origin
+                attribution requires per-DEX subgraph queries (Phase B ETL).
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
-            Bidirectional sUSD swap volume across the top 5 trading venues by depth (Curve
-            sUSD/sUSDe dominates ~70% of the action). Programmatic buybacks are identified by
-            transactions originating from the Synthetix Treasury (
-            <code className="text-text-muted">0xFa1DF09…</code>); everything else is organic.{' '}
-            <span className="text-warn">Note:</span> per-venue 24h volume totals are real
-            (DexScreener), but the sell/buy split, counter-asset attribution, and
-            programmatic/organic ratios are illustrative — true direction and Treasury-origin
-            attribution requires per-DEX subgraph queries (Phase B ETL).
+            Bidirectional sUSD swap volume across top venues.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={45} />

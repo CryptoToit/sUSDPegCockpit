@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { snapshots } from '../lib/snapshots'
 import type { PegSnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 import { ChainIcon, VenueGlyph, SUPPORTED_CHAINS } from '../components/Icons'
 import { formatPrice, formatBp, formatUSD } from '../lib/format'
 
@@ -20,17 +21,33 @@ export default function TradingVenues() {
     <section id="venues" className="border border-border rounded-lg bg-surface p-4 sm:p-6">
       <header className="flex items-baseline justify-between mb-5 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Trading Venues</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Trading Venues
+            <InfoPopover label="Trading Venues methodology">
+              <p>
+                All DEX pools with ≥ $10K sUSD depth, sorted by TVL. Sub-$10K pools and lending /
+                leverage markets are excluded (low arb capacity / different mechanic).
+              </p>
+              <p className="mt-2">
+                Pairs marked <span className="text-text-muted">non-stable</span> (e.g. sUSD/SNX,
+                sUSD/WETH) require counter-asset price conversion — displayed sUSD price is
+                approximate.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Turnover</strong> = 24h volume ÷ depth.
+                Health: <span className="text-ok">≥ 5%</span> active ·{' '}
+                <span className="text-warn">1–5%</span> mild ·{' '}
+                <span className="text-danger">&lt; 1%</span> stale.
+              </p>
+              <p className="mt-2">
+                sUSD price discovery is 100% on-chain — Binance's legacy sUSD pairs are halted
+                (status <code className="text-text-muted">BREAK</code>) and other major CEXes
+                hold zero.
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
-            All DEX pools with ≥ $10K sUSD depth, sorted by TVL. Sub-$10K pools and lending /
-            leverage markets are excluded (low arb capacity / different mechanic). Pairs marked{' '}
-            <span className="text-text-muted">non-stable</span> (e.g. sUSD/SNX, sUSD/WETH) require
-            counter-asset price conversion — their displayed sUSD price is approximate.{' '}
-            <span className="text-text-muted">Turnover</span> (24h vol ÷ depth) flags whether
-            depth is being used: <span className="text-ok">≥ 5%</span> active ·{' '}
-            <span className="text-warn">1–5%</span> mild · <span className="text-danger">&lt; 1%</span>{' '}
-            stale. sUSD price discovery is 100% on-chain — Binance's legacy sUSD pairs are halted
-            (status <code className="text-text-muted">BREAK</code>) and other major CEXes hold zero.
+            DEX pools with ≥ $10K depth, sorted by TVL.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={30} />

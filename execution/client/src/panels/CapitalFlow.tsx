@@ -3,6 +3,7 @@ import type { EChartsOption } from 'echarts'
 import { snapshots } from '../lib/snapshots'
 import type { FlowSnapshot } from '../types'
 import FreshnessBadge from '../components/FreshnessBadge'
+import InfoPopover from '../components/InfoPopover'
 import ChartFrame from '../components/ChartFrame'
 import { formatUSD } from '../lib/format'
 
@@ -51,37 +52,58 @@ export default function CapitalFlow() {
     <section id="flow" className="border border-border rounded-lg bg-surface p-4 sm:p-6">
       <header className="flex items-baseline justify-between mb-4 gap-4 flex-wrap">
         <div>
-          <h2 className="text-lg font-semibold">Capital Flow Map</h2>
+          <h2 className="text-lg font-semibold flex items-center">
+            Capital Flow Map
+            <InfoPopover label="Capital Flow methodology">
+              <p>
+                <strong className="text-text-muted">Sources:</strong> ERC-20{' '}
+                <code className="text-text-muted">totalSupply()</code> for the headline · live{' '}
+                <code className="text-text-muted">balanceOf</code> on Synthetix Treasury wallets
+                for the 420 Pool bucket · Dune for the Infinex bucket (daily) ·{' '}
+                <a
+                  href="https://yields.llama.fi/pools"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent hover:underline"
+                >
+                  DefiLlama
+                </a>{' '}
+                for DEX pool TVLs.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">DEX Liquidity</strong> shows the top 5 pools
+                by depth; smaller pools group into <em>Other DEX</em>.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Free-floating EOAs</strong> residual is mostly
+                Infinex per-user Safe smart accounts (unlabeled on Etherscan). Major CEX exposure
+                is negligible (~$138K Binance, &lt; 0.3% of supply).
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">420 Pool</strong>: verified locked sUSD from
+                the 5M SNX staking rewards program — pool 8 holds SNX as collateral; sUSD is
+                transferred directly to Treasury wallets, not held in v3 vault state. Note: a
+                portion of this bucket (~$4M, see Unstake Queue) is currently in-transit at
+                the council wallet, awaiting manual processing — when processed, that value
+                flips to "Free-floating EOAs."
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">Treasury reserves (non-420)</strong>:
+                currently ~$0 because the tracked Treasury wallets only hold program-earmarked
+                sUSD. Grows if/when Treasury accumulates buyback or operational sUSD.
+              </p>
+              <p className="mt-2">
+                <strong className="text-text-muted">SLP Vault</strong>: $0 — contract not yet
+                public. Synthetix contributor confirmed 2026-05-05 that it opens this quarter
+                (~end of Q2), accepts sUSD only, locks deposits (no new minting), and the
+                team's intent is for "most of the sUSD supply to go here." Published target:
+                $15M by 2026-06-30; actual ambition appears materially higher.
+              </p>
+            </InfoPopover>
+          </h2>
           <p className="text-text-dim text-sm">
             Where the {formatUSD(data.total_supply_susd, { compact: true })} sUSD supply currently
-            sits. Sources: ERC-20 <code className="text-text-muted">totalSupply()</code> for total
-            · live ERC-20 <code className="text-text-muted">balanceOf</code> on the two Synthetix
-            Treasury wallets (<code className="text-text-muted">0xebAC8…d</code> NFT-custody +{' '}
-            <code className="text-text-muted">0xFa1DF09…</code> aux-recipient, both chains) for the
-            420 Pool · Dune <code className="text-text-muted">0xaugmented/infinex</code> for the
-            Infinex bucket (daily) ·{' '}
-            <a
-              href="https://yields.llama.fi/pools"
-              target="_blank"
-              rel="noreferrer"
-              className="text-accent hover:underline"
-            >
-              DefiLlama
-            </a>{' '}
-            for DEX pool TVLs. The DEX Liquidity sub-tree shows the top 5 pools by depth; the
-            remaining smaller pools are grouped as <em>Other DEX</em>. The{' '}
-            <em>Free-floating EOAs</em> residual is largely composed of Infinex user Safe smart
-            accounts (Infinex deploys per-user Safes — they appear as unlabeled large EOAs on
-            Etherscan); CEX exposure is negligible (~$138K Binance, &lt;0.3% of supply, all other
-            major CEXes hold zero). The <em>420 Pool</em> bucket is the verified locked sUSD from
-            the 5M SNX staking rewards program — pool 8 architecture holds SNX as collateral and
-            sUSD is transferred directly to Treasury wallets, not held in v3 vault state. The{' '}
-            <em>Treasury reserves (non-420)</em> bucket is what's left of Synthetix Treasury sUSD
-            holdings after subtracting the 420 Pool aux-recipient leg — currently ~$0 because the
-            tracked Treasury wallets only hold program-earmarked sUSD; this bucket grows if/when
-            Treasury accumulates buyback or operational sUSD. The <em>SLP Vault</em> bucket is
-            $0 — Synthetix confirmed it's in private/internal mode with no published TVL; public
-            launch is planned for Q2 2026, official target $15M sUSD by 2026-06-30.
+            sits.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={45} />
