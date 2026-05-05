@@ -1,15 +1,15 @@
 {
-  "as_of": "2026-05-05T15:43:59Z",
-  "composite_score": 44,
+  "as_of": "2026-05-05T16:02:26Z",
+  "composite_score": 37,
   "tier": "behind_pace",
-  "headline": "Recovery actively underway. Jubilee scoring 80/100 and market signal is supportive (76% organic buying), with peg restoration and SLP fill as the primary near-term milestones.",
+  "headline": "Recovery actively underway. Jubilee scoring 30/100 and market signal is supportive (76% organic buying), with peg restoration and SLP fill as the primary near-term milestones.",
   "subscores": [
     {
       "id": "peg",
       "label": "Peg restoration",
       "score": 23,
       "weight": 0.35,
-      "value_text": "$0.7348 vs $0.98 recovery threshold",
+      "value_text": "$0.7345 vs $0.98 recovery threshold",
       "method": "scaled from $0.66 (depeg low) → $0.98 (staking-ratchet halt, per SIP-420)"
     },
     {
@@ -23,10 +23,10 @@
     {
       "id": "jubilee",
       "label": "Jubilee progress",
-      "score": 80,
+      "score": 30,
       "weight": 0.15,
       "value_text": "100% structural · 0% burning",
-      "method": "80% structural ($10M Phase 2 target) + 20% burning ($60M target) — burn weight reduced because the 100% original-debt threshold gates most stakers"
+      "method": "30% structural (Phase 2 $10M precondition) + 70% burning ($60M outcome) — burning is the actual recovery driver; structural deposits are a precondition, not the recovery itself"
     },
     {
       "id": "buy_comp",

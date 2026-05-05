@@ -1,36 +1,41 @@
 {
-  "as_of": "2026-05-05T15:43:59Z",
+  "as_of": "2026-05-05T16:02:26Z",
   "venues": [
     {
       "id": "infinex",
       "label": "Infinex sUSD",
       "apr_pct": 12.0,
       "lock": "rolling 8wk extensions",
-      "risk_note": "smart-account custody · APR is stub pending team confirmation (recon §4 #2)",
-      "status": "active"
+      "summary": "Smart-account custody · APR figure unverified",
+      "risk_note": "Yield from Infinex's sUSD program (smart-account custody on per-user Safes). The displayed 12% APR is a stub — we don't currently have an Infinex API to refresh from, and the team hasn't published a definitive rate. Treat as indicative only; verify against Infinex's UI before depositing.",
+      "status": "active",
+      "apr_unverified": true
     },
     {
       "id": "curve_susde_lp",
       "label": "Curve sUSD/sUSDe LP",
       "apr_pct": 0.2,
       "lock": "none",
-      "risk_note": "0.1% base (trading fees, lagged) + 0.1% CRV/CVX rewards · IL if peg moves",
+      "summary": "0.1% trading fees + 0.1% CRV/CVX · IL if peg moves",
+      "risk_note": "Live APY from DefiLlama yield-pools: 0.11% base (trading fees, lagged) + 0.07% CRV/CVX rewards = 0.18% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
       "status": "active"
     },
     {
       "id": "buy_hold_peg",
       "label": "Buy & hold to peg",
-      "apr_pct_implied": 36.1,
+      "apr_pct_implied": 36.2,
       "lock": "none",
-      "risk_note": "36.1% gross at $0.7348 → $1.00; annualized depends on time-to-peg (12mo horizon shown)",
+      "summary": "36.2% gross to $1.00 · 12mo annualisation",
+      "risk_note": "Buy at the current depeg price ($0.7345) and hold until peg restores to $1.00. Gross gain = 36.2%, annualised over a 12-month horizon for the displayed APR. Real APR depends on actual time-to-peg — could be faster (SLP launch + supply absorption could pull peg up) or slower (peg may stall / deteriorate). Capital is at risk if peg never recovers.",
       "status": "theoretical"
     },
     {
       "id": "burn_debt",
       "label": "Burn sUSD to repay SNX debt",
-      "apr_pct_implied": 36.1,
+      "apr_pct_implied": 36.2,
       "lock": "n/a",
-      "risk_note": "one-shot — $1 of debt forgiveness per $0.7348 of sUSD. Gated: requires the staker to be at 100% of original debt collateralized in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are below this threshold, so this yield is not currently accessible to most of the cohort.",
+      "summary": "Gated: needs staker at 100% of original debt",
+      "risk_note": "One-shot mechanic — $1 of SNX-staker debt forgiven per $0.7345 of sUSD burned, equivalent to 36.2% return. GATED: the burn mechanic only fires when the staker is at 100% of their original debt collateralized in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are below this threshold, so this yield is not currently accessible to the bulk of the cohort. The threshold could be relaxed by governance, but no announcement has been made.",
       "status": "theoretical",
       "audience": "SNX stakers at 100% original-debt threshold only"
     },
@@ -38,16 +43,19 @@
       "id": "slp_vault",
       "label": "SLP Vault",
       "lock": "opens Q2 2026 (~end of June)",
-      "risk_note": "New contract, sUSD-only deposits, locks the sUSD (no new minting). Synthetix contributor (2026-05-05) confirmed intent to absorb most of the legacy sUSD supply. APR not announced. Audit status not disclosed.",
+      "summary": "Opens Q2 2026 · sUSD sink · APR not announced",
+      "risk_note": "New contract, sUSD-only deposits, locks the sUSD (no new minting). Synthetix contributor confirmed 2026-05-05 that the team's intent is for 'most of the sUSD supply to go here'. Published target: $15M by 2026-06-30 — actual ambition appears materially higher. APR not announced. Audit status not disclosed. Contract address will surface at launch.",
       "status": "theoretical"
     },
     {
       "id": "susd_rewards",
       "label": "sUSD Staking Rewards (5M SNX)",
-      "apr_pct": 0.0,
+      "apr_pct": 34.8,
       "lock": "principal unlocked Apr 19; SNX rewards vest 3mo linear (~Apr 19 → Jul 19, 2026)",
-      "risk_note": "In linear release window — SNX rewards distribute from 2026-04-19 to ~2026-07-19. Stakers have a financial incentive to delay exit until window close. No new deposits accepted; yield realised is the unvested portion of the 5M SNX pool.",
-      "status": "vesting_only"
+      "summary": "Closed to new deposits · 34.8% APR for stakers already in",
+      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.3220 ÷ $18,502,287 locked sUSD × (12÷3 month annualisation) = 34.8%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
+      "status": "vesting_only",
+      "audience": "existing participants only"
     }
   ]
 }
