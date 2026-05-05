@@ -37,6 +37,7 @@ from lib.rpc import (
     RPC_MAINNET,
     RPC_OPTIMISM,
     eth_block_number,
+    eth_call,
     eth_get_logs,
 )
 from lib.snapshot import now_iso, write_snapshot
@@ -60,6 +61,14 @@ RECENT_EVENTS_LIMIT = 20
 
 def _topic_from_addr(addr: str) -> str:
     return "0x000000000000000000000000" + addr[2:].lower()
+
+
+def _erc721_balance_of(rpc: str, contract: str, holder: str) -> int:
+    """ERC-721 `balanceOf(holder)` — count of NFTs the holder currently owns."""
+    addr_clean = holder.lower().replace("0x", "").rjust(64, "0")
+    data = "0x70a08231" + addr_clean
+    raw_hex = eth_call(rpc, contract, data)
+    return int(raw_hex, 16)
 
 
 def _scan_chain(chain: str, rpc: str) -> tuple[ChainWindow, list[InboundEvent]]:
@@ -129,6 +138,17 @@ def _scan_chain(chain: str, rpc: str) -> tuple[ChainWindow, list[InboundEvent]]:
     return window, events
 
 
+def _custody_count(chain: str, rpc: str) -> int:
+    """Live count of SACCT NFTs currently held by the council wallet."""
+    try:
+        n = _erc721_balance_of(rpc, SACCT_ADDRESS, COUNCIL_WALLET)
+        print(f"[nft_queue] {chain:8} council custody: {n} NFTs")
+        return n
+    except Exception as exc:
+        print(f"[nft_queue] WARN custody read on {chain} failed: {exc}")
+        return 0
+
+
 def collect() -> NftQueueSnapshot:
     print("[nft_queue] scanning SACCT inbound to council on Mainnet…")
     try:
@@ -152,6 +172,9 @@ def collect() -> NftQueueSnapshot:
         )
         op_events = []
 
+    eth_custody = _custody_count("ethereum", RPC_MAINNET)
+    op_custody = _custody_count("optimism", RPC_OPTIMISM)
+
     all_events = eth_events + op_events
     all_events.sort(key=lambda e: e.block_number, reverse=True)
     recent = all_events[:RECENT_EVENTS_LIMIT]
@@ -168,6 +191,8 @@ def collect() -> NftQueueSnapshot:
         total_nfts_in_24h=total_24h,
         total_nfts_in_7d=total_7d,
         total_nfts_in_30d=total_30d,
+        custody_count={"ethereum": eth_custody, "optimism": op_custody},
+        total_custody_count=eth_custody + op_custody,
         recent_inbound=recent,
     )
 
@@ -177,8 +202,9 @@ def main() -> int:
     path = write_snapshot("nft_queue", snapshot.model_dump(mode="json"))
     print(f"[nft_queue] wrote {path}")
     print(
-        f"[nft_queue]   totals: 24h={snapshot.total_nfts_in_24h}  "
-        f"7d={snapshot.total_nfts_in_7d}  30d={snapshot.total_nfts_in_30d}"
+        f"[nft_queue]   custody: {snapshot.total_custody_count}  ·  "
+        f"inflow: 24h={snapshot.total_nfts_in_24h} "
+        f"7d={snapshot.total_nfts_in_7d} 30d={snapshot.total_nfts_in_30d}"
     )
     return 0
 

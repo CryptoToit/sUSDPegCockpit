@@ -27,4 +27,8 @@ class NftQueueSnapshot(BaseModel):
     total_nfts_in_24h: int
     total_nfts_in_7d: int
     total_nfts_in_30d: int
+    custody_count: dict[str, int] = Field(
+        ..., description="Per-chain count of SACCT NFTs currently held by the council wallet"
+    )
+    total_custody_count: int
     recent_inbound: list[InboundEvent]

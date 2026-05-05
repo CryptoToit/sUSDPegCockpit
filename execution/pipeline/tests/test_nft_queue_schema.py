@@ -46,3 +46,21 @@ def test_nft_queue_aggregate_consistency():
     assert snap.total_nfts_in_24h == sum_24h, f"{snap.total_nfts_in_24h} != Σ {sum_24h}"
     assert snap.total_nfts_in_7d == sum_7d, f"{snap.total_nfts_in_7d} != Σ {sum_7d}"
     assert snap.total_nfts_in_30d == sum_30d, f"{snap.total_nfts_in_30d} != Σ {sum_30d}"
+
+    sum_custody = sum(snap.custody_count.values())
+    assert snap.total_custody_count == sum_custody, (
+        f"{snap.total_custody_count} != Σ {sum_custody}"
+    )
+
+
+def test_nft_queue_custody_at_least_30d_inflow():
+    """Custody count should be ≥ 30d inflow (council holds at least everything that
+    arrived in the last 30d, plus any older NFTs still pending)."""
+    path = CLIENT_DATA_DIR / "nft_queue" / "latest.json"
+    raw = json.loads(path.read_text())
+    snap = NftQueueSnapshot.model_validate(raw)
+
+    assert snap.total_custody_count >= snap.total_nfts_in_30d, (
+        f"custody {snap.total_custody_count} < 30d inflow {snap.total_nfts_in_30d} — "
+        f"either council releases NFTs (we don't think so) or there's a counting bug"
+    )

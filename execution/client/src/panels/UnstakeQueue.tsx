@@ -15,6 +15,7 @@ const ETHERSCAN_ADDR = (chain: string, addr: string) =>
 
 export default function UnstakeQueue() {
   const [data, setData] = useState<NftQueueSnapshot | null>(null)
+  const [showRecent, setShowRecent] = useState(false)
   useEffect(() => {
     snapshots.nftQueue().then(setData).catch(() => setData(null))
   }, [])
@@ -22,6 +23,8 @@ export default function UnstakeQueue() {
 
   const eth = data.chains.ethereum
   const op = data.chains.optimism
+  const ethCustody = data.custody_count.ethereum ?? 0
+  const opCustody = data.custody_count.optimism ?? 0
   const rate7d = data.total_nfts_in_7d / 7
   const rate24h = data.total_nfts_in_24h
   const accelerating = rate24h > rate7d * 1.25
@@ -33,31 +36,31 @@ export default function UnstakeQueue() {
         <div>
           <h2 className="text-lg font-semibold">Unstake Queue</h2>
           <p className="text-text-dim text-sm">
-            Live count of stakers entering Synthetix's manual unstake-processing queue. Method:
-            scan ERC-721 <code className="text-text-muted">Transfer</code> events on the Synthetix
-            Account NFT (<code className="text-text-muted">SACCT</code>) where{' '}
-            <code className="text-text-muted">to == 0xebAC8…d</code> (the council/Treasury wallet
-            that manually returns SNX/sUSD to stakers). Both Mainnet and Optimism, 30-day window.
-            Confirmed mechanic 2026-05-05 — applies to v2x SNX exits AND 420 Pool jubilee exits;
-            stakers transfer their Account NFT to the council, who processes off-chain. Round-trip
-            latency tracking deferred to v2 — cross-reference with the Sell-Pressure Radar above
-            for the sUSD-outbound side of jubilee-program completions.
+            Live count of Synthetix Account NFTs (<code className="text-text-muted">SACCT</code>)
+            currently held by the council/Treasury wallet at{' '}
+            <code className="text-text-muted">0xebAC8…d</code>. Stakers transfer their Account NFT
+            to the council to unstake; the council manually returns SNX/sUSD off-chain. Custody is
+            the live snapshot via{' '}
+            <code className="text-text-muted">SACCT.balanceOf(council)</code>; inflow is from
+            Transfer-event scans. USD valuation requires v2x integration — these positions return
+            zero on v3 collateral reads, confirming legacy v2x staking. Order-of-magnitude estimate
+            ~$0.5M–1M based on average Synthetix v2x position size.
           </p>
         </div>
         <FreshnessBadge as_of={data.as_of} budget_min={45} />
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        <div className="border border-border rounded p-4 bg-surface-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="border border-accent/40 rounded p-4 bg-accent/5">
           <div className="text-text-dim text-[10px] uppercase font-mono tracking-wider">
-            Pending arrivals (30d)
+            Council custody (now)
           </div>
-          <div className="num text-3xl font-semibold mt-1">{data.total_nfts_in_30d}</div>
+          <div className="num text-3xl sm:text-4xl font-semibold mt-1">
+            {data.total_custody_count}
+          </div>
           <div className="text-text-muted text-xs mt-1">
-            ETH {eth.nfts_in_30d} · OP {op.nfts_in_30d}
-            <span className="block mt-0.5">
-              {eth.unique_addrs_30d + op.unique_addrs_30d} unique addresses
-            </span>
+            ETH {ethCustody} · OP {opCustody}
+            <span className="block mt-0.5 text-text-dim">NFTs awaiting manual processing</span>
           </div>
         </div>
         <div className="border border-border rounded p-4 bg-surface-2">
@@ -67,7 +70,7 @@ export default function UnstakeQueue() {
           <div className="num text-3xl font-semibold mt-1">{data.total_nfts_in_7d}</div>
           <div className="text-text-muted text-xs mt-1">
             ETH {eth.nfts_in_7d} · OP {op.nfts_in_7d}
-            <span className="block mt-0.5 num">≈ {rate7d.toFixed(1)} NFTs / day</span>
+            <span className="block mt-0.5 num">≈ {rate7d.toFixed(1)} / day</span>
           </div>
         </div>
         <div className="border border-border rounded p-4 bg-surface-2">
@@ -94,59 +97,68 @@ export default function UnstakeQueue() {
         </div>
       </div>
 
-      <div className="border border-border rounded bg-surface-2 overflow-hidden">
-        <div className="px-3 py-2 border-b border-border bg-surface-3 text-[10px] uppercase font-mono tracking-wider text-text-dim">
-          Recent inbound ({data.recent_inbound.length})
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <thead className="text-text-dim font-mono uppercase tracking-wider text-[10px]">
-              <tr className="border-b border-border">
-                <th className="text-left px-3 py-2">Chain</th>
-                <th className="text-left px-3 py-2">Block</th>
-                <th className="text-left px-3 py-2">From</th>
-                <th className="text-left px-3 py-2">Token ID</th>
-                <th className="text-left px-3 py-2">Tx</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.recent_inbound.map((e) => (
-                <tr key={e.tx_hash} className="border-b border-border/50 last:border-0">
-                  <td className="px-3 py-1.5 num">
-                    {e.chain === 'ethereum' ? 'ETH' : 'OP'}
-                  </td>
-                  <td className="px-3 py-1.5 num text-text-muted">
-                    {e.block_number.toLocaleString()}
-                  </td>
-                  <td className="px-3 py-1.5 num">
-                    <a
-                      href={ETHERSCAN_ADDR(e.chain, e.from_address)}
-                      target="_blank"
-                      rel="noopener"
-                      className="hover:text-accent transition"
-                    >
-                      {e.from_address.slice(0, 6)}…{e.from_address.slice(-4)}
-                    </a>
-                  </td>
-                  <td className="px-3 py-1.5 num text-text-muted">
-                    {e.token_id.length > 10 ? `${e.token_id.slice(0, 10)}…` : e.token_id}
-                  </td>
-                  <td className="px-3 py-1.5">
-                    <a
-                      href={ETHERSCAN_TX(e.chain, e.tx_hash)}
-                      target="_blank"
-                      rel="noopener"
-                      className="text-accent hover:underline num"
-                    >
-                      {e.tx_hash.slice(0, 10)}…
-                    </a>
-                  </td>
+      <button
+        type="button"
+        onClick={() => setShowRecent((v) => !v)}
+        className="mt-4 text-[11px] font-mono uppercase tracking-wider text-text-muted hover:text-accent transition flex items-center gap-1.5"
+        aria-expanded={showRecent}
+      >
+        <span>{showRecent ? '▾' : '▸'}</span>
+        {showRecent ? 'Hide' : 'Show'} recent inbound ({data.recent_inbound.length})
+      </button>
+
+      {showRecent && (
+        <div className="border border-border rounded bg-surface-2 overflow-hidden mt-2">
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead className="text-text-dim font-mono uppercase tracking-wider text-[10px]">
+                <tr className="border-b border-border">
+                  <th className="text-left px-3 py-2">Chain</th>
+                  <th className="text-left px-3 py-2">Block</th>
+                  <th className="text-left px-3 py-2">From</th>
+                  <th className="text-left px-3 py-2">Token ID</th>
+                  <th className="text-left px-3 py-2">Tx</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data.recent_inbound.map((e) => (
+                  <tr key={e.tx_hash} className="border-b border-border/50 last:border-0">
+                    <td className="px-3 py-1.5 num">
+                      {e.chain === 'ethereum' ? 'ETH' : 'OP'}
+                    </td>
+                    <td className="px-3 py-1.5 num text-text-muted">
+                      {e.block_number.toLocaleString()}
+                    </td>
+                    <td className="px-3 py-1.5 num">
+                      <a
+                        href={ETHERSCAN_ADDR(e.chain, e.from_address)}
+                        target="_blank"
+                        rel="noopener"
+                        className="hover:text-accent transition"
+                      >
+                        {e.from_address.slice(0, 6)}…{e.from_address.slice(-4)}
+                      </a>
+                    </td>
+                    <td className="px-3 py-1.5 num text-text-muted">
+                      {e.token_id.length > 10 ? `${e.token_id.slice(0, 10)}…` : e.token_id}
+                    </td>
+                    <td className="px-3 py-1.5">
+                      <a
+                        href={ETHERSCAN_TX(e.chain, e.tx_hash)}
+                        target="_blank"
+                        rel="noopener"
+                        className="text-accent hover:underline num"
+                      >
+                        {e.tx_hash.slice(0, 10)}…
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }

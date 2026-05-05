@@ -172,6 +172,8 @@ export type NftQueueSnapshot = {
   total_nfts_in_24h: number
   total_nfts_in_7d: number
   total_nfts_in_30d: number
+  custody_count: Record<string, number>
+  total_custody_count: number
   recent_inbound: NftQueueInboundEvent[]
 }
 
