@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-06T12:30:02Z",
+  "as_of": "2026-05-06T12:43:30Z",
   "total_supply_susd": 52528751,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 17114262
+      "value": 17116528
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5604699
+      "value": 5602433
     },
     {
       "id": "treasury",
@@ -55,17 +55,17 @@
     {
       "id": "uni_susd_weth",
       "label": "Uniswap V2 sUSD/WETH",
-      "value": 143641
+      "value": 142493
     },
     {
       "id": "sushi_susd_weth",
       "label": "Sushiswap sUSD/WETH",
-      "value": 129431
+      "value": 128298
     },
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 174101
+      "value": 174116
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 17114262
+      "value": 17116528
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5604699
+      "value": 5602433
     },
     {
       "from": "supply",
@@ -117,32 +117,32 @@
     {
       "from": "dex_liquidity",
       "to": "uni_susd_weth",
-      "value": 143641
+      "value": 142493
     },
     {
       "from": "dex_liquidity",
       "to": "sushi_susd_weth",
-      "value": 129431
+      "value": 128298
     },
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 174101
+      "value": 174116
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 11,
-    "dex_liquidity": -11,
+    "free": 2266,
+    "dex_liquidity": -2266,
     "treasury": 0,
     "slp": 0,
     "curve_susde": 0,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 7,
-    "uni_susd_weth": 0,
-    "sushi_susd_weth": 0,
-    "dex_other": -18
+    "velo_usdc_susd": 0,
+    "uni_susd_weth": -1148,
+    "sushi_susd_weth": -1133,
+    "dex_other": 15
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
