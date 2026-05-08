@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-08T07:01:47Z",
+  "as_of": "2026-05-08T07:16:24Z",
   "total_supply_susd": 52528752,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 17156419
+      "value": 17128096
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5559310
+      "value": 5587633
     },
     {
       "id": "treasury",
@@ -40,12 +40,12 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3662561
+      "value": 3671759
     },
     {
       "id": "uni_susd_snx",
       "label": "Uniswap V3 sUSD/SNX",
-      "value": 1159893
+      "value": 1179016
     },
     {
       "id": "velo_usdc_susd",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (3 pools)",
-      "value": 161442
+      "value": 161444
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 17156419
+      "value": 17128096
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5559310
+      "value": 5587633
     },
     {
       "from": "supply",
@@ -102,12 +102,12 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3662561
+      "value": 3671759
     },
     {
       "from": "dex_liquidity",
       "to": "uni_susd_snx",
-      "value": 1159893
+      "value": 1179016
     },
     {
       "from": "dex_liquidity",
@@ -127,22 +127,22 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 161442
+      "value": 161444
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 0,
-    "dex_liquidity": 0,
+    "free": -28323,
+    "dex_liquidity": 28323,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
-    "uni_susd_snx": 0,
+    "curve_susde": 9198,
+    "uni_susd_snx": 19123,
     "velo_usdc_susd": 0,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": 0
+    "dex_other": 2
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
