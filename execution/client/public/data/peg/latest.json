@@ -1,37 +1,37 @@
 {
-  "as_of": "2026-05-11T10:02:45Z",
+  "as_of": "2026-05-11T10:14:20Z",
   "reference": {
     "source": "DefiLlama (cross-venue aggregator)",
-    "price_usd": 0.6904
+    "price_usd": 0.6878
   },
   "venues": [
     {
       "name": "Curve sUSD/sUSDe",
       "dex": "curve",
       "chain": "Ethereum",
-      "price_usd": 0.7021,
-      "depth_usd": 3516175,
+      "price_usd": 0.692,
+      "depth_usd": 3466788,
       "pool_address": "0x4b5E827F4C0a1042272a11857a355dA1F4Ceebae",
-      "volume_24h_usd": 13960
+      "volume_24h_usd": 14020
     },
     {
       "name": "Uniswap V3 sUSD/SNX",
       "dex": "uniswap",
       "chain": "Ethereum",
-      "price_usd": 0.7022,
-      "depth_usd": 1176519,
+      "price_usd": 0.7018,
+      "depth_usd": 1176892,
       "pair_kind": "non-stable",
       "pool_address": "0xA3ccaf08a54Cf31649f91aE1570A0720C8d4EB1E",
-      "volume_24h_usd": 5463
+      "volume_24h_usd": 5930
     },
     {
       "name": "Velodrome V2 USDC/sUSD",
       "dex": "velodrome",
       "chain": "Optimism",
       "price_usd": 0.6804,
-      "depth_usd": 322557,
+      "depth_usd": 322577,
       "pool_address": "0xbC26519f936A90E78fe2C9aA2A03CC208f041234",
-      "volume_24h_usd": 17666
+      "volume_24h_usd": 17665
     },
     {
       "name": "Uniswap V2 sUSD/WETH",
@@ -63,6 +63,15 @@
       "volume_24h_usd": 216
     },
     {
+      "name": "Curve sUSD/3CRV",
+      "dex": "curve",
+      "chain": "Optimism",
+      "price_usd": 0.6878,
+      "depth_usd": 57857,
+      "pool_address": "0x061b87122Ed14b9526A813209C8a59a633257bAb",
+      "volume_24h_usd": 891
+    },
+    {
       "name": "Curve sUSD/crvUSD",
       "dex": "curve",
       "chain": "Ethereum",
@@ -80,17 +89,8 @@
       "pair_kind": "non-stable",
       "pool_address": "0x2E80d5A7B3C613d854EE43243Ff09808108561EB",
       "volume_24h_usd": 1624
-    },
-    {
-      "name": "Curve sUSD/3CRV",
-      "dex": "curve",
-      "chain": "Optimism",
-      "price_usd": 0.6904,
-      "depth_usd": 0,
-      "pool_address": "0x061b87122Ed14b9526A813209C8a59a633257bAb",
-      "volume_24h_usd": 890
     }
   ],
-  "weighted_avg_price_usd": 0.7,
-  "depeg_basis_points": -3000
+  "weighted_avg_price_usd": 0.6933,
+  "depeg_basis_points": -3067
 }
