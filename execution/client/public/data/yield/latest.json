@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-11T22:16:01Z",
+  "as_of": "2026-05-11T22:30:31Z",
   "venues": [
     {
       "id": "infinex",
@@ -14,10 +14,10 @@
     {
       "id": "curve_susde_lp",
       "label": "Curve sUSD/sUSDe LP",
-      "apr_pct": 0.4,
+      "apr_pct": 0.5,
       "lock": "none",
-      "summary": "0.3% trading fees + 0.1% CRV/CVX · IL if peg moves",
-      "risk_note": "Live APY from DefiLlama yield-pools: 0.34% base (trading fees, lagged) + 0.10% CRV/CVX rewards = 0.44% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
+      "summary": "0.4% trading fees + 0.1% CRV/CVX · IL if peg moves",
+      "risk_note": "Live APY from DefiLlama yield-pools: 0.42% base (trading fees, lagged) + 0.10% CRV/CVX rewards = 0.52% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
       "status": "active"
     },
     {
@@ -53,7 +53,7 @@
       "apr_pct": 46.4,
       "lock": "principal unlocked Apr 19; SNX rewards vest 3mo linear (~Apr 19 → Jul 19, 2026)",
       "summary": "Closed to new deposits · 46.4% APR for stakers already in",
-      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.3564 ÷ $15,374,291 locked sUSD × (12÷3 month annualisation) = 46.4%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
+      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.3569 ÷ $15,374,291 locked sUSD × (12÷3 month annualisation) = 46.4%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
       "status": "vesting_only",
       "audience": "existing participants only"
     }
