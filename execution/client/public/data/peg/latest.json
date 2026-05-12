@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-05-12T07:14:24Z",
+  "as_of": "2026-05-12T07:28:25Z",
   "reference": {
     "source": "DefiLlama (cross-venue aggregator)",
-    "price_usd": 0.5541
+    "price_usd": 0.5545
   },
   "venues": [
     {
@@ -18,8 +18,8 @@
       "name": "Uniswap V3 sUSD/SNX",
       "dex": "uniswap",
       "chain": "Ethereum",
-      "price_usd": 0.5595,
-      "depth_usd": 1045319,
+      "price_usd": 0.5577,
+      "depth_usd": 1041517,
       "pair_kind": "non-stable",
       "pool_address": "0xA3ccaf08a54Cf31649f91aE1570A0720C8d4EB1E",
       "volume_24h_usd": 99589
@@ -28,8 +28,8 @@
       "name": "Velodrome V2 USDC/sUSD",
       "dex": "velodrome",
       "chain": "Optimism",
-      "price_usd": 0.5586,
-      "depth_usd": 249383,
+      "price_usd": 0.5592,
+      "depth_usd": 249564,
       "pool_address": "0xbC26519f936A90E78fe2C9aA2A03CC208f041234",
       "volume_24h_usd": 57186
     },
@@ -66,10 +66,20 @@
       "name": "Curve sUSD/3CRV",
       "dex": "curve",
       "chain": "Optimism",
-      "price_usd": 0.5541,
-      "depth_usd": 48611,
+      "price_usd": 0.5545,
+      "depth_usd": 48610,
       "pool_address": "0x061b87122Ed14b9526A813209C8a59a633257bAb",
       "volume_24h_usd": 1765
+    },
+    {
+      "name": "Uniswap V3 WETH/sUSD",
+      "dex": "uniswap",
+      "chain": "Optimism",
+      "price_usd": 0.5577,
+      "depth_usd": 9631,
+      "pair_kind": "non-stable",
+      "pool_address": "0x2E80d5A7B3C613d854EE43243Ff09808108561EB",
+      "volume_24h_usd": 2900
     },
     {
       "name": "Curve sUSD/crvUSD",
@@ -79,18 +89,8 @@
       "depth_usd": 9625,
       "pool_address": "0x94cC50e4521bD271C1a997a3A4Dc815C2F920b41",
       "volume_24h_usd": 318
-    },
-    {
-      "name": "Uniswap V3 WETH/sUSD",
-      "dex": "uniswap",
-      "chain": "Optimism",
-      "price_usd": 0.5562,
-      "depth_usd": 9606,
-      "pair_kind": "non-stable",
-      "pool_address": "0x2E80d5A7B3C613d854EE43243Ff09808108561EB",
-      "volume_24h_usd": 2900
     }
   ],
-  "weighted_avg_price_usd": 0.5566,
-  "depeg_basis_points": -4434
+  "weighted_avg_price_usd": 0.5562,
+  "depeg_basis_points": -4438
 }
