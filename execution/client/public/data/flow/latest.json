@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-12T12:01:15Z",
+  "as_of": "2026-05-12T12:15:33Z",
   "total_supply_susd": 52521983,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 21403955
+      "value": 21452152
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 4442380
+      "value": 4394183
     },
     {
       "id": "treasury",
@@ -40,32 +40,32 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 2796625
+      "value": 2750777
     },
     {
       "id": "uni_susd_snx",
       "label": "Uniswap V3 sUSD/SNX",
-      "value": 1032379
+      "value": 1031229
     },
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 247384
+      "value": 247400
     },
     {
       "id": "uni_susd_weth",
       "label": "Uniswap V2 sUSD/WETH",
-      "value": 120836
+      "value": 120099
     },
     {
       "id": "sushi_susd_weth",
       "label": "Sushiswap sUSD/WETH",
-      "value": 108854
+      "value": 108373
     },
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 136302
+      "value": 136305
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 21403955
+      "value": 21452152
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 4442380
+      "value": 4394183
     },
     {
       "from": "supply",
@@ -102,47 +102,47 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 2796625
+      "value": 2750777
     },
     {
       "from": "dex_liquidity",
       "to": "uni_susd_snx",
-      "value": 1032379
+      "value": 1031229
     },
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 247384
+      "value": 247400
     },
     {
       "from": "dex_liquidity",
       "to": "uni_susd_weth",
-      "value": 120836
+      "value": 120099
     },
     {
       "from": "dex_liquidity",
       "to": "sushi_susd_weth",
-      "value": 108854
+      "value": 108373
     },
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 136302
+      "value": 136305
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 13968,
-    "dex_liquidity": -13968,
+    "free": 48197,
+    "dex_liquidity": -48197,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
-    "uni_susd_snx": -9138,
-    "velo_usdc_susd": -1948,
-    "uni_susd_weth": -974,
-    "sushi_susd_weth": -1214,
-    "dex_other": -694
+    "curve_susde": -45848,
+    "uni_susd_snx": -1150,
+    "velo_usdc_susd": 16,
+    "uni_susd_weth": -737,
+    "sushi_susd_weth": -481,
+    "dex_other": 3
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
