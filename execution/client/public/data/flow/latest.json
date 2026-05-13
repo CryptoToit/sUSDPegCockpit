@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-13T12:43:52Z",
+  "as_of": "2026-05-13T12:57:47Z",
   "total_supply_susd": 52521983,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20385520
+      "value": 20402341
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5447014
+      "value": 5430193
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3533854
+      "value": 3516689
     },
     {
       "id": "uni_susd_snx",
@@ -60,7 +60,7 @@
     {
       "id": "sushi_susd_weth",
       "label": "Sushiswap sUSD/WETH",
-      "value": 123238
+      "value": 123582
     },
     {
       "id": "dex_other",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20385520
+      "value": 20402341
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5447014
+      "value": 5430193
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3533854
+      "value": 3516689
     },
     {
       "from": "dex_liquidity",
@@ -122,7 +122,7 @@
     {
       "from": "dex_liquidity",
       "to": "sushi_susd_weth",
-      "value": 123238
+      "value": 123582
     },
     {
       "from": "dex_liquidity",
@@ -133,16 +133,16 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 3181,
-    "dex_liquidity": -3181,
+    "free": 16821,
+    "dex_liquidity": -16821,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
+    "curve_susde": -17165,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": -38,
-    "uni_susd_weth": -1604,
-    "sushi_susd_weth": -1454,
-    "dex_other": -85
+    "velo_usdc_susd": 0,
+    "uni_susd_weth": 0,
+    "sushi_susd_weth": 344,
+    "dex_other": 0
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
