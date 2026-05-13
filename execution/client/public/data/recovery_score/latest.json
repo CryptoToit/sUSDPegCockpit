@@ -1,15 +1,15 @@
 {
-  "as_of": "2026-05-13T16:30:31Z",
-  "composite_score": 35,
+  "as_of": "2026-05-13T16:44:27Z",
+  "composite_score": 36,
   "tier": "behind_pace",
   "headline": "Recovery actively underway. Jubilee scoring 30/100 and market signal is supportive (100% organic buying), with peg restoration and SLP fill as the primary near-term milestones.",
   "subscores": [
     {
       "id": "peg",
       "label": "Peg restoration",
-      "score": 7,
+      "score": 8,
       "weight": 0.35,
-      "value_text": "$0.6814 vs $0.98 recovery threshold",
+      "value_text": "$0.6870 vs $0.98 recovery threshold",
       "method": "scaled from $0.66 (depeg low) → $0.98 (staking-ratchet halt, per SIP-420)"
     },
     {
@@ -33,7 +33,7 @@
       "label": "Organic buy support",
       "score": 100,
       "weight": 0.15,
-      "value_text": "organic buys $335,254 vs sells $242,136 (1.38x)",
+      "value_text": "organic buys $358,509 vs sells $227,279 (1.58x)",
       "method": "organic buy ÷ sells (24h, capped 1.0×) — captures whether organic market bids are outpacing sell pressure, not just composition purity"
     },
     {
@@ -41,7 +41,7 @@
       "label": "Exit-pressure index",
       "score": 88,
       "weight": 0.15,
-      "value_text": "growth 0.57× · backlog 82% · sell 0.02%",
+      "value_text": "growth 0.54× · backlog 82% · sell 0.37%",
       "method": "exit-pressure index: growth (35%) + backlog (30%) + sell-through (35%) — from Unstake Queue panel"
     }
   ]
