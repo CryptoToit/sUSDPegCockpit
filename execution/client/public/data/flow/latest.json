@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-14T12:29:09Z",
+  "as_of": "2026-05-14T12:43:46Z",
   "total_supply_susd": 52483267,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20607112
+      "value": 20600399
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5145894
+      "value": 5152607
     },
     {
       "id": "treasury",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 276465
+      "value": 281226
     },
     {
       "id": "uni_susd_weth",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 156805
+      "value": 158757
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20607112
+      "value": 20600399
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5145894
+      "value": 5152607
     },
     {
       "from": "supply",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 276465
+      "value": 281226
     },
     {
       "from": "dex_liquidity",
@@ -127,22 +127,22 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 156805
+      "value": 158757
     }
   ],
   "delta_24h": {
-    "420_jubilee": 38728,
+    "420_jubilee": 0,
     "infinex": 0,
-    "free": -66983,
-    "dex_liquidity": 28255,
+    "free": -6713,
+    "dex_liquidity": 6713,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 69097,
-    "uni_susd_snx": 5258,
-    "velo_usdc_susd": -43625,
-    "uni_susd_weth": -431,
-    "sushi_susd_weth": -475,
-    "dex_other": -1569
+    "curve_susde": 0,
+    "uni_susd_snx": 0,
+    "velo_usdc_susd": 4761,
+    "uni_susd_weth": 0,
+    "sushi_susd_weth": 0,
+    "dex_other": 1952
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
