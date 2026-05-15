@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-05-15T03:02:28Z",
+  "as_of": "2026-05-15T03:16:26Z",
   "windows": {
     "24h": {
       "total": {
-        "sell_susd": 39941,
-        "buy_susd": 39417,
-        "net_susd": -524
+        "sell_susd": 39327,
+        "buy_susd": 40029,
+        "net_susd": 702
       },
       "venues": [
         {
@@ -25,22 +25,22 @@
           "dex": "uniswap",
           "label": "Uniswap V3 sUSD/SNX",
           "chain": "Ethereum",
-          "sell_susd": 3881,
-          "buy_susd": 2773,
-          "attribution_source": "illustrative",
-          "swap_count": null,
-          "programmatic_susd": null,
-          "organic_susd": null
+          "sell_susd": 3273,
+          "buy_susd": 3385,
+          "attribution_source": "measured",
+          "swap_count": 15,
+          "programmatic_susd": 0,
+          "organic_susd": 3385
         },
         {
           "id": "velo_usdc_susd",
           "dex": "velodrome",
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
-          "sell_susd": 21823,
+          "sell_susd": 21817,
           "buy_susd": 21747,
           "attribution_source": "measured",
-          "swap_count": 793,
+          "swap_count": 780,
           "programmatic_susd": 0,
           "organic_susd": 21747
         },
@@ -70,28 +70,28 @@
         }
       ],
       "sell_counter_assets": {
-        "sUSDe": 0.3232,
-        "USDC": 0.5542,
-        "WETH": 0.108,
-        "SNX": 0.0146
+        "sUSDe": 0.2592,
+        "SNX": 0.0832,
+        "USDC": 0.5548,
+        "WETH": 0.1028
       },
       "buy_counter_assets": {
-        "sUSDe": 0.3269,
-        "USDC": 0.5573,
-        "WETH": 0.1017,
-        "SNX": 0.0141
+        "sUSDe": 0.2761,
+        "SNX": 0.0846,
+        "USDC": 0.5433,
+        "WETH": 0.096
       },
       "buy_split": {
-        "programmatic_susd": 666,
-        "organic_susd": 38751,
-        "programmatic_share": 0.0169
+        "programmatic_susd": 0,
+        "organic_susd": 40029,
+        "programmatic_share": 0.0
       }
     },
     "7d": {
       "total": {
         "sell_susd": 700014,
-        "buy_susd": 654093,
-        "net_susd": -45921
+        "buy_susd": 653069,
+        "net_susd": -46945
       },
       "venues": [
         {
@@ -100,11 +100,11 @@
           "label": "Curve sUSD/sUSDe",
           "chain": "Ethereum",
           "sell_susd": 284909,
-          "buy_susd": 271625,
+          "buy_susd": 270700,
           "attribution_source": "measured",
-          "swap_count": 490,
+          "swap_count": 489,
           "programmatic_susd": 0,
-          "organic_susd": 271625
+          "organic_susd": 270700
         },
         {
           "id": "uni_susd_snx",
@@ -124,11 +124,11 @@
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
           "sell_susd": 102210,
-          "buy_susd": 93228,
+          "buy_susd": 93232,
           "attribution_source": "measured",
-          "swap_count": 5960,
+          "swap_count": 5961,
           "programmatic_susd": 0,
-          "organic_susd": 93228
+          "organic_susd": 93232
         },
         {
           "id": "uni_susd_weth",
@@ -148,11 +148,11 @@
           "label": "Sushiswap sUSD/WETH",
           "chain": "Ethereum",
           "sell_susd": 68089,
-          "buy_susd": 65157,
+          "buy_susd": 65054,
           "attribution_source": "measured",
-          "swap_count": 345,
+          "swap_count": 344,
           "programmatic_susd": 0,
-          "organic_susd": 65157
+          "organic_susd": 65054
         }
       ],
       "sell_counter_assets": {
@@ -162,14 +162,14 @@
         "WETH": 0.2131
       },
       "buy_counter_assets": {
-        "sUSDe": 0.4153,
-        "SNX": 0.2236,
-        "USDC": 0.1425,
-        "WETH": 0.2186
+        "sUSDe": 0.4145,
+        "SNX": 0.2239,
+        "USDC": 0.1428,
+        "WETH": 0.2188
       },
       "buy_split": {
         "programmatic_susd": 0,
-        "organic_susd": 654093,
+        "organic_susd": 653069,
         "programmatic_share": 0.0
       }
     }
