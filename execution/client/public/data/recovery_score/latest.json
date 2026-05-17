@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-05-17T05:44:36Z",
-  "composite_score": 34,
+  "as_of": "2026-05-17T05:58:45Z",
+  "composite_score": 32,
   "tier": "critical",
   "headline": "Recovery still in early stage. Peg restoration and program participation lagging.",
   "subscores": [
@@ -33,15 +33,15 @@
       "label": "Organic buy support",
       "score": 100,
       "weight": 0.15,
-      "value_text": "organic buys $8,704 vs sells $8,736 (1.00x)",
+      "value_text": "organic buys $8,703 vs sells $8,738 (1.00x)",
       "method": "organic buy ÷ sells (24h, capped 1.0×) — captures whether organic market bids are outpacing sell pressure, not just composition purity"
     },
     {
       "id": "flow",
       "label": "Exit-pressure index",
-      "score": 100,
+      "score": 84,
       "weight": 0.15,
-      "value_text": "growth 0.34× · backlog 69% · sell 0.40%",
+      "value_text": "growth 0.34× · backlog 86% · sell 0.41%",
       "method": "exit-pressure index: growth (35%) + backlog (30%) + sell-through (35%) — from Unstake Queue panel"
     }
   ]
