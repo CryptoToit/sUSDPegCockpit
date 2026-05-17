@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-17T10:01:28Z",
+  "as_of": "2026-05-17T10:15:22Z",
   "total_supply_susd": 52483266,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20878137
+      "value": 20888908
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 4872970
+      "value": 4862199
     },
     {
       "id": "treasury",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 275435
+      "value": 275469
     },
     {
       "id": "uni_susd_weth",
@@ -64,8 +64,8 @@
     },
     {
       "id": "dex_other",
-      "label": "Other DEX (4 pools)",
-      "value": 153799
+      "label": "Other DEX (3 pools)",
+      "value": 142994
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20878137
+      "value": 20888908
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 4872970
+      "value": 4862199
     },
     {
       "from": "supply",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 275435
+      "value": 275469
     },
     {
       "from": "dex_liquidity",
@@ -127,29 +127,28 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 153799
+      "value": 142994
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 1,
-    "dex_liquidity": -1,
+    "free": 10771,
+    "dex_liquidity": -10771,
     "treasury": 0,
     "slp": 0,
     "curve_susde": 0,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": -1,
+    "velo_usdc_susd": 34,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": 0
+    "dex_other": -10805
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
   "dex_other_pools": [
     "Uniswap V3 sUSD/DAI",
     "Curve sUSD/3CRV",
-    "Curve sUSD/crvUSD",
     "Uniswap V3 WETH/sUSD"
   ]
 }
