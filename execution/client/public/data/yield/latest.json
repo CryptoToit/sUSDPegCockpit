@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-18T00:16:16Z",
+  "as_of": "2026-05-18T00:30:32Z",
   "venues": [
     {
       "id": "infinex",
@@ -17,7 +17,7 @@
       "apr_pct": 0.2,
       "lock": "none",
       "summary": "0.1% trading fees + 0.1% CRV/CVX · IL if peg moves",
-      "risk_note": "Live APY from DefiLlama yield-pools: 0.13% base (trading fees, lagged) + 0.10% CRV/CVX rewards = 0.23% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
+      "risk_note": "Live APY from DefiLlama yield-pools: 0.13% base (trading fees, lagged) + 0.09% CRV/CVX rewards = 0.22% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
       "status": "active"
     },
     {
@@ -53,7 +53,7 @@
       "apr_pct": 39.6,
       "lock": "principal unlocked Apr 19; SNX rewards vest 3mo linear (~Apr 19 → Jul 19, 2026)",
       "summary": "Closed to new deposits · 39.6% APR for stakers already in",
-      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.3059 ÷ $15,432,159 locked sUSD × (12÷3 month annualisation) = 39.6%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
+      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.3058 ÷ $15,432,159 locked sUSD × (12÷3 month annualisation) = 39.6%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
       "status": "vesting_only",
       "audience": "existing participants only"
     }
