@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-21T17:15:47Z",
+  "as_of": "2026-05-21T17:30:17Z",
   "venues": [
     {
       "id": "infinex",
@@ -17,7 +17,7 @@
       "apr_pct": 0.2,
       "lock": "none",
       "summary": "0.1% trading fees + 0.1% CRV/CVX · IL if peg moves",
-      "risk_note": "Live APY from DefiLlama yield-pools: 0.14% base (trading fees, lagged) + 0.09% CRV/CVX rewards = 0.23% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
+      "risk_note": "Live APY from DefiLlama yield-pools: 0.13% base (trading fees, lagged) + 0.09% CRV/CVX rewards = 0.22% total. Impermanent-loss risk if the sUSD/sUSDe peg ratio moves further. Both tokens are stablecoins so IL is bounded relative to volatile-pair LPs, but a sUSD depeg widening would still hurt.",
       "status": "active"
     },
     {
@@ -26,7 +26,7 @@
       "apr_pct_implied": 49.5,
       "lock": "none",
       "summary": "49.5% gross to $1.00 · 12mo annualisation",
-      "risk_note": "Buy at the current depeg price ($0.6689) and hold until peg restores to $1.00. Gross gain = 49.5%, annualised over a 12-month horizon for the displayed APR. Real APR depends on actual time-to-peg — could be faster (SLP launch + supply absorption could pull peg up) or slower (peg may stall / deteriorate). Capital is at risk if peg never recovers.",
+      "risk_note": "Buy at the current depeg price ($0.6690) and hold until peg restores to $1.00. Gross gain = 49.5%, annualised over a 12-month horizon for the displayed APR. Real APR depends on actual time-to-peg — could be faster (SLP launch + supply absorption could pull peg up) or slower (peg may stall / deteriorate). Capital is at risk if peg never recovers.",
       "status": "theoretical"
     },
     {
@@ -35,7 +35,7 @@
       "apr_pct_implied": 49.5,
       "lock": "n/a",
       "summary": "Gated: needs staker at 100% of original debt",
-      "risk_note": "One-shot mechanic — $1 of SNX-staker debt forgiven per $0.6689 of sUSD burned, equivalent to 49.5% return. GATED: the burn mechanic only fires when the staker is at 100% of their original debt collateralized in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are below this threshold, so this yield is not currently accessible to the bulk of the cohort. The threshold could be relaxed by governance, but no announcement has been made.",
+      "risk_note": "One-shot mechanic — $1 of SNX-staker debt forgiven per $0.6690 of sUSD burned, equivalent to 49.5% return. GATED: the burn mechanic only fires when the staker is at 100% of their original debt collateralized in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are below this threshold, so this yield is not currently accessible to the bulk of the cohort. The threshold could be relaxed by governance, but no announcement has been made.",
       "status": "theoretical",
       "audience": "SNX stakers at 100% original-debt threshold only"
     },
