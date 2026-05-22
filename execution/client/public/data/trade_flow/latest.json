@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-05-22T05:57:50Z",
+  "as_of": "2026-05-22T06:02:52Z",
   "windows": {
     "24h": {
       "total": {
-        "sell_susd": 3026,
-        "buy_susd": 2985,
-        "net_susd": -41
+        "sell_susd": 3248,
+        "buy_susd": 2916,
+        "net_susd": -332
       },
       "venues": [
         {
@@ -13,10 +13,10 @@
           "dex": "curve",
           "label": "Curve sUSD/sUSDe",
           "chain": "Ethereum",
-          "sell_susd": 671,
+          "sell_susd": 745,
           "buy_susd": 1644,
           "attribution_source": "measured",
-          "swap_count": 12,
+          "swap_count": 13,
           "programmatic_susd": 0,
           "organic_susd": 1644
         },
@@ -40,7 +40,7 @@
           "sell_susd": 92,
           "buy_susd": 143,
           "attribution_source": "measured",
-          "swap_count": 367,
+          "swap_count": 370,
           "programmatic_susd": 0,
           "organic_susd": 143
         },
@@ -49,49 +49,49 @@
           "dex": "uniswap",
           "label": "Uniswap V2 sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 878,
-          "buy_susd": 995,
+          "sell_susd": 877,
+          "buy_susd": 1070,
           "attribution_source": "measured",
-          "swap_count": 10,
+          "swap_count": 11,
           "programmatic_susd": 0,
-          "organic_susd": 995
+          "organic_susd": 1070
         },
         {
           "id": "sushi_susd_weth",
           "dex": "sushiswap",
           "label": "Sushiswap sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 86,
-          "buy_susd": 203,
-          "attribution_source": "measured",
-          "swap_count": 5,
-          "programmatic_susd": 0,
-          "organic_susd": 203
+          "sell_susd": 235,
+          "buy_susd": 59,
+          "attribution_source": "illustrative",
+          "swap_count": null,
+          "programmatic_susd": null,
+          "organic_susd": null
         }
       ],
       "sell_counter_assets": {
-        "sUSDe": 0.2217,
-        "SNX": 0.4293,
-        "USDC": 0.0304,
-        "WETH": 0.3186
+        "sUSDe": 0.28,
+        "SNX": 0.4108,
+        "USDC": 0.0341,
+        "WETH": 0.2751
       },
       "buy_counter_assets": {
-        "sUSDe": 0.5508,
-        "SNX": 0.0,
-        "USDC": 0.0479,
-        "WETH": 0.4013
+        "sUSDe": 0.5771,
+        "SNX": 0.004,
+        "USDC": 0.0507,
+        "WETH": 0.3682
       },
       "buy_split": {
-        "programmatic_susd": 0,
-        "organic_susd": 2985,
-        "programmatic_share": 0.0
+        "programmatic_susd": 14,
+        "organic_susd": 2902,
+        "programmatic_share": 0.0048
       }
     },
     "7d": {
       "total": {
-        "sell_susd": 169814,
-        "buy_susd": 198425,
-        "net_susd": 28611
+        "sell_susd": 169612,
+        "buy_susd": 198222,
+        "net_susd": 28610
       },
       "venues": [
         {
@@ -99,77 +99,77 @@
           "dex": "curve",
           "label": "Curve sUSD/sUSDe",
           "chain": "Ethereum",
-          "sell_susd": 77921,
-          "buy_susd": 81839,
+          "sell_susd": 77733,
+          "buy_susd": 81827,
           "attribution_source": "measured",
-          "swap_count": 233,
+          "swap_count": 232,
           "programmatic_susd": 0,
-          "organic_susd": 81839
+          "organic_susd": 81827
         },
         {
           "id": "uni_susd_snx",
           "dex": "uniswap",
           "label": "Uniswap V3 sUSD/SNX",
           "chain": "Ethereum",
-          "sell_susd": 27452,
-          "buy_susd": 45854,
+          "sell_susd": 27448,
+          "buy_susd": 45847,
           "attribution_source": "measured",
           "swap_count": 112,
           "programmatic_susd": 0,
-          "organic_susd": 45854
+          "organic_susd": 45847
         },
         {
           "id": "velo_usdc_susd",
           "dex": "velodrome",
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
-          "sell_susd": 29139,
-          "buy_susd": 29851,
+          "sell_susd": 29135,
+          "buy_susd": 29850,
           "attribution_source": "measured",
           "swap_count": 4132,
           "programmatic_susd": 0,
-          "organic_susd": 29851
+          "organic_susd": 29850
         },
         {
           "id": "uni_susd_weth",
           "dex": "uniswap",
           "label": "Uniswap V2 sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 20836,
-          "buy_susd": 23746,
+          "sell_susd": 20832,
+          "buy_susd": 23680,
           "attribution_source": "measured",
           "swap_count": 179,
           "programmatic_susd": 0,
-          "organic_susd": 23746
+          "organic_susd": 23680
         },
         {
           "id": "sushi_susd_weth",
           "dex": "sushiswap",
           "label": "Sushiswap sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 14466,
-          "buy_susd": 17135,
+          "sell_susd": 14464,
+          "buy_susd": 17018,
           "attribution_source": "measured",
-          "swap_count": 162,
+          "swap_count": 161,
           "programmatic_susd": 0,
-          "organic_susd": 17135
+          "organic_susd": 17018
         }
       ],
       "sell_counter_assets": {
-        "sUSDe": 0.4589,
-        "SNX": 0.1617,
-        "USDC": 0.1716,
-        "WETH": 0.2079
+        "sUSDe": 0.4583,
+        "SNX": 0.1618,
+        "USDC": 0.1718,
+        "WETH": 0.2081
       },
       "buy_counter_assets": {
-        "sUSDe": 0.4124,
-        "SNX": 0.2311,
-        "USDC": 0.1504,
-        "WETH": 0.206
+        "sUSDe": 0.4128,
+        "SNX": 0.2313,
+        "USDC": 0.1506,
+        "WETH": 0.2053
       },
       "buy_split": {
         "programmatic_susd": 0,
-        "organic_susd": 198425,
+        "organic_susd": 198222,
         "programmatic_share": 0.0
       }
     }
