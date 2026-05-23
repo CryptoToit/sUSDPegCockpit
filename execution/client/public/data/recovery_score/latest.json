@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-05-23T08:15:28Z",
-  "composite_score": 25,
+  "as_of": "2026-05-23T08:30:11Z",
+  "composite_score": 27,
   "tier": "critical",
   "headline": "Recovery still in early stage. Peg restoration and program participation lagging.",
   "subscores": [
@@ -9,7 +9,7 @@
       "label": "Peg restoration",
       "score": 0,
       "weight": 0.35,
-      "value_text": "$0.6459 vs $0.98 recovery threshold",
+      "value_text": "$0.6456 vs $0.98 recovery threshold",
       "method": "scaled from $0.66 (depeg low) → $0.98 (staking-ratchet halt, per SIP-420)"
     },
     {
@@ -31,9 +31,9 @@
     {
       "id": "buy_comp",
       "label": "Organic buy support",
-      "score": 51,
+      "score": 62,
       "weight": 0.15,
-      "value_text": "organic buys $10,675 vs sells $20,993 (0.51x)",
+      "value_text": "organic buys $12,139 vs sells $19,613 (0.62x)",
       "method": "organic buy ÷ sells (24h, capped 1.0×) — captures whether organic market bids are outpacing sell pressure, not just composition purity"
     },
     {
