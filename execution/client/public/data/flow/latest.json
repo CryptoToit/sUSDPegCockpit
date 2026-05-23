@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-23T10:43:36Z",
+  "as_of": "2026-05-23T10:57:27Z",
   "total_supply_susd": 52452170,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20814063
+      "value": 20791945
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 4897951
+      "value": 4920069
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3203812
+      "value": 3225933
     },
     {
       "id": "uni_susd_snx",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 265840
+      "value": 265837
     },
     {
       "id": "uni_susd_weth",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20814063
+      "value": 20791945
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 4897951
+      "value": 4920069
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3203812
+      "value": 3225933
     },
     {
       "from": "dex_liquidity",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 265840
+      "value": 265837
     },
     {
       "from": "dex_liquidity",
@@ -133,16 +133,16 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 3664,
-    "dex_liquidity": -3664,
+    "free": -22118,
+    "dex_liquidity": 22118,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
-    "uni_susd_snx": -4803,
-    "velo_usdc_susd": 0,
-    "uni_susd_weth": 665,
-    "sushi_susd_weth": 530,
-    "dex_other": -56
+    "curve_susde": 22121,
+    "uni_susd_snx": 0,
+    "velo_usdc_susd": -3,
+    "uni_susd_weth": 0,
+    "sushi_susd_weth": 0,
+    "dex_other": 0
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
