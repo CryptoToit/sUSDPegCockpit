@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-26T16:43:31Z",
+  "as_of": "2026-05-26T16:57:24Z",
   "total_supply_susd": 52426670,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20400738
+      "value": 20434553
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5257771
+      "value": 5223956
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3544501
+      "value": 3510685
     },
     {
       "id": "uni_susd_snx",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 286140
+      "value": 286141
     },
     {
       "id": "uni_susd_weth",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20400738
+      "value": 20434553
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5257771
+      "value": 5223956
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3544501
+      "value": 3510685
     },
     {
       "from": "dex_liquidity",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 286140
+      "value": 286141
     },
     {
       "from": "dex_liquidity",
@@ -133,16 +133,16 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 14847,
-    "dex_liquidity": -14847,
+    "free": 33815,
+    "dex_liquidity": -33815,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": -7271,
-    "uni_susd_snx": -5274,
-    "velo_usdc_susd": -1563,
-    "uni_susd_weth": -223,
+    "curve_susde": -33816,
+    "uni_susd_snx": 0,
+    "velo_usdc_susd": 1,
+    "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": -516
+    "dex_other": 0
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
