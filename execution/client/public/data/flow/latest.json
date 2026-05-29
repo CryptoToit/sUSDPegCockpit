@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-29T23:29:35Z",
+  "as_of": "2026-05-29T23:43:34Z",
   "total_supply_susd": 52431783,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20471335
+      "value": 20471614
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5191407
+      "value": 5191128
     },
     {
       "id": "treasury",
@@ -45,12 +45,12 @@
     {
       "id": "uni_susd_snx",
       "label": "Uniswap V3 sUSD/SNX",
-      "value": 1104154
+      "value": 1103381
     },
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 285750
+      "value": 286246
     },
     {
       "id": "uni_susd_weth",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 165699
+      "value": 165697
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20471335
+      "value": 20471614
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5191407
+      "value": 5191128
     },
     {
       "from": "supply",
@@ -107,12 +107,12 @@
     {
       "from": "dex_liquidity",
       "to": "uni_susd_snx",
-      "value": 1104154
+      "value": 1103381
     },
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 285750
+      "value": 286246
     },
     {
       "from": "dex_liquidity",
@@ -127,19 +127,19 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 165699
+      "value": 165697
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 5393,
-    "dex_liquidity": -5393,
+    "free": 279,
+    "dex_liquidity": -279,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": -4852,
-    "uni_susd_snx": -330,
-    "velo_usdc_susd": -209,
+    "curve_susde": 0,
+    "uni_susd_snx": -773,
+    "velo_usdc_susd": 496,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
     "dex_other": -2
