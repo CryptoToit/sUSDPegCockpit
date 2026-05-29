@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-29T22:01:59Z",
+  "as_of": "2026-05-29T22:15:35Z",
   "total_supply_susd": 52431783,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20455838
+      "value": 20466161
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5206904
+      "value": 5196581
     },
     {
       "id": "treasury",
@@ -40,17 +40,17 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3520435
+      "value": 3510763
     },
     {
       "id": "uni_susd_snx",
       "label": "Uniswap V3 sUSD/SNX",
-      "value": 1105144
+      "value": 1104484
     },
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 285736
+      "value": 285745
     },
     {
       "id": "uni_susd_weth",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20455838
+      "value": 20466161
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5206904
+      "value": 5196581
     },
     {
       "from": "supply",
@@ -102,17 +102,17 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3520435
+      "value": 3510763
     },
     {
       "from": "dex_liquidity",
       "to": "uni_susd_snx",
-      "value": 1105144
+      "value": 1104484
     },
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 285736
+      "value": 285745
     },
     {
       "from": "dex_liquidity",
@@ -133,13 +133,13 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": -271,
-    "dex_liquidity": 271,
+    "free": 10323,
+    "dex_liquidity": -10323,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
-    "uni_susd_snx": 0,
-    "velo_usdc_susd": 271,
+    "curve_susde": -9672,
+    "uni_susd_snx": -660,
+    "velo_usdc_susd": 9,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
     "dex_other": 0
