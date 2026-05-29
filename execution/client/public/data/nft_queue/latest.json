@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-29T20:43:37Z",
+  "as_of": "2026-05-29T21:01:13Z",
   "council_wallet": "0xebAC8Fc8752A267A36cE683A867000F69Fd0e73d",
   "sacct_address": "0x0E429603D3Cb1DFae4E6F52Add5fE82d96d77Dac",
   "chains": {
@@ -12,22 +12,22 @@
       "unique_addrs_30d": 35
     },
     "optimism": {
-      "nfts_in_24h": 1,
-      "nfts_in_7d": 3,
-      "nfts_in_30d": 31,
-      "unique_addrs_24h": 1,
-      "unique_addrs_7d": 3,
-      "unique_addrs_30d": 30
+      "nfts_in_24h": 2,
+      "nfts_in_7d": 4,
+      "nfts_in_30d": 32,
+      "unique_addrs_24h": 2,
+      "unique_addrs_7d": 4,
+      "unique_addrs_30d": 31
     }
   },
-  "total_nfts_in_24h": 14,
-  "total_nfts_in_7d": 27,
-  "total_nfts_in_30d": 84,
+  "total_nfts_in_24h": 15,
+  "total_nfts_in_7d": 28,
+  "total_nfts_in_30d": 85,
   "custody_count": {
     "ethereum": 116,
-    "optimism": 110
+    "optimism": 111
   },
-  "total_custody_count": 226,
+  "total_custody_count": 227,
   "disbursements": {
     "ethereum": {
       "sUSD": {
@@ -63,22 +63,22 @@
   },
   "valuation": {
     "ethereum": {
-      "estimated_usd": 3336653,
-      "estimated_snx_value_usd": 1205805,
+      "estimated_usd": 3335569,
+      "estimated_snx_value_usd": 1204720,
       "estimated_susd_value_usd": 2130848,
       "sample_n": 90,
-      "snx_price_usd": 0.3018
+      "snx_price_usd": 0.3015
     },
     "optimism": {
-      "estimated_usd": 2205293,
-      "estimated_snx_value_usd": 2205293,
+      "estimated_usd": 2223340,
+      "estimated_snx_value_usd": 2223340,
       "estimated_susd_value_usd": 0,
       "sample_n": 8,
-      "snx_price_usd": 0.3018
+      "snx_price_usd": 0.3015
     }
   },
-  "total_estimated_usd": 5541946,
-  "snx_price_usd": 0.3018,
+  "total_estimated_usd": 5558909,
+  "snx_price_usd": 0.3015,
   "lag": {
     "ethereum": {
       "sample_n": 27,
@@ -89,27 +89,27 @@
     },
     "optimism": {
       "sample_n": 7,
-      "pending_count": 103,
+      "pending_count": 104,
       "median_hours": 327.42,
       "p25_hours": 186.85,
       "p75_hours": 387.65
     }
   },
   "total_lag_sample_n": 34,
-  "total_lag_pending_count": 192,
+  "total_lag_pending_count": 193,
   "weighted_median_lag_hours": 233.72,
   "post_release": {
     "ethereum": {
       "recipients_scanned": 79,
       "snx_received": 3100167.9604,
-      "snx_to_dex": 363.0252,
-      "snx_sell_share": 0.0001,
+      "snx_to_dex": 0.0,
+      "snx_sell_share": 0.0,
       "susd_received": 1653244.27,
-      "susd_to_dex": 555.07,
-      "susd_sell_share": 0.0003,
-      "usd_received": 2588782,
-      "usd_to_dex": 665,
-      "usd_sell_share": 0.0003
+      "susd_to_dex": 10083.9255,
+      "susd_sell_share": 0.0061,
+      "usd_received": 2587941,
+      "usd_to_dex": 10084,
+      "usd_sell_share": 0.0039
     },
     "optimism": {
       "recipients_scanned": 7,
@@ -119,15 +119,22 @@
       "susd_received": 0.0,
       "susd_to_dex": 0.0,
       "susd_sell_share": 0.0,
-      "usd_received": 160385,
+      "usd_received": 160241,
       "usd_to_dex": 0,
       "usd_sell_share": 0.0
     }
   },
-  "total_usd_received": 2749167,
-  "total_usd_to_dex": 665,
-  "total_sell_share": 0.0002,
+  "total_usd_received": 2748182,
+  "total_usd_to_dex": 10084,
+  "total_sell_share": 0.0037,
   "recent_inbound": [
+    {
+      "chain": "optimism",
+      "block_number": 152244737,
+      "tx_hash": "0xe8b95290ed49e5090259ddebdb9eb4f94bdac4c3d6234938ae2c9035abd445cc",
+      "from_address": "0xf1a67d67cc97e9755e2c8b13a6ee3e538bf830d9",
+      "token_id": "1919269897391"
+    },
     {
       "chain": "optimism",
       "block_number": 152233475,
@@ -260,13 +267,6 @@
       "tx_hash": "0xa1d7f2ef4af11eab42d2724d091943bcacd12cd6f7ca7907d4df2820e17c5bc6",
       "from_address": "0xc6a0ceba27ec16ba6a063c6defc5da555cd925b3",
       "token_id": "36353959728517909820"
-    },
-    {
-      "chain": "optimism",
-      "block_number": 151243283,
-      "tx_hash": "0x7d5f6db137a18197bfae6301dc5b74a80fa20f79c15fb8e3543e6c6a3cd64b5b",
-      "from_address": "0xbaa32387bd55553ec806622d524b12bbb8242a19",
-      "token_id": "1106985798622"
     }
   ]
 }
