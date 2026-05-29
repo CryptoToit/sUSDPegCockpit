@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-29T22:15:35Z",
+  "as_of": "2026-05-29T22:29:30Z",
   "council_wallet": "0xebAC8Fc8752A267A36cE683A867000F69Fd0e73d",
   "sacct_address": "0x0E429603D3Cb1DFae4E6F52Add5fE82d96d77Dac",
   "chains": {
@@ -12,17 +12,17 @@
       "unique_addrs_30d": 35
     },
     "optimism": {
-      "nfts_in_24h": 2,
-      "nfts_in_7d": 4,
-      "nfts_in_30d": 32,
-      "unique_addrs_24h": 2,
-      "unique_addrs_7d": 4,
-      "unique_addrs_30d": 31
+      "nfts_in_24h": 3,
+      "nfts_in_7d": 5,
+      "nfts_in_30d": 33,
+      "unique_addrs_24h": 3,
+      "unique_addrs_7d": 5,
+      "unique_addrs_30d": 32
     }
   },
-  "total_nfts_in_24h": 15,
-  "total_nfts_in_7d": 28,
-  "total_nfts_in_30d": 85,
+  "total_nfts_in_24h": 16,
+  "total_nfts_in_7d": 29,
+  "total_nfts_in_30d": 86,
   "custody_count": {
     "ethereum": 116,
     "optimism": 112
@@ -89,14 +89,14 @@
     },
     "optimism": {
       "sample_n": 7,
-      "pending_count": 104,
+      "pending_count": 105,
       "median_hours": 327.42,
       "p25_hours": 186.85,
       "p75_hours": 387.65
     }
   },
   "total_lag_sample_n": 34,
-  "total_lag_pending_count": 193,
+  "total_lag_pending_count": 194,
   "weighted_median_lag_hours": 233.72,
   "post_release": {
     "ethereum": {
@@ -105,11 +105,11 @@
       "snx_to_dex": 363.0252,
       "snx_sell_share": 0.0001,
       "susd_received": 1653244.27,
-      "susd_to_dex": 555.07,
-      "susd_sell_share": 0.0003,
+      "susd_to_dex": 8628.56,
+      "susd_sell_share": 0.0052,
       "usd_received": 2583649,
-      "usd_to_dex": 664,
-      "usd_sell_share": 0.0003
+      "usd_to_dex": 8738,
+      "usd_sell_share": 0.0034
     },
     "optimism": {
       "recipients_scanned": 7,
@@ -125,9 +125,16 @@
     }
   },
   "total_usd_received": 2743154,
-  "total_usd_to_dex": 664,
-  "total_sell_share": 0.0002,
+  "total_usd_to_dex": 8738,
+  "total_sell_share": 0.0032,
   "recent_inbound": [
+    {
+      "chain": "optimism",
+      "block_number": 152247061,
+      "tx_hash": "0x6a9abaca3e572bb7a8b6ac806eb167fb4c9c40ede84fc6f1f98f4ccf863c3178",
+      "from_address": "0x7014350e3abf07e75ce2519b31abcca10c01ecbf",
+      "token_id": "1143714052967"
+    },
     {
       "chain": "optimism",
       "block_number": 152244737,
@@ -260,13 +267,6 @@
       "tx_hash": "0xf07868cd3a0875f515d5d0e5390e5e7fd30838ceead885518e62f2fa963c94b8",
       "from_address": "0xfc0283aaf71ce8967a1a6fd3f546b96e52e90a65",
       "token_id": "1587158883188"
-    },
-    {
-      "chain": "optimism",
-      "block_number": 151244127,
-      "tx_hash": "0xa1d7f2ef4af11eab42d2724d091943bcacd12cd6f7ca7907d4df2820e17c5bc6",
-      "from_address": "0xc6a0ceba27ec16ba6a063c6defc5da555cd925b3",
-      "token_id": "36353959728517909820"
     }
   ]
 }
