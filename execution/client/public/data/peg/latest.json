@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-30T08:14:13Z",
+  "as_of": "2026-05-30T08:28:14Z",
   "reference": {
     "source": "DefiLlama (cross-venue aggregator)",
     "price_usd": 0.6992
@@ -32,16 +32,6 @@
       "depth_usd": 286193,
       "pool_address": "0xbC26519f936A90E78fe2C9aA2A03CC208f041234",
       "volume_24h_usd": 676
-    },
-    {
-      "name": "Uniswap V2 sUSD/WETH",
-      "dex": "uniswap",
-      "chain": "Ethereum",
-      "price_usd": 0.692,
-      "depth_usd": 128265,
-      "pair_kind": "non-stable",
-      "pool_address": "0xf80758aB42C3B07dA84053Fd88804bCB6BAA4b5c",
-      "volume_24h_usd": 882
     },
     {
       "name": "Uniswap V3 sUSD/DAI",
@@ -89,8 +79,18 @@
       "pair_kind": "non-stable",
       "pool_address": "0xF1F85b2C54a2bD284B1cf4141D64fD171Bd85539",
       "volume_24h_usd": 1
+    },
+    {
+      "name": "Uniswap V2 sUSD/WETH",
+      "dex": "uniswap",
+      "chain": "Ethereum",
+      "price_usd": 0.0,
+      "depth_usd": 0,
+      "pair_kind": "non-stable",
+      "pool_address": "0xf80758aB42C3B07dA84053Fd88804bCB6BAA4b5c",
+      "volume_24h_usd": 0
     }
   ],
-  "weighted_avg_price_usd": 0.6952,
-  "depeg_basis_points": -3048
+  "weighted_avg_price_usd": 0.6953,
+  "depeg_basis_points": -3047
 }
