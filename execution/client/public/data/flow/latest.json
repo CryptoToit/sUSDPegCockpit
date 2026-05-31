@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-05-31T02:02:20Z",
-  "total_supply_susd": 52431783,
+  "as_of": "2026-05-31T02:15:14Z",
+  "total_supply_susd": 52381783,
   "nodes": [
     {
       "id": "supply",
       "label": "Total sUSD supply",
-      "value": 52431783
+      "value": 52381783
     },
     {
       "id": "420_jubilee",
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20658050
+      "value": 20607861
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 5002788
+      "value": 5002977
     },
     {
       "id": "treasury",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 283639
+      "value": 283851
     },
     {
       "id": "sushi_susd_weth",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 164088
+      "value": 164065
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20658050
+      "value": 20607861
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 5002788
+      "value": 5002977
     },
     {
       "from": "supply",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 283639
+      "value": 283851
     },
     {
       "from": "dex_liquidity",
@@ -127,22 +127,22 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 164088
+      "value": 164065
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 0,
-    "dex_liquidity": 0,
+    "free": -50189,
+    "dex_liquidity": 189,
     "treasury": 0,
     "slp": 0,
     "curve_susde": 0,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 0,
+    "velo_usdc_susd": 212,
     "sushi_susd_weth": 0,
     "uni_susd_weth": 0,
-    "dex_other": 0
+    "dex_other": -23
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
