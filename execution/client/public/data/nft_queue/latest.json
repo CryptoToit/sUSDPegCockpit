@@ -1,33 +1,33 @@
 {
-  "as_of": "2026-06-01T12:01:40Z",
+  "as_of": "2026-06-01T12:15:47Z",
   "council_wallet": "0xebAC8Fc8752A267A36cE683A867000F69Fd0e73d",
   "sacct_address": "0x0E429603D3Cb1DFae4E6F52Add5fE82d96d77Dac",
   "chains": {
     "ethereum": {
-      "nfts_in_24h": 7,
-      "nfts_in_7d": 46,
+      "nfts_in_24h": 8,
+      "nfts_in_7d": 47,
       "nfts_in_30d": 66,
       "unique_addrs_24h": 3,
       "unique_addrs_7d": 22,
       "unique_addrs_30d": 38
     },
     "optimism": {
-      "nfts_in_24h": 0,
-      "nfts_in_7d": 7,
-      "nfts_in_30d": 30,
-      "unique_addrs_24h": 0,
-      "unique_addrs_7d": 7,
-      "unique_addrs_30d": 30
+      "nfts_in_24h": 1,
+      "nfts_in_7d": 8,
+      "nfts_in_30d": 31,
+      "unique_addrs_24h": 1,
+      "unique_addrs_7d": 8,
+      "unique_addrs_30d": 31
     }
   },
-  "total_nfts_in_24h": 7,
-  "total_nfts_in_7d": 53,
-  "total_nfts_in_30d": 96,
+  "total_nfts_in_24h": 9,
+  "total_nfts_in_7d": 55,
+  "total_nfts_in_30d": 97,
   "custody_count": {
     "ethereum": 139,
-    "optimism": 115
+    "optimism": 116
   },
-  "total_custody_count": 254,
+  "total_custody_count": 255,
   "disbursements": {
     "ethereum": {
       "sUSD": {
@@ -63,22 +63,22 @@
   },
   "valuation": {
     "ethereum": {
-      "estimated_usd": 3924691,
-      "estimated_snx_value_usd": 1371347,
+      "estimated_usd": 3922011,
+      "estimated_snx_value_usd": 1368667,
       "estimated_susd_value_usd": 2553344,
       "sample_n": 90,
-      "snx_price_usd": 0.2864
+      "snx_price_usd": 0.2859
     },
     "optimism": {
-      "estimated_usd": 2188190,
-      "estimated_snx_value_usd": 2188190,
+      "estimated_usd": 2202904,
+      "estimated_snx_value_usd": 2202904,
       "estimated_susd_value_usd": 0,
       "sample_n": 8,
-      "snx_price_usd": 0.2864
+      "snx_price_usd": 0.2859
     }
   },
-  "total_estimated_usd": 6112881,
-  "snx_price_usd": 0.2864,
+  "total_estimated_usd": 6124915,
+  "snx_price_usd": 0.2859,
   "lag": {
     "ethereum": {
       "sample_n": 27,
@@ -89,27 +89,27 @@
     },
     "optimism": {
       "sample_n": 7,
-      "pending_count": 108,
+      "pending_count": 109,
       "median_hours": 327.42,
       "p25_hours": 186.85,
       "p75_hours": 387.65
     }
   },
   "total_lag_sample_n": 34,
-  "total_lag_pending_count": 220,
+  "total_lag_pending_count": 221,
   "weighted_median_lag_hours": 233.72,
   "post_release": {
     "ethereum": {
       "recipients_scanned": 79,
       "snx_received": 3100167.9604,
-      "snx_to_dex": 363.0252,
-      "snx_sell_share": 0.0001,
+      "snx_to_dex": 0.0,
+      "snx_sell_share": 0.0,
       "susd_received": 1653244.27,
-      "susd_to_dex": 555.07,
-      "susd_sell_share": 0.0003,
-      "usd_received": 2541167,
-      "usd_to_dex": 659,
-      "usd_sell_share": 0.0003
+      "susd_to_dex": 2110.4355,
+      "susd_sell_share": 0.0013,
+      "usd_received": 2539432,
+      "usd_to_dex": 2110,
+      "usd_sell_share": 0.0008
     },
     "optimism": {
       "recipients_scanned": 7,
@@ -119,15 +119,22 @@
       "susd_received": 0.0,
       "susd_to_dex": 0.0,
       "susd_sell_share": 0.0,
-      "usd_received": 152222,
+      "usd_received": 151924,
       "usd_to_dex": 0,
       "usd_sell_share": 0.0
     }
   },
-  "total_usd_received": 2693389,
-  "total_usd_to_dex": 659,
-  "total_sell_share": 0.0002,
+  "total_usd_received": 2691356,
+  "total_usd_to_dex": 2110,
+  "total_sell_share": 0.0008,
   "recent_inbound": [
+    {
+      "chain": "optimism",
+      "block_number": 152358264,
+      "tx_hash": "0x54ac74d8553f0872c9842084e0867df796e667cf16cfc822e448344152d3db6f",
+      "from_address": "0x3989634881db165a91dea818d50b79daf5ee4efc",
+      "token_id": "295081333757"
+    },
     {
       "chain": "optimism",
       "block_number": 152308215,
@@ -260,13 +267,6 @@
       "tx_hash": "0x2130ac13b2fae9619f1183ec641ad8e1960320cbf985b53bd3855f2f620f8755",
       "from_address": "0x0ccbd66efd3fbef1c7772411f265e630dc8c6782",
       "token_id": "1824336823191"
-    },
-    {
-      "chain": "optimism",
-      "block_number": 151291757,
-      "tx_hash": "0x67aac3ed6d0043cfe6daa938e2ce592fe80d2f43c003a1513aa5295c06430ba0",
-      "from_address": "0xcd8e9278975e66e5e3e7861d9f44dd159fc4dbb1",
-      "token_id": "1955254962005"
     }
   ]
 }
