@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-02T02:29:31Z",
+  "as_of": "2026-06-02T02:43:58Z",
   "total_supply_susd": 52387282,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20807156
+      "value": 20827812
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 4806711
+      "value": 4786055
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3327364
+      "value": 3306906
     },
     {
       "id": "uni_susd_snx",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 275612
+      "value": 275400
     },
     {
       "id": "uni_susd_weth",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 158379
+      "value": 158393
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20807156
+      "value": 20827812
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 4806711
+      "value": 4786055
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3327364
+      "value": 3306906
     },
     {
       "from": "dex_liquidity",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 275612
+      "value": 275400
     },
     {
       "from": "dex_liquidity",
@@ -127,22 +127,22 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 158379
+      "value": 158393
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 5735,
-    "dex_liquidity": -10736,
+    "free": 20656,
+    "dex_liquidity": -20656,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": -10945,
+    "curve_susde": -20458,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 115,
+    "velo_usdc_susd": -212,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": 94
+    "dex_other": 14
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
