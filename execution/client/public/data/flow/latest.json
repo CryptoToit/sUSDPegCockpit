@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-02T13:43:22Z",
+  "as_of": "2026-06-02T13:57:39Z",
   "total_supply_susd": 52387282,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 20811579
+      "value": 20848960
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 4802288
+      "value": 4764907
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 3333567
+      "value": 3296199
     },
     {
       "id": "uni_susd_snx",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 274296
+      "value": 274283
     },
     {
       "id": "uni_susd_weth",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 20811579
+      "value": 20848960
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 4802288
+      "value": 4764907
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 3333567
+      "value": 3296199
     },
     {
       "from": "dex_liquidity",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 274296
+      "value": 274283
     },
     {
       "from": "dex_liquidity",
@@ -133,16 +133,16 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": -12294,
-    "dex_liquidity": 12294,
+    "free": 37381,
+    "dex_liquidity": -37381,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
-    "uni_susd_snx": 12529,
-    "velo_usdc_susd": -218,
+    "curve_susde": -37368,
+    "uni_susd_snx": 0,
+    "velo_usdc_susd": -13,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": -17
+    "dex_other": 0
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
