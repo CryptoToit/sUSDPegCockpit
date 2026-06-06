@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-06-06T02:29:57Z",
+  "as_of": "2026-06-06T02:44:10Z",
   "windows": {
     "24h": {
       "total": {
-        "sell_susd": 39227,
-        "buy_susd": 33861,
-        "net_susd": -5366
+        "sell_susd": 37330,
+        "buy_susd": 35609,
+        "net_susd": -1721
       },
       "venues": [
         {
@@ -13,10 +13,10 @@
           "dex": "curve",
           "label": "Curve sUSD/sUSDe",
           "chain": "Ethereum",
-          "sell_susd": 20103,
+          "sell_susd": 19937,
           "buy_susd": 14994,
           "attribution_source": "measured",
-          "swap_count": 86,
+          "swap_count": 85,
           "programmatic_susd": 0,
           "organic_susd": 14994
         },
@@ -37,61 +37,61 @@
           "dex": "velodrome",
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
-          "sell_susd": 6751,
-          "buy_susd": 3730,
+          "sell_susd": 6742,
+          "buy_susd": 3739,
           "attribution_source": "measured",
-          "swap_count": 2387,
+          "swap_count": 2370,
           "programmatic_susd": 0,
-          "organic_susd": 3730
+          "organic_susd": 3739
         },
         {
           "id": "uni_susd_weth",
           "dex": "uniswap",
           "label": "Uniswap V2 sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 4854,
-          "buy_susd": 2613,
-          "attribution_source": "illustrative",
-          "swap_count": null,
-          "programmatic_susd": null,
-          "organic_susd": null
+          "sell_susd": 3106,
+          "buy_susd": 4378,
+          "attribution_source": "measured",
+          "swap_count": 36,
+          "programmatic_susd": 0,
+          "organic_susd": 4378
         },
         {
           "id": "sushi_susd_weth",
           "dex": "sushiswap",
           "label": "Sushiswap sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 0,
-          "buy_susd": 32,
-          "attribution_source": "measured",
-          "swap_count": 3,
-          "programmatic_susd": 0,
-          "organic_susd": 32
+          "sell_susd": 26,
+          "buy_susd": 6,
+          "attribution_source": "illustrative",
+          "swap_count": null,
+          "programmatic_susd": null,
+          "organic_susd": null
         }
       ],
       "sell_counter_assets": {
-        "sUSDe": 0.5991,
-        "SNX": 0.2102,
-        "USDC": 0.182,
-        "WETH": 0.0087
+        "sUSDe": 0.5346,
+        "SNX": 0.2015,
+        "USDC": 0.1807,
+        "WETH": 0.0833
       },
       "buy_counter_assets": {
-        "sUSDe": 0.4937,
-        "SNX": 0.3844,
-        "USDC": 0.1163,
-        "WETH": 0.0056
+        "sUSDe": 0.4212,
+        "SNX": 0.3508,
+        "USDC": 0.105,
+        "WETH": 0.123
       },
       "buy_split": {
-        "programmatic_susd": 627,
-        "organic_susd": 33234,
-        "programmatic_share": 0.0185
+        "programmatic_susd": 1,
+        "organic_susd": 35608,
+        "programmatic_share": 0.0
       }
     },
     "7d": {
       "total": {
-        "sell_susd": 229848,
-        "buy_susd": 206973,
-        "net_susd": -22875
+        "sell_susd": 229850,
+        "buy_susd": 206982,
+        "net_susd": -22868
       },
       "venues": [
         {
@@ -123,12 +123,12 @@
           "dex": "velodrome",
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
-          "sell_susd": 30387,
-          "buy_susd": 17123,
+          "sell_susd": 30389,
+          "buy_susd": 17132,
           "attribution_source": "measured",
-          "swap_count": 9387,
+          "swap_count": 9386,
           "programmatic_susd": 0,
-          "organic_susd": 17123
+          "organic_susd": 17132
         },
         {
           "id": "uni_susd_weth",
@@ -164,12 +164,12 @@
       "buy_counter_assets": {
         "sUSDe": 0.4514,
         "SNX": 0.3472,
-        "USDC": 0.0827,
-        "WETH": 0.1187
+        "USDC": 0.0828,
+        "WETH": 0.1186
       },
       "buy_split": {
         "programmatic_susd": 0,
-        "organic_susd": 206973,
+        "organic_susd": 206982,
         "programmatic_share": 0.0
       }
     }
