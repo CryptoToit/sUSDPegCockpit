@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-06-08T02:15:56Z",
-  "total_supply_susd": 52373650,
+  "as_of": "2026-06-08T02:29:21Z",
+  "total_supply_susd": 52423650,
   "nodes": [
     {
       "id": "supply",
       "label": "Total sUSD supply",
-      "value": 52373650
+      "value": 52423650
     },
     {
       "id": "420_jubilee",
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 21796897
+      "value": 21846936
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 4011704
+      "value": 4011665
     },
     {
       "id": "treasury",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 225356
+      "value": 225341
     },
     {
       "id": "sushi_susd_weth",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 130210
+      "value": 130186
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 21796897
+      "value": 21846936
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 4011704
+      "value": 4011665
     },
     {
       "from": "supply",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 225356
+      "value": 225341
     },
     {
       "from": "dex_liquidity",
@@ -127,22 +127,22 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 130210
+      "value": 130186
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": -20,
-    "dex_liquidity": 20,
+    "free": 50039,
+    "dex_liquidity": -39,
     "treasury": 0,
     "slp": 0,
     "curve_susde": 0,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 16,
+    "velo_usdc_susd": -15,
     "sushi_susd_weth": 0,
     "uni_susd_weth": 0,
-    "dex_other": 4
+    "dex_other": -24
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
