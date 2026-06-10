@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-10T12:15:56Z",
+  "as_of": "2026-06-10T12:30:13Z",
   "total_supply_susd": 52403458,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 21842640
+      "value": 21845568
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 3987825
+      "value": 3984897
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 2685116
+      "value": 2673089
     },
     {
       "id": "uni_susd_snx",
@@ -64,8 +64,8 @@
     },
     {
       "id": "dex_other",
-      "label": "Other DEX (3 pools)",
-      "value": 119813
+      "label": "Other DEX (4 pools)",
+      "value": 128912
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 21842640
+      "value": 21845568
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 3987825
+      "value": 3984897
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 2685116
+      "value": 2673089
     },
     {
       "from": "dex_liquidity",
@@ -127,28 +127,29 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 119813
+      "value": 128912
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 151,
-    "dex_liquidity": -151,
+    "free": 2928,
+    "dex_liquidity": -2928,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 0,
-    "uni_susd_snx": 5,
-    "velo_usdc_susd": -156,
+    "curve_susde": -12027,
+    "uni_susd_snx": 0,
+    "velo_usdc_susd": 0,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": 0
+    "dex_other": 9099
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
   "dex_other_pools": [
     "Uniswap V3 sUSD/DAI",
     "Curve sUSD/3CRV",
+    "Curve sUSD/crvUSD",
     "Uniswap V3 WETH/sUSD"
   ]
 }
