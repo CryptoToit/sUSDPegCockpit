@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-10T05:29:36Z",
+  "as_of": "2026-06-10T05:43:30Z",
   "total_supply_susd": 52403458,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 21837895
+      "value": 21837602
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 3992570
+      "value": 3992863
     },
     {
       "id": "treasury",
@@ -45,7 +45,7 @@
     {
       "id": "uni_susd_snx",
       "label": "Uniswap V3 sUSD/SNX",
-      "value": 862620
+      "value": 862913
     },
     {
       "id": "velo_usdc_susd",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 21837895
+      "value": 21837602
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 3992570
+      "value": 3992863
     },
     {
       "from": "supply",
@@ -107,7 +107,7 @@
     {
       "from": "dex_liquidity",
       "to": "uni_susd_snx",
-      "value": 862620
+      "value": 862913
     },
     {
       "from": "dex_liquidity",
@@ -133,16 +133,16 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 146,
-    "dex_liquidity": -146,
+    "free": -293,
+    "dex_liquidity": 293,
     "treasury": 0,
     "slp": 0,
     "curve_susde": 0,
-    "uni_susd_snx": 0,
-    "velo_usdc_susd": -107,
+    "uni_susd_snx": 293,
+    "velo_usdc_susd": 0,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": -39
+    "dex_other": 0
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
