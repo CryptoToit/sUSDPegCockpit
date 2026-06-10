@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-10T17:15:27Z",
+  "as_of": "2026-06-10T17:29:53Z",
   "total_supply_susd": 52403458,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 21860524
+      "value": 21861446
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 3969941
+      "value": 3969019
     },
     {
       "id": "treasury",
@@ -55,17 +55,17 @@
     {
       "id": "uni_susd_weth",
       "label": "Uniswap V2 sUSD/WETH",
-      "value": 102882
+      "value": 101964
     },
     {
       "id": "sushi_susd_weth",
       "label": "Sushiswap sUSD/WETH",
-      "value": 2561
+      "value": 2570
     },
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 129092
+      "value": 129079
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 21860524
+      "value": 21861446
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 3969941
+      "value": 3969019
     },
     {
       "from": "supply",
@@ -117,32 +117,32 @@
     {
       "from": "dex_liquidity",
       "to": "uni_susd_weth",
-      "value": 102882
+      "value": 101964
     },
     {
       "from": "dex_liquidity",
       "to": "sushi_susd_weth",
-      "value": 2561
+      "value": 2570
     },
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 129092
+      "value": 129079
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": 2367,
-    "dex_liquidity": -2367,
+    "free": 922,
+    "dex_liquidity": -922,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": -2435,
+    "curve_susde": 0,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 4,
-    "uni_susd_weth": 0,
-    "sushi_susd_weth": 0,
-    "dex_other": 64
+    "velo_usdc_susd": 0,
+    "uni_susd_weth": -918,
+    "sushi_susd_weth": 9,
+    "dex_other": -13
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
