@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-10T18:43:22Z",
+  "as_of": "2026-06-10T18:57:38Z",
   "total_supply_susd": 52403458,
   "nodes": [
     {
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 21856079
+      "value": 21882392
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 3974386
+      "value": 3948073
     },
     {
       "id": "treasury",
@@ -40,7 +40,7 @@
     {
       "id": "curve_susde",
       "label": "Curve sUSD/sUSDe",
-      "value": 2667520
+      "value": 2641419
     },
     {
       "id": "uni_susd_snx",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 218126
+      "value": 217914
     },
     {
       "id": "uni_susd_weth",
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 21856079
+      "value": 21882392
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 3974386
+      "value": 3948073
     },
     {
       "from": "supply",
@@ -102,7 +102,7 @@
     {
       "from": "dex_liquidity",
       "to": "curve_susde",
-      "value": 2667520
+      "value": 2641419
     },
     {
       "from": "dex_liquidity",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 218126
+      "value": 217914
     },
     {
       "from": "dex_liquidity",
@@ -133,16 +133,16 @@
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": -15330,
-    "dex_liquidity": 15330,
+    "free": 26313,
+    "dex_liquidity": -26313,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 15600,
+    "curve_susde": -26101,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 22,
-    "uni_susd_weth": -310,
+    "velo_usdc_susd": -212,
+    "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": 18
+    "dex_other": 0
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
