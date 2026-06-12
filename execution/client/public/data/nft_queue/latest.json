@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-12T12:43:43Z",
+  "as_of": "2026-06-12T12:57:32Z",
   "council_wallet": "0xebAC8Fc8752A267A36cE683A867000F69Fd0e73d",
   "sacct_address": "0x0E429603D3Cb1DFae4E6F52Add5fE82d96d77Dac",
   "chains": {
@@ -12,22 +12,22 @@
       "unique_addrs_30d": 68
     },
     "optimism": {
-      "nfts_in_24h": 4,
-      "nfts_in_7d": 9,
-      "nfts_in_30d": 34,
-      "unique_addrs_24h": 2,
-      "unique_addrs_7d": 7,
-      "unique_addrs_30d": 32
+      "nfts_in_24h": 5,
+      "nfts_in_7d": 10,
+      "nfts_in_30d": 35,
+      "unique_addrs_24h": 3,
+      "unique_addrs_7d": 8,
+      "unique_addrs_30d": 33
     }
   },
-  "total_nfts_in_24h": 8,
-  "total_nfts_in_7d": 42,
-  "total_nfts_in_30d": 148,
+  "total_nfts_in_24h": 9,
+  "total_nfts_in_7d": 43,
+  "total_nfts_in_30d": 149,
   "custody_count": {
     "ethereum": 202,
-    "optimism": 133
+    "optimism": 134
   },
-  "total_custody_count": 335,
+  "total_custody_count": 336,
   "disbursements": {
     "ethereum": {
       "sUSD": {
@@ -70,14 +70,14 @@
       "snx_price_usd": 0.2456
     },
     "optimism": {
-      "estimated_usd": 2169894,
-      "estimated_snx_value_usd": 2169894,
+      "estimated_usd": 2186209,
+      "estimated_snx_value_usd": 2186209,
       "estimated_susd_value_usd": 0,
       "sample_n": 8,
       "snx_price_usd": 0.2456
     }
   },
-  "total_estimated_usd": 6434043,
+  "total_estimated_usd": 6450358,
   "snx_price_usd": 0.2456,
   "lag": {
     "ethereum": {
@@ -89,27 +89,27 @@
     },
     "optimism": {
       "sample_n": 7,
-      "pending_count": 126,
+      "pending_count": 127,
       "median_hours": 327.42,
       "p25_hours": 186.85,
       "p75_hours": 387.65
     }
   },
   "total_lag_sample_n": 53,
-  "total_lag_pending_count": 282,
+  "total_lag_pending_count": 283,
   "weighted_median_lag_hours": 291.9,
   "post_release": {
     "ethereum": {
       "recipients_scanned": 106,
       "snx_received": 3410867.8661,
-      "snx_to_dex": 363.0252,
-      "snx_sell_share": 0.0001,
+      "snx_to_dex": 0.0,
+      "snx_sell_share": 0.0,
       "susd_received": 1864400.9,
-      "susd_to_dex": 2110.4355,
-      "susd_sell_share": 0.0011,
+      "susd_to_dex": 10083.9255,
+      "susd_sell_share": 0.0054,
       "usd_received": 2702035,
-      "usd_to_dex": 2200,
-      "usd_sell_share": 0.0008
+      "usd_to_dex": 10084,
+      "usd_sell_share": 0.0037
     },
     "optimism": {
       "recipients_scanned": 7,
@@ -125,9 +125,16 @@
     }
   },
   "total_usd_received": 2832555,
-  "total_usd_to_dex": 2200,
-  "total_sell_share": 0.0008,
+  "total_usd_to_dex": 10084,
+  "total_sell_share": 0.0036,
   "recent_inbound": [
+    {
+      "chain": "optimism",
+      "block_number": 152835091,
+      "tx_hash": "0xa6a75712279fa02e3abd7c10e427506c9a288f32bf6c703de4cbfd6f9c4e0ec0",
+      "from_address": "0xa1ca76ee286c011b074abae70b4df768b16a671d",
+      "token_id": "1849858245349"
+    },
     {
       "chain": "optimism",
       "block_number": 152799858,
@@ -260,13 +267,6 @@
       "tx_hash": "0x5a3b5e5398acc73e7702d530bb55c3819caac82c1623e6a794dd9d833a02b72b",
       "from_address": "0x7e1e1c5ac70038a9718431c92a618f01f8dada18",
       "token_id": "1293928836213"
-    },
-    {
-      "chain": "optimism",
-      "block_number": 152306202,
-      "tx_hash": "0x91f5eee7e81efd8ccd1e9558152e996fae2c63251caf595395f4ac5e8f42fcec",
-      "from_address": "0xf7b0af4120b22dfa8f2b22a43ca78d610502598d",
-      "token_id": "1220622544439"
     }
   ]
 }
