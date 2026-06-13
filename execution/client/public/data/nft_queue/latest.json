@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-13T19:29:28Z",
+  "as_of": "2026-06-13T19:43:58Z",
   "council_wallet": "0xebAC8Fc8752A267A36cE683A867000F69Fd0e73d",
   "sacct_address": "0x0E429603D3Cb1DFae4E6F52Add5fE82d96d77Dac",
   "chains": {
@@ -13,21 +13,21 @@
     },
     "optimism": {
       "nfts_in_24h": 0,
-      "nfts_in_7d": 10,
-      "nfts_in_30d": 36,
+      "nfts_in_7d": 0,
+      "nfts_in_30d": 0,
       "unique_addrs_24h": 0,
-      "unique_addrs_7d": 8,
-      "unique_addrs_30d": 34
+      "unique_addrs_7d": 0,
+      "unique_addrs_30d": 0
     }
   },
   "total_nfts_in_24h": 1,
-  "total_nfts_in_7d": 47,
-  "total_nfts_in_30d": 157,
+  "total_nfts_in_7d": 37,
+  "total_nfts_in_30d": 121,
   "custody_count": {
     "ethereum": 209,
-    "optimism": 135
+    "optimism": 0
   },
-  "total_custody_count": 344,
+  "total_custody_count": 209,
   "disbursements": {
     "ethereum": {
       "sUSD": {
@@ -49,17 +49,7 @@
         "p75": 28074.5183
       }
     },
-    "optimism": {
-      "SNX": {
-        "count": 8,
-        "unique_recipients": 7,
-        "total": 531480.5616,
-        "mean": 66435.0702,
-        "median": 20177.9171,
-        "p25": 4865.8221,
-        "p75": 91713.5642
-      }
-    }
+    "optimism": {}
   },
   "valuation": {
     "ethereum": {
@@ -70,14 +60,14 @@
       "snx_price_usd": 0.2417
     },
     "optimism": {
-      "estimated_usd": 2168031,
-      "estimated_snx_value_usd": 2168031,
+      "estimated_usd": 0,
+      "estimated_snx_value_usd": 0,
       "estimated_susd_value_usd": 0,
-      "sample_n": 8,
+      "sample_n": 0,
       "snx_price_usd": 0.2417
     }
   },
-  "total_estimated_usd": 6558528,
+  "total_estimated_usd": 4390497,
   "snx_price_usd": 0.2417,
   "lag": {
     "ethereum": {
@@ -88,185 +78,185 @@
       "p75_hours": 553.16
     },
     "optimism": {
-      "sample_n": 7,
-      "pending_count": 128,
-      "median_hours": 327.42,
-      "p25_hours": 186.85,
-      "p75_hours": 387.65
+      "sample_n": 0,
+      "pending_count": 135,
+      "median_hours": 0.0,
+      "p25_hours": 0.0,
+      "p75_hours": 0.0
     }
   },
-  "total_lag_sample_n": 53,
-  "total_lag_pending_count": 291,
-  "weighted_median_lag_hours": 291.9,
+  "total_lag_sample_n": 46,
+  "total_lag_pending_count": 298,
+  "weighted_median_lag_hours": 286.49,
   "post_release": {
     "ethereum": {
       "recipients_scanned": 106,
       "snx_received": 3410867.8661,
-      "snx_to_dex": 363.0252,
-      "snx_sell_share": 0.0001,
+      "snx_to_dex": 0.0,
+      "snx_sell_share": 0.0,
       "susd_received": 1864400.9,
-      "susd_to_dex": 555.07,
-      "susd_sell_share": 0.0003,
+      "susd_to_dex": 10653.3611,
+      "susd_sell_share": 0.0057,
       "usd_received": 2688917,
-      "usd_to_dex": 643,
-      "usd_sell_share": 0.0002
+      "usd_to_dex": 10653,
+      "usd_sell_share": 0.004
     },
     "optimism": {
-      "recipients_scanned": 7,
-      "snx_received": 531480.5616,
+      "recipients_scanned": 0,
+      "snx_received": 0.0,
       "snx_to_dex": 0.0,
       "snx_sell_share": 0.0,
       "susd_received": 0.0,
       "susd_to_dex": 0.0,
       "susd_sell_share": 0.0,
-      "usd_received": 128476,
+      "usd_received": 0,
       "usd_to_dex": 0,
       "usd_sell_share": 0.0
     }
   },
-  "total_usd_received": 2817393,
-  "total_usd_to_dex": 643,
-  "total_sell_share": 0.0002,
+  "total_usd_received": 2688917,
+  "total_usd_to_dex": 10653,
+  "total_sell_share": 0.004,
   "recent_inbound": [
     {
-      "chain": "optimism",
-      "block_number": 152837274,
-      "tx_hash": "0xbfc225bb36ccc14e6ea01fa74fb8ebb0fb0324b316a070cebb0538e31f256740",
-      "from_address": "0xe357b511804f52e5ad27e8a8e09f4884e893bf99",
-      "token_id": "1016330014519"
+      "chain": "ethereum",
+      "block_number": 25307183,
+      "tx_hash": "0x91cde153cde9f6e2fa5cb5e120e10bd53ba51ed42ae0031c2f52d347d5afa9b6",
+      "from_address": "0xb97e1a86a0c2d2f6aeecbfe61487b7f29bd13f44",
+      "token_id": "447719528593"
     },
     {
-      "chain": "optimism",
-      "block_number": 152835091,
-      "tx_hash": "0xa6a75712279fa02e3abd7c10e427506c9a288f32bf6c703de4cbfd6f9c4e0ec0",
-      "from_address": "0xa1ca76ee286c011b074abae70b4df768b16a671d",
-      "token_id": "1849858245349"
+      "chain": "ethereum",
+      "block_number": 25302405,
+      "tx_hash": "0xd66fee9e2be09a86d99a45a152957053acb1c2728b4de70701534e3bd45e749c",
+      "from_address": "0x686b0f0e015ba6345de7e5b54949ee903aad4521",
+      "token_id": "170141183460469231731687303715884106807"
     },
     {
-      "chain": "optimism",
-      "block_number": 152799858,
-      "tx_hash": "0xc4e7fc8b569210307a4ea6c3c8d57fae8c6b24ec7e3d72a6b1984f176d1eac70",
-      "from_address": "0xd435dcd0a686e361ba561755a2db2f1e19066502",
-      "token_id": "1275784375968"
+      "chain": "ethereum",
+      "block_number": 25302399,
+      "tx_hash": "0x31b7b25c6b835297e61ee04fb110b6ad7f90c99ce10ead8a51ebadf0a5ded50a",
+      "from_address": "0x686b0f0e015ba6345de7e5b54949ee903aad4521",
+      "token_id": "170141183460469231731687303715884106631"
     },
     {
-      "chain": "optimism",
-      "block_number": 152795733,
-      "tx_hash": "0x07616ba43c259b80b6644d0cfb67f6f66821e8ef75af9d18043ac051cdc6a67c",
-      "from_address": "0xc290067ef915116e31ce171097d4697da36c8c43",
-      "token_id": "1717031126827"
+      "chain": "ethereum",
+      "block_number": 25302372,
+      "tx_hash": "0x6e5311e7567c04ccad6dc9168ab3dceec96f7542b38fcb8bf8b41a2137f01b69",
+      "from_address": "0x686b0f0e015ba6345de7e5b54949ee903aad4521",
+      "token_id": "170141183460469231731687303715884106577"
     },
     {
-      "chain": "optimism",
-      "block_number": 152795721,
-      "tx_hash": "0x8353fd8280edf7c4e50abecec021340e6a5b32fe99ba9ef09aee2e02cea3f334",
-      "from_address": "0xc290067ef915116e31ce171097d4697da36c8c43",
-      "token_id": "1552409149956"
+      "chain": "ethereum",
+      "block_number": 25302365,
+      "tx_hash": "0x5c956af2edf1cf9d41bebc345c977e0b7e9ad5571c66d0dbcfc2f98a81cfbdb7",
+      "from_address": "0x686b0f0e015ba6345de7e5b54949ee903aad4521",
+      "token_id": "170141183460469231731687303715884106397"
     },
     {
-      "chain": "optimism",
-      "block_number": 152795669,
-      "tx_hash": "0x171cdb40c66b84525b2e19fd057a82e78c7b39e10b158d18426822324e22116b",
-      "from_address": "0xc290067ef915116e31ce171097d4697da36c8c43",
-      "token_id": "1107455464342"
+      "chain": "ethereum",
+      "block_number": 25302350,
+      "tx_hash": "0xd548cae5e484d2ed5653ec2f29ecb842ef9346a41b7207f3027f8be3fbceb0bb",
+      "from_address": "0x686b0f0e015ba6345de7e5b54949ee903aad4521",
+      "token_id": "170141183460469231731687303715884106396"
     },
     {
-      "chain": "optimism",
-      "block_number": 152720059,
-      "tx_hash": "0x27235b7f1a8c5309f766901ab92aa629417b1fb022c1dec82852ec5a8e14453f",
-      "from_address": "0x5be66fe7e6bfffa5af7d9f9a3b49ae7c50ca54df",
-      "token_id": "1234834375729"
+      "chain": "ethereum",
+      "block_number": 25302315,
+      "tx_hash": "0x1fefc096b9f65039f67e88a327a1977b3e0d47c94a000bfab5f4ec418f6abfb9",
+      "from_address": "0x686b0f0e015ba6345de7e5b54949ee903aad4521",
+      "token_id": "170141183460469231731687303715884106394"
     },
     {
-      "chain": "optimism",
-      "block_number": 152699926,
-      "tx_hash": "0x698f371f90d4a10d38676337dac26fd3bd6a21dbf3cdee14e1927a94b3213548",
-      "from_address": "0x4d3db4516a7e0ba33ab6e708f663c03c2d56e6da",
-      "token_id": "66971522504"
+      "chain": "ethereum",
+      "block_number": 25300765,
+      "tx_hash": "0x9537419f8558f1c29f708ce89b69c83a758c4821316d107f293398ef86a7c57c",
+      "from_address": "0xfaeac9565ed43357022dae6be04f90716bffe7ea",
+      "token_id": "170141183460469231731687303715884106132"
     },
     {
-      "chain": "optimism",
-      "block_number": 152616997,
-      "tx_hash": "0x12577a9585e9f0230a1ca93c49fccb6e4f153ae30e4736797c9a535c0bfeaf8c",
-      "from_address": "0x1f692434101f4e4a95e9a525177a7e7ec60dcba6",
-      "token_id": "1019186919433"
+      "chain": "ethereum",
+      "block_number": 25296463,
+      "tx_hash": "0x98a0d349896244c68d02f6bf82e95f44ec6ad46f8079c6524505c41e1e74ac59",
+      "from_address": "0x69cd4abd687ab23e2f95f0a065cd9ad211a58713",
+      "token_id": "170141183460469231731687303715884106113"
     },
     {
-      "chain": "optimism",
-      "block_number": 152615237,
-      "tx_hash": "0x5b1bca6a944f762d11327c0ec62f4bd55e475760695b394b210d0c375bfac19e",
-      "from_address": "0x7b0507e0b2feb81b3fd618ac13e85c3f1980738a",
-      "token_id": "1648996128403"
+      "chain": "ethereum",
+      "block_number": 25296456,
+      "tx_hash": "0x85fa569778da244ee9d0e87b71376fa08ff6c3ba43bf40d14ec3aeb1891e912a",
+      "from_address": "0x69cd4abd687ab23e2f95f0a065cd9ad211a58713",
+      "token_id": "170141183460469231731687303715884106060"
     },
     {
-      "chain": "optimism",
-      "block_number": 152559470,
-      "tx_hash": "0x501bd4d37762db8fe207002f30f4a54ddf0301a4ea357ede11ed7c150d989877",
-      "from_address": "0xe1e7106a790017185eca0731301bfb7c571af7c1",
-      "token_id": "1955342014103"
+      "chain": "ethereum",
+      "block_number": 25295940,
+      "tx_hash": "0x3985e7f90d73c2bf0f7ba4f4b14ebf1b3fa85fd33e01355b616fc22207a71fe9",
+      "from_address": "0x3128f660df663728274261353c93c3f2783e4efd",
+      "token_id": "170141183460469231731687303715884106115"
     },
     {
-      "chain": "optimism",
-      "block_number": 152527484,
-      "tx_hash": "0xebc320c4cc2bc6a555d207b5d452909efe3fe211634c5d8eb6a4698babf32d5e",
-      "from_address": "0x5a180f87ab7e30322508b778a04b5e968ee993e7",
-      "token_id": "1515776652214"
+      "chain": "ethereum",
+      "block_number": 25293301,
+      "tx_hash": "0x0bb4ecc67904f60d0442236caad0ee6d9f020af4810074ba25d5666246fa0814",
+      "from_address": "0xb893bee0e82cca3eacd71dc4eb3845500fda752e",
+      "token_id": "170141183460469231731687303715884106058"
     },
     {
-      "chain": "optimism",
-      "block_number": 152500299,
-      "tx_hash": "0x48fcc9cbf1b031c1c0616e1ca7056d577e0323d7b643bab729a2345d71ac3158",
-      "from_address": "0x9c2ce1e7e220ab4b7ea3e8f52d93b752cb2492f3",
-      "token_id": "1340403154439"
+      "chain": "ethereum",
+      "block_number": 25293291,
+      "tx_hash": "0x1ab28c70abf9c251d3d70e1ac96972375702a48891c22003366e985c6de20955",
+      "from_address": "0x177b13f1bf13dba858dc633e4f6b525144b02ee7",
+      "token_id": "170141183460469231731687303715884106372"
     },
     {
-      "chain": "optimism",
-      "block_number": 152500060,
-      "tx_hash": "0xec01704a3e4ce19bf10c1899b24ea3228982300854473762c46f501fb7f907ad",
-      "from_address": "0xa9bbc7693b47116220b3d5d0cdf85fa2c801be3d",
-      "token_id": "1469279408119"
+      "chain": "ethereum",
+      "block_number": 25293288,
+      "tx_hash": "0xa825ebfa825cce046fa073c6cddd6c11b651a429656a6b4491590618551c9792",
+      "from_address": "0x177b13f1bf13dba858dc633e4f6b525144b02ee7",
+      "token_id": "170141183460469231731687303715884106074"
     },
     {
-      "chain": "optimism",
-      "block_number": 152487666,
-      "tx_hash": "0x4fb428cfb6fe8cfed282a74ff0d8175614037eb85a8adcd4a40fbcc038253b6d",
-      "from_address": "0x9bb0819842d82e6f4436bbd2e2f7d1910929a882",
-      "token_id": "1191081968549"
+      "chain": "ethereum",
+      "block_number": 25291972,
+      "tx_hash": "0xffb21c4333d117f4a5a80ff8b3891204747ccfb1e41b7aeec935d11298084e3c",
+      "from_address": "0x196d44adcdf5083a1effd9a8922683fcfc110f5e",
+      "token_id": "170141183460469231731687303715884107045"
     },
     {
-      "chain": "optimism",
-      "block_number": 152453893,
-      "tx_hash": "0x8f79fa66bc2e3851a14c5fbf4e0865229856a09ef39ccc58d995b54197a1868d",
-      "from_address": "0xb98bd08341ea110088d2bce3ca09ac9ad18290cf",
-      "token_id": "1980470466396"
+      "chain": "ethereum",
+      "block_number": 25291969,
+      "tx_hash": "0xcbda030047714396c192f953eede3d438eb2f5823785a7a24baddf9f50247fb6",
+      "from_address": "0x196d44adcdf5083a1effd9a8922683fcfc110f5e",
+      "token_id": "170141183460469231731687303715884106487"
     },
     {
-      "chain": "optimism",
-      "block_number": 152448442,
-      "tx_hash": "0x9662a0aa170fe2b613adadae784a39e45e3cbefe417ad0f2d1b3ca348a890615",
-      "from_address": "0x48c7e0db3dad3fe4eb0513b86fe5c38ebb4e0f91",
-      "token_id": "1154413265556"
+      "chain": "ethereum",
+      "block_number": 25289622,
+      "tx_hash": "0x499c0d71572f55cc53202c95bfbfc5af6d927ee4b1292a55d7eeed0c1ae95f54",
+      "from_address": "0xae0ce9ceea3994c632343c764466bdac828b5e16",
+      "token_id": "170141183460469231731687303715884106124"
     },
     {
-      "chain": "optimism",
-      "block_number": 152447141,
-      "tx_hash": "0x2836b14b9260bf76f7fc36bc3415f013491f4ec0127eb86511897d2fe75281e1",
-      "from_address": "0x6f7b5ab424eae43be8f751ec7f6358e831ca3fff",
-      "token_id": "21657843976384177763"
+      "chain": "ethereum",
+      "block_number": 25289608,
+      "tx_hash": "0x5fbd3e31fd46ce4ddd5e578d8816310d55d7f83948c3d002f1a364a5f31ee19d",
+      "from_address": "0xae0ce9ceea3994c632343c764466bdac828b5e16",
+      "token_id": "170141183460469231731687303715884106123"
     },
     {
-      "chain": "optimism",
-      "block_number": 152365310,
-      "tx_hash": "0x9adb220b76ab32f0f4c6c55689287bf7af37adc108d238af60c6ce44ab7cff90",
-      "from_address": "0x409c6c5ec5c479673f4c09fb80d0f182fcff643e",
-      "token_id": "1591545800327"
+      "chain": "ethereum",
+      "block_number": 25287207,
+      "tx_hash": "0xa5b6340392be2791cd1aa555b478e2035713dce5091d7f8b0e839505774076f5",
+      "from_address": "0x17dd2262070bacc1e30fa346bbc9f02e5855eece",
+      "token_id": "170141183460469231731687303715884105997"
     },
     {
-      "chain": "optimism",
-      "block_number": 152358264,
-      "tx_hash": "0x54ac74d8553f0872c9842084e0867df796e667cf16cfc822e448344152d3db6f",
-      "from_address": "0x3989634881db165a91dea818d50b79daf5ee4efc",
-      "token_id": "295081333757"
+      "chain": "ethereum",
+      "block_number": 25286349,
+      "tx_hash": "0x4599bd802f37b77e9ec5b7ec4f083be2dbf88e014af23b386e0566aaf6c72c10",
+      "from_address": "0xa9c7b5f93477ec33f4a24added4a8b9124e6d7ca",
+      "token_id": "170141183460469231731687303715884107046"
     }
   ]
 }
