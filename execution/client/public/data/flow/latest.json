@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-06-17T02:15:31Z",
-  "total_supply_susd": 52442382,
+  "as_of": "2026-06-17T02:29:39Z",
+  "total_supply_susd": 52437242,
   "nodes": [
     {
       "id": "supply",
       "label": "Total sUSD supply",
-      "value": 52442382
+      "value": 52437242
     },
     {
       "id": "420_jubilee",
@@ -20,12 +20,12 @@
     {
       "id": "free",
       "label": "Free-floating EOAs (CEX <0.3%)",
-      "value": 23241774
+      "value": 23236639
     },
     {
       "id": "dex_liquidity",
       "label": "DEX Liquidity",
-      "value": 2620481
+      "value": 2620476
     },
     {
       "id": "treasury",
@@ -50,7 +50,7 @@
     {
       "id": "velo_usdc_susd",
       "label": "Velodrome V2 USDC/sUSD",
-      "value": 147847
+      "value": 147819
     },
     {
       "id": "uni_susd_weth",
@@ -65,7 +65,7 @@
     {
       "id": "dex_other",
       "label": "Other DEX (4 pools)",
-      "value": 84679
+      "value": 84702
     }
   ],
   "edges": [
@@ -82,12 +82,12 @@
     {
       "from": "supply",
       "to": "free",
-      "value": 23241774
+      "value": 23236639
     },
     {
       "from": "supply",
       "to": "dex_liquidity",
-      "value": 2620481
+      "value": 2620476
     },
     {
       "from": "supply",
@@ -112,7 +112,7 @@
     {
       "from": "dex_liquidity",
       "to": "velo_usdc_susd",
-      "value": 147847
+      "value": 147819
     },
     {
       "from": "dex_liquidity",
@@ -127,22 +127,22 @@
     {
       "from": "dex_liquidity",
       "to": "dex_other",
-      "value": 84679
+      "value": 84702
     }
   ],
   "delta_24h": {
     "420_jubilee": 0,
     "infinex": 0,
-    "free": -1607,
-    "dex_liquidity": 1607,
+    "free": -5135,
+    "dex_liquidity": -5,
     "treasury": 0,
     "slp": 0,
-    "curve_susde": 1591,
+    "curve_susde": 0,
     "uni_susd_snx": 0,
-    "velo_usdc_susd": 16,
+    "velo_usdc_susd": -28,
     "uni_susd_weth": 0,
     "sushi_susd_weth": 0,
-    "dex_other": 0
+    "dex_other": 23
   },
   "infinex_source": "dune",
   "treasury_address": "0xFa1DF09D8d09D6E8FAB2a6C4712fEa02ce203e99",
