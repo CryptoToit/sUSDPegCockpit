@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-06-17T10:15:55Z",
+  "as_of": "2026-06-17T10:44:27Z",
   "windows": {
     "24h": {
       "total": {
-        "sell_susd": 40960,
-        "buy_susd": 29836,
-        "net_susd": -11124
+        "sell_susd": 35643,
+        "buy_susd": 29381,
+        "net_susd": -6262
       },
       "venues": [
         {
@@ -13,22 +13,22 @@
           "dex": "curve",
           "label": "Curve sUSD/sUSDe",
           "chain": "Ethereum",
-          "sell_susd": 17831,
-          "buy_susd": 15997,
+          "sell_susd": 16907,
+          "buy_susd": 15790,
           "attribution_source": "measured",
-          "swap_count": 120,
+          "swap_count": 112,
           "programmatic_susd": 0,
-          "organic_susd": 15997
+          "organic_susd": 15790
         },
         {
           "id": "uni_susd_snx",
           "dex": "uniswap",
           "label": "Uniswap V3 sUSD/SNX",
           "chain": "Ethereum",
-          "sell_susd": 14584,
+          "sell_susd": 11249,
           "buy_susd": 7342,
           "attribution_source": "measured",
-          "swap_count": 55,
+          "swap_count": 51,
           "programmatic_susd": 0,
           "organic_susd": 7342
         },
@@ -37,61 +37,61 @@
           "dex": "velodrome",
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
-          "sell_susd": 1437,
-          "buy_susd": 496,
+          "sell_susd": 990,
+          "buy_susd": 369,
           "attribution_source": "measured",
-          "swap_count": 630,
+          "swap_count": 601,
           "programmatic_susd": 0,
-          "organic_susd": 496
+          "organic_susd": 369
         },
         {
           "id": "uni_susd_weth",
           "dex": "uniswap",
           "label": "Uniswap V2 sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 7025,
-          "buy_susd": 5945,
+          "sell_susd": 6422,
+          "buy_susd": 5824,
           "attribution_source": "measured",
-          "swap_count": 118,
+          "swap_count": 110,
           "programmatic_susd": 0,
-          "organic_susd": 5945
+          "organic_susd": 5824
         },
         {
           "id": "sushi_susd_weth",
           "dex": "sushiswap",
           "label": "Sushiswap sUSD/WETH",
           "chain": "Ethereum",
-          "sell_susd": 83,
+          "sell_susd": 75,
           "buy_susd": 56,
           "attribution_source": "measured",
-          "swap_count": 15,
+          "swap_count": 14,
           "programmatic_susd": 0,
           "organic_susd": 56
         }
       ],
       "sell_counter_assets": {
-        "sUSDe": 0.4353,
-        "SNX": 0.3561,
-        "USDC": 0.0351,
-        "WETH": 0.1735
+        "sUSDe": 0.4743,
+        "SNX": 0.3156,
+        "USDC": 0.0278,
+        "WETH": 0.1823
       },
       "buy_counter_assets": {
-        "sUSDe": 0.5362,
-        "SNX": 0.2461,
-        "USDC": 0.0166,
-        "WETH": 0.2011
+        "sUSDe": 0.5374,
+        "SNX": 0.2499,
+        "USDC": 0.0126,
+        "WETH": 0.2001
       },
       "buy_split": {
         "programmatic_susd": 0,
-        "organic_susd": 29836,
+        "organic_susd": 29381,
         "programmatic_share": 0.0
       }
     },
     "7d": {
       "total": {
         "sell_susd": 452937,
-        "buy_susd": 333858,
-        "net_susd": -119079
+        "buy_susd": 333857,
+        "net_susd": -119080
       },
       "venues": [
         {
@@ -124,11 +124,11 @@
           "label": "Velodrome V2 USDC/sUSD",
           "chain": "Optimism",
           "sell_susd": 45874,
-          "buy_susd": 31022,
+          "buy_susd": 31021,
           "attribution_source": "measured",
-          "swap_count": 7717,
+          "swap_count": 7707,
           "programmatic_susd": 0,
-          "organic_susd": 31022
+          "organic_susd": 31021
         },
         {
           "id": "uni_susd_weth",
@@ -169,7 +169,7 @@
       },
       "buy_split": {
         "programmatic_susd": 0,
-        "organic_susd": 333858,
+        "organic_susd": 333857,
         "programmatic_share": 0.0
       }
     }
