@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-19T00:58:36Z",
+  "as_of": "2026-06-19T01:02:39Z",
   "venues": [
     {
       "id": "infinex",
@@ -26,7 +26,7 @@
       "apr_pct_implied": 231.2,
       "lock": "none",
       "summary": "231.2% gross to $1.00 · 12mo annualisation",
-      "risk_note": "Buy at the current depeg price ($0.3020) and hold until peg restores to $1.00. Gross gain = 231.2%, annualised over a 12-month horizon for the displayed APR. Real APR depends on actual time-to-peg — could be faster (SLP launch + supply absorption could pull peg up) or slower (peg may stall / deteriorate). Capital is at risk if peg never recovers.",
+      "risk_note": "Buy at the current depeg price ($0.3019) and hold until peg restores to $1.00. Gross gain = 231.2%, annualised over a 12-month horizon for the displayed APR. Real APR depends on actual time-to-peg — could be faster (SLP launch + supply absorption could pull peg up) or slower (peg may stall / deteriorate). Capital is at risk if peg never recovers.",
       "status": "theoretical"
     },
     {
@@ -35,7 +35,7 @@
       "apr_pct_implied": 231.2,
       "lock": "n/a",
       "summary": "Gated: needs staker at 100% of original debt",
-      "risk_note": "One-shot mechanic — $1 of SNX-staker debt forgiven per $0.3020 of sUSD burned, equivalent to 231.2% return. GATED: the burn mechanic only fires when the staker is at 100% of their original debt collateralized in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are below this threshold, so this yield is not currently accessible to the bulk of the cohort. The threshold could be relaxed by governance, but no announcement has been made.",
+      "risk_note": "One-shot mechanic — $1 of SNX-staker debt forgiven per $0.3019 of sUSD burned, equivalent to 231.2% return. GATED: the burn mechanic only fires when the staker is at 100% of their original debt collateralized in sUSD (Synthetix contributor confirmed 2026-05-05). Most stakers are below this threshold, so this yield is not currently accessible to the bulk of the cohort. The threshold could be relaxed by governance, but no announcement has been made.",
       "status": "theoretical",
       "audience": "SNX stakers at 100% original-debt threshold only"
     },
@@ -50,10 +50,10 @@
     {
       "id": "susd_rewards",
       "label": "sUSD Staking Rewards (5M SNX)",
-      "apr_pct": 32.1,
+      "apr_pct": 32.3,
       "lock": "principal unlocked Apr 19; SNX rewards vest 3mo linear (~Apr 19 → Jul 19, 2026)",
-      "summary": "Closed to new deposits · 32.1% APR for stakers already in",
-      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.2450 ÷ $15,280,608 locked sUSD × (12÷3 month annualisation) = 32.1%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
+      "summary": "Closed to new deposits · 32.3% APR for stakers already in",
+      "risk_note": "5M SNX rewards distribute linearly from 2026-04-19 to ~2026-07-19 to stakers who entered before lockup. APR computed live: 5M SNX × $0.2465 ÷ $15,280,608 locked sUSD × (12÷3 month annualisation) = 32.3%. NO NEW DEPOSITS accepted — this yield is only earned by stakers already in the program. Existing participants have a financial incentive to delay exit until the release window closes; those who exit early forfeit unvested SNX. The shown APR floats with SNX price.",
       "status": "vesting_only",
       "audience": "existing participants only"
     }
